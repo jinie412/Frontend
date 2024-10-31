@@ -1,0 +1,246 @@
+/* Cài đặt chung */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f5f5f5;
+    margin: 0;
+    padding: 0;
+}
+
+/* Thanh điều hướng */
+nav {
+    background-color: #396CF0;
+    color: white;
+    padding: 1rem;
+    text-align: center;
+}
+
+/* Căn giữa tiêu đề trong thanh điều hướng */
+nav h1 {
+    margin: 0;
+}
+
+/* Định dạng danh sách liên kết trong thanh điều hướng */
+nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    justify-content: space-between;
+}
+
+/* Các liên kết trong thanh điều hướng */
+nav ul li {
+    margin: 0 15px;
+}
+
+nav ul li a {
+    color: white;
+    text-decoration: none;
+    font-weight: normal;
+    padding: 8px 15px;
+}
+
+/* Làm nổi bật mục "Nhận bệnh" */
+nav ul li a.active {
+    font-weight: bold;
+    position: relative;
+}
+
+/* Thanh trắng dưới chữ "Nhận bệnh" */
+nav ul li a.active::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: -9px;
+    height: 3px;
+    background-color: white;
+    border-radius: 2px;
+}
+
+/* Định dạng icon trong thanh điều hướng */
+nav li a i {
+    font-size: 18px;
+    color: white;
+    vertical-align: middle;
+}
+
+/* Nội dung thông tin bệnh nhân */
+.patient-information {
+    padding: 20px;
+}
+
+.header-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 0px;
+}
+
+/* Tiêu đề */
+h2 {
+    color: #333;
+}
+
+/* Form bệnh nhân */
+#patient-form {
+    background-color: white;
+    padding: 20px;
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
+
+.form-row {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+/* Định dạng nhóm thông tin trong form */
+.form-group {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+    margin-bottom: 15px;
+}
+
+.form-group label {
+    flex: 0 0 auto;
+    width: auto;
+}
+
+/* Định dạng input và select */
+.form-group input, 
+.form-group select {
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    width: 150px;
+}
+
+/* Định dạng hàng có chiều rộng đầy đủ */
+.full-width {
+    width: 100%;
+}
+
+.full-width input {
+    width: 100%;
+}
+
+/* Định dạng nút */
+button {
+    background-color: #007bff;
+    color: white;
+    padding: 10px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+/* Định dạng nút tra cứu */
+#search {
+    background-color: #007bff;
+    color: white;
+    padding: 8px 12px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+#search:hover {
+    background-color: #0056b3;
+}
+
+/* Bảng */
+/* Căn chỉnh header-row trong patient-table */
+.patient-table .header-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 0px;
+}
+
+.patient-table .header-row label {
+    margin-right: 8px;
+    font-weight: bold;
+}
+
+.patient-table .header-row input[type="date"] {
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.patient-table .header-row div {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.patient-table .header-row input[type="checkbox"] {
+    margin-right: 5px;
+}
+
+.patient-table {
+    padding: 20px;
+    background-color: #f9f9f9;
+    margin-bottom: 20px;
+    border-radius: 5px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: white;
+}
+
+table th, table td {
+    padding: 10px;
+    border: 1px solid #ccc;
+    text-align: center;
+}
+
+table th {
+    background-color: #396CF0;
+    color: white;
+}
+
+.selected-row {
+    background-color: #cce5ff;
+}
+
+/* Định dạng nút */
+.action-buttons {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+    background-color: #f5f5f5;
+    border-top: 1px solid #ccc;
+    margin-top: 20px;
+}
+
+.left-buttons {
+    display: flex;
+    gap: 10px;
+}
+
+.right-buttons {
+    display: flex;
+}
+
+button {
+    background-color: #007bff;
+    color: white;
+    padding: 8px 12px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
