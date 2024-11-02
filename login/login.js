@@ -26,3 +26,16 @@ document
       loginUser(username, password); // Gọi hàm gửi yêu cầu đăng nhập
     }
   });
+
+const togglePassword = document.getElementById("togglePassword");
+const inputPass = document.getElementById("password");
+
+togglePassword.addEventListener("click", function () {
+  togglePassword.classList.toggle("fa-eye-slash");
+
+  if (inputPass.type === "password") {
+    inputPass.type = "text";
+  } else {
+    inputPass.type = "password";
+  }
+});
