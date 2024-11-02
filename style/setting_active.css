@@ -1,0 +1,12 @@
+/* Thêm vào nav_active.css */
+nav ul li a.active::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -9px;
+  height: 3px;
+  background-color: white;
+  border-radius: 2px;
+  width: 100%;
+}
