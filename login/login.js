@@ -7,26 +7,6 @@ document.getElementById("password").addEventListener("input", function () {
   this.classList.add("text-white");
 });
 
-document
-  .getElementById("loginForm")
-  .addEventListener("submit", function (event) {
-    event.preventDefault();
-    const username = document.getElementById("username").value.trim();
-    const password = document.getElementById("password").value.trim();
-    const errorMessage = document.getElementById("errorMessage");
-
-    if (!username || !password) {
-      errorMessage.textContent = "Vui lòng nhập đầy đủ tài khoản và mật khẩu.";
-      errorMessage.style.display = "block";
-    } else if (password.length < 6) {
-      errorMessage.textContent = "Mật khẩu phải có ít nhất 6 ký tự.";
-      errorMessage.style.display = "block";
-    } else {
-      errorMessage.style.display = "none";
-      loginUser(username, password); // Gọi hàm gửi yêu cầu đăng nhập
-    }
-  });
-
 const togglePassword = document.getElementById("togglePassword");
 const inputPass = document.getElementById("password");
 
@@ -39,3 +19,68 @@ togglePassword.addEventListener("click", function () {
     inputPass.type = "password";
   }
 });
+
+const checkUsername = (username) => {
+  if (!username) return "Hãy nhập Username!";
+  else return true;
+};
+
+const checkPassword = (password) => {
+  if (!password) return "Hãy nhập Password!";
+  else if (password.length < 6) return "Mật khẩu cần tối thiểu 6 kí tự!";
+  else return true;
+};
+
+const showError = (element, message) => {
+  element.style.display = "block";
+  element.innerHTML = message;
+  element.classList.add("message_error");
+};
+const hideError = (element) => {
+  element.style.display = "none";
+};
+const validation = (username, password) => {
+  const errorUsername = document.getElementById("errorUsername");
+  const errorPassword = document.getElementById("errorPassword");
+
+  //validation username
+  let messageErrorUsername = checkUsername(username);
+  if (typeof messageErrorUsername === "string") {
+    showError(errorUsername, messageErrorUsername);
+  } else {
+    hideError(errorUsername);
+  }
+
+  //validation password
+  let messageErrorPassword = checkPassword(password);
+  if (typeof messageErrorPassword === "string") {
+    showError(errorPassword, messageErrorPassword);
+  } else {
+    hideError(errorPassword);
+  }
+
+  if (messageErrorPassword === true && messageErrorPassword === true) {
+    return true;
+  }
+  return false;
+};
+
+const login = (username, password) => {
+  if (username === "admin" && password === "123456") {
+    window.location.assign("../homepage/index.html");
+    return true;
+  }
+  return false;
+};
+
+const onSubmitForm = (form) => {
+  const username = form.username.value;
+  const password = form.password.value;
+  const checValidation = validation(username, password);
+  if (checValidation === true) {
+    const checkLogin = login(username, password);
+    if (checkLogin == false) {
+      swal("", "Tên đăng nhập hoặc mật khẩu không chính xác!", "error");
+    }
+  }
+};
