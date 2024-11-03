@@ -1,0 +1,229 @@
+
+/* Thanh công cụ */
+.nav-item {
+    flex: 1;
+    text-align: center;
+    padding: 0.5rem;
+    transition: background-color 0.3s;
+    position: relative;
+}
+.nav-item:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+.nav-item:hover .dropdown {
+    display: block;
+}
+/*  */
+.patient-details {
+    flex: 1;
+    padding: 1rem;
+}
+.details-container {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 1rem;
+}
+.details-box {
+    flex: 1;
+    border: 1px solid #ccc;
+    padding: 1rem;
+}
+.details-group {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 0.5rem;
+    margin-bottom: 0.5rem;
+}
+.details-group p {
+    margin: 0;
+}
+.details-box {
+    border: 1px solid #ccc;
+    padding: 1rem;
+    margin-bottom: 1rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+}
+.details-group {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 0.5rem;
+    align-items: center;
+}
+.details-group p {
+    margin: 0.25rem 0;
+}
+
+.search-section {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 2rem;
+}
+.search-input {
+    padding: 0.5rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    width: 200px;
+}
+.search-button {
+    padding: 0.5rem 1rem;
+    background-color: #e5e7eb;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+.content-container {
+    display: flex;
+    gap: 2rem;
+}
+.patient-list {
+    width: 300px;
+}
+.patient-details {
+    flex: 1;
+    border: 1px solid #ccc;
+    padding: 1rem;
+}
+.details-header {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+    margin-bottom: 1rem;
+}
+.medicine-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 1rem;
+}
+.medicine-table th,
+.medicine-table td {
+    border: 1px solid #ccc;
+    padding: 0.5rem;
+    text-align: left;
+}
+.total-section {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 1rem;
+    padding-top: 0.5rem;
+    border-top: 1px solid #ccc;
+}
+table.patient-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+.patient-table th,
+.patient-table td {
+    border: 1px solid #ccc;
+    padding: 0.5rem;
+    text-align: left;
+}
+.dropdown {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    background-color: #3B82F6;
+    z-index: 1000;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+}
+.dropdown-item {
+    display: block;
+    padding: 0.5rem;
+    text-align: center;
+    transition: background-color 0.3s;
+}
+.dropdown-item:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.patient-table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    background-color: white;
+}
+.patient-table th {
+    background-color: #2563eb;
+    color: white;
+    font-weight: 600;
+    padding: 12px;
+    text-align: left;
+}
+.patient-table td {
+    padding: 12px;
+    border-bottom: 1px solid #e5e7eb;
+}
+.patient-table tr:hover {
+    background-color: #f3f4f6;
+    transition: background-color 0.3s ease;
+}
+/* Cập nhật style cho bảng thuốc */
+.medicine-table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    margin-top: 1.5rem;
+    background-color: white;
+}
+.medicine-table th {
+    background-color: #2563eb;
+    color: white;
+    font-weight: 600;
+    padding: 12px;
+    text-align: left;
+}
+.medicine-table td {
+    padding: 12px;
+    border-bottom: 1px solid #e5e7eb;
+}
+.medicine-table tr:hover {
+    background-color: #f3f4f6;
+    transition: background-color 0.3s ease;
+}
+
+/* Style cho phần tổng tiền */
+.total-section {
+    background-color: white;
+    padding: 1rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    margin-top: 1.5rem;
+}
+.total-section table {
+    width: 300px;
+    margin-left: auto;
+}
+.total-section td {
+    padding: 8px;
+    font-weight: 600;
+}
+.total-section td:first-child {
+    color: #4b5563;
+}
+.total-section td:last-child {
+    color: #2563eb;
+}
+/* Thêm style cho các ô trống */
+.patient-table tr:last-child td {
+    border-bottom: none;
+    background-color: #f9fafb;
+}
+.empty-row td {
+    height: 48px; /* Điều chỉnh chiều cao của hàng trống */
+    background-color: #f9fafb;
+    border-bottom: 1px solid #e5e7eb;
+}
+.empty-row:last-child td {
+    border-bottom: none;
+}
+.empty-row:hover {
+    background-color: #f3f4f6;
+}
