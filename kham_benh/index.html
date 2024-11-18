@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Khám bệnh</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+</head>
+<body>
+    <!-- Thanh điều hướng -->
+    <nav>        
+        <ul>
+            <li><a href="../homepage/index.html"><i class="fas fa-home"></i></a></li>
+            <li><a href="../nhan_benh/index.html">Nhận bệnh</a></li>
+            <li><a href="#" class="active">Khám bệnh</a></li>
+            <li><a href="#">Hoá đơn</a></li>
+            <li><a href="#">Báo cáo</a></li>
+            <li><a href="../patient/index.html">Bệnh nhân</a></li>
+            <li><a href="#">Thuốc</a></li>
+            <li><a href="../setting/index.html"><i class="fas fa-cog"></i></a></li>
+        </ul>
+    </nav>
+
+  <main>
+    <!-- Thông tin bệnh nhân -->
+    <section class="patient-info">
+      <h2>Thông tin bệnh nhân</h2>
+      <form id="patient-form">
+        <div class="form-group">
+          <label for="patient-id">Mã số:</label>
+          <input type="text" id="patient-id" disabled>
+        </div>
+
+        <div class="form-group">
+          <label for="patient-name">Họ tên:</label>
+          <input type="text" id="patient-name">
+        </div>
+
+        <div class="form-group">
+          <label for="birth-date">Ngày sinh:</label>
+          <input type="date" id="birth-date">
+        </div>
+
+        <div class="form-group">
+          <label for="age">Tuổi:</label>
+          <input type="text" id="age" disabled>
+        </div>
+
+        <div class="form-group">
+          <label for="address">Địa chỉ:</label>
+          <input type="text" id="address">
+        </div>
+
+        <div class="form-group">
+          <label for="phone">Điện thoại:</label>
+          <input type="text" id="phone">
+        </div>
+
+        <div class="form-group">
+          <label for="job">Nghề nghiệp:</label>
+          <input type="text" id="job">
+        </div>
+
+        <div class="form-group">
+          <label for="medical-history">Tiền sử:</label>
+          <textarea id="medical-history"></textarea>
+        </div>
+
+        <div class="form-group">
+          <label for="allergy">Dị ứng:</label>
+          <textarea id="allergy"></textarea>
+        </div>
+      </form>
+
+      <!-- Bảng lịch sử khám -->
+      <div class="history">
+        <h3>Lịch sử khám</h3>
+        <table id="history-table">
+          <thead>
+            <tr>
+              <th>Ngày khám</th>
+              <th>Chẩn đoán bệnh</th>
+              <th>Ngày hẹn</th>
+            </tr>
+          </thead>
+        </table>
+      </div>
+    </section>
+
+    <!-- Phiếu khám bệnh và Kê toa thuốc -->
+    <section class="exam-and-prescription">
+      <h2>Phiếu khám bệnh</h2>
+      <form id="exam-form">
+        <div class="form-group">
+          <label for="reason">Lý do khám:</label>
+          <textarea id="reason"></textarea>
+        </div>
+
+        <div class="form-group">
+          <label for="symptoms">Triệu chứng:</label>
+          <textarea id="symptoms"></textarea>
+        </div>
+
+        <div class="form-group">
+          <label for="diagnosis">Chẩn đoán:</label>
+          <textarea id="diagnosis"></textarea>
+        </div>
+
+        <div class="form-group">
+          <label for="notes">Ghi chú:</label>
+          <textarea id="notes"></textarea>
+        </div>
+
+        <!-- Kê toa thuốc -->
+        <h3>Kê toa thuốc</h3>
+        <table id="prescription-table">
+          <thead>
+            <tr>
+              <th>STT</th>
+              <th>Tên thuốc</th>
+              <th>Đơn vị</th>
+              <th>Số lượng</th>
+              <th>Cách dùng</th>
+            </tr>
+          </thead>
+        </table>
+      </form>
+    </section>
+  </main>
+
+  <footer>
+    <button id="save-btn">Lưu</button>
+    <button id="edit-btn">Sửa</button>
+    <button id="back-btn">Quay lại</button>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

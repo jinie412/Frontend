@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bệnh nhân</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+</head>
+<body>
+    <!-- Thanh điều hướng -->
+    <nav>        
+        <ul>
+            <li><a href="../homepage/index.html"><i class="fas fa-home"></i></a></li>
+            <li><a href="../nhan_benh/index.html">Nhận bệnh</a></li>
+            <li><a href="../kham_benh/index.html">Khám bệnh</a></li>
+            <li><a href="#">Hoá đơn</a></li>
+            <li><a href="#">Báo cáo</a></li>
+            <li><a href="#" class="active">Bệnh nhân</a></li>
+            <li><a href="#">Thuốc</a></li>
+            <li><a href="../setting/index.html"><i class="fas fa-cog"></i></a></li>
+        </ul>
+    </nav>
+
+  <main>
+    <section class="patient-section">
+        <div class="search-bar">
+            <select id="search-filter" onchange="toggleSearchInput()">
+                <option value="" disabled selected>Chọn mục tìm kiếm</option>
+                <option value="id">Mã BN</option>
+                <option value="name">Họ và tên</option>
+            </select>
+            <input type="text" id="search-input" placeholder="Nhập thông tin tìm kiếm" disabled>
+            <button id="search-button" onclick="searchFunction()">Tìm kiếm</button>
+        </div>
+
+      <div class="patient-table">
+        <table>
+          <thead>
+            <tr>
+              <th>STT</th>
+              <th>Mã BN</th>
+              <th>Họ và tên</th>
+              <th>Giới tính</th>
+              <th>Dân tộc</th>
+              <th>Ngày sinh</th>
+              <th>Địa chỉ</th>
+              <th>Số điện thoại</th>
+              <th>Nghề nghiệp</th>
+              <th>Ghi chú</th>
+            </tr>
+          </thead>
+          <tbody id="patient-list">
+            <!-- Danh sách bệnh nhân sẽ được render tại đây -->
+          </tbody>
+        </table>
+      </div>
+    </section>
+  </main>
+  
+  <script src="script.js"></script>
+</body>
+</html>
