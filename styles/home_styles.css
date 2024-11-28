@@ -1,0 +1,33 @@
+/*Home*/
+.nav-item {
+    flex: 1;
+    text-align: center;
+    padding: 0.5rem;
+    transition: background-color 0.3s;
+    position: relative;
+}
+.nav-item:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+.dropdown {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    background-color: #3B82F6;
+    z-index: 1000;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+}
+.dropdown-item {
+    display: block;
+    padding: 0.5rem;
+    text-align: center;
+    transition: background-color 0.3s;
+}
+.dropdown-item:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+.nav-item:hover .dropdown {
+    display: block;
+}

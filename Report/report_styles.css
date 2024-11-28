@@ -137,3 +137,80 @@ canvas {
     flex-wrap: wrap;
     margin-bottom: 1rem;
 }
+
+/* Table styles */
+table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+th, td {
+    border: 1px solid #e5e7eb;
+}
+
+th {
+    font-weight: 600;
+}
+
+/* Pie chart container for medication report */
+.pie-chart-container {
+    position: relative;
+    height: 300px;
+    margin: 0 auto;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .pie-chart-container {
+        height: 250px;
+    }
+}
+
+@media (max-width: 480px) {
+    .pie-chart-container {
+        height: 200px;
+    }
+    
+    th, td {
+        padding: 0.5rem 0.25rem;
+        font-size: 0.875rem;
+    }
+}
+
+/* Additional styles for monthly detail page */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* Table hover effect */
+tr.hover\:bg-gray-100:hover {
+    background-color: #f3f4f6;
+    transition: background-color 0.2s;
+}
+
+/* Back button styles */
+.back-button {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.5rem;
+    color: #3B82F6;
+    transition: color 0.2s;
+}
+
+.back-button:hover {
+    color: #2563EB;
+}
+
+/* Responsive table */
+@media (max-width: 640px) {
+    table {
+        display: block;
+        overflow-x: auto;
+        white-space: nowrap;
+    }
+}

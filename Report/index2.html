@@ -3,13 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Báo cáo doanh thu - Phòng mạch tư</title>
+    <title>Báo cáo lượng thuốc - Phòng mạch tư</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <link rel="stylesheet" href="./report_styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
-<body>
+<body class="bg-gray-100">
     <nav class="bg-blue-500 p-2">
         <div class="container mx-auto nav-container flex flex-wrap items-center justify-between text-white">
             <a href="/src/home.html" class="nav-item flex items-center justify-center">
@@ -28,11 +28,89 @@
                 </div>
             </div>
             <a href="#" class="nav-item">Bệnh nhân</a>
-            <a href="#" class="nav-item">Thuốc</a>
+            <a href="/Medicine/index.html" class="nav-item">Thuốc</a>
             <a href="#" class="nav-item">
                 <i class="fas fa-cog text-xl"></i>
             </a>
         </div>
     </nav>
+
+    <div class="container mx-auto p-4">
+        <h1 class="text-2xl mb-6">Trang Báo cáo lượng thuốc</h1>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <!-- Pie Chart -->
+            <div class="bg-white p-6 rounded-lg shadow">
+                <h2 class="text-lg mb-4">Tỉ lệ các loại thuốc được sử dụng của phòng mạch tư</h2>
+                <div class="pie-chart-container">
+                    <canvas id="medicationPieChart"></canvas>
+                </div>
+            </div>
+
+            <!-- Table Section -->
+            <div class="bg-white p-6 rounded-lg shadow">
+                <h2 class="text-lg mb-4">Tổng lượng thuốc hàng tháng của phòng mạch tư</h2>
+                <div class="overflow-x-auto">
+                    <table class="min-w-full">
+                        <thead>
+                            <tr class="bg-blue-500 text-white">
+                                <th class="py-2 px-4">STT</th>
+                                <th class="py-2 px-4">Tháng</th>
+                                <th class="py-2 px-4">Số loại thuốc</th>
+                                <th class="py-2 px-4">Tổng lượng thuốc (đơn vị)</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="border-b hover:bg-gray-100 cursor-pointer" onclick="window.location='monthly_detail.html?month=1'">
+                                <td class="py-2 px-4 text-center">1</td>
+                                <td class="py-2 px-4 text-center">Tháng 1</td>
+                                <td class="py-2 px-4 text-center">3</td>
+                                <td class="py-2 px-4 text-center">150</td>
+                            </tr>
+                            <tr class="border-b hover:bg-gray-100 cursor-pointer" onclick="window.location='monthly_detail.html?month=2'">
+                                <td class="py-2 px-4 text-center">2</td>
+                                <td class="py-2 px-4 text-center">Tháng 2</td>
+                                <td class="py-2 px-4 text-center">4</td>
+                                <td class="py-2 px-4 text-center">200</td>
+                            </tr>
+                            <tr class="border-b hover:bg-gray-100 cursor-pointer" onclick="window.location='monthly_detail.html?month=3'">
+                                <td class="py-2 px-4 text-center">3</td>
+                                <td class="py-2 px-4 text-center">Tháng 3</td>
+                                <td class="py-2 px-4 text-center">5</td>
+                                <td class="py-2 px-4 text-center">100</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const pieCtx = document.getElementById('medicationPieChart').getContext('2d');
+        new Chart(pieCtx, {
+            type: 'pie',
+            data: {
+                labels: ['Aspirin', 'Paracetamol', 'Khác'],
+                datasets: [{
+                    data: [45, 30, 25],
+                    backgroundColor: ['#EF4444', '#10B981', '#6B7280']
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        position: 'bottom',
+                        labels: {
+                            boxWidth: 12,
+                            padding: 15
+                        }
+                    }
+                }
+            }
+        });
+    </script>
 </body>
 </html>
