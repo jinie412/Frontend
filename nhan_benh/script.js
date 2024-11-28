@@ -38,12 +38,15 @@ document.getElementById("dob").addEventListener("change", function () {
   }
 });
 
+// Tự động cập nhật Ngày khám là ngày hiện tại
+document.getElementById("exam-date").value = new Date().toISOString().split('T')[0];
+
 let selectedRow = null;
 
 // Thêm bệnh nhân vào bảng khi người dùng submit form
 document
-  .getElementById("patient-form")
-  .addEventListener("submit", function (event) {
+  .getElementById("submit")
+  .addEventListener("click", function (event) {
     event.preventDefault(); // Ngăn trang không bị reload
 
     // Lấy giá trị từ form
@@ -123,16 +126,6 @@ document.getElementById("delete").addEventListener("click", function () {
   }
 });
 
-// // Cập nhật lại STT sau khi xóa hàng
-// function updatePatientCount() {
-//     const rows = document.querySelectorAll('#patient-table tbody tr');
-//     patientCount = 0;
-//     rows.forEach((row) => {
-//         patientCount++;
-//         row.querySelector('td:nth-child(1)').textContent = patientCount;
-//     });
-// }
-
 // Cập nhật lại STT sau khi xóa hàng
 function updatePatientCount() {
   const rows = document.querySelectorAll("#patient-table tr");
@@ -143,11 +136,25 @@ function updatePatientCount() {
   });
 }
 
-// Xử lý nút Khám bệnh
+// Xử lý nút Khám bệnh trên Trang nhận bệnh
 document.getElementById("exam").addEventListener("click", function () {
   if (selectedRow) {
-    const patientId = selectedRow.cells[1].innerText;
-    window.location.href = `kham_benh.html?patientId=${patientId}`;
+    const patientId = selectedRow.cells[2].innerText; // Lấy mã bệnh nhân từ bảng
+    const patientData = {
+      id: patientId,
+      name: selectedRow.cells[3].innerText, // Lấy tên bệnh nhân
+      gender: selectedRow.cells[4].innerText, // Lấy giới tính
+      ethnicity: selectedRow.cells[5].innerText, //Lấy dân tộc
+      birthDate: selectedRow.cells[6].innerText, // Lấy ngày sinh
+      address: selectedRow.cells[7].innerText, // Lấy địa chỉ
+      phone: selectedRow.cells[8].innerText, // Lấy điện thoại
+      job: selectedRow.cells[9].innerText, // Lấy nghề nghiệp
+    };
+
+    // Lưu thông tin bệnh nhân vào sessionStorage
+    sessionStorage.setItem('patientData', JSON.stringify(patientData));
+    // Chuyển hướng sang Trang khám bệnh
+    window.location.href = "../kham_benh/index.html?patientId=" + patientId;
   } else {
     alert("Vui lòng chọn một bệnh nhân để khám bệnh.");
   }
@@ -196,3 +203,36 @@ document
 document
   .getElementById("filter-examined")
   .addEventListener("change", filterPatients);
+
+
+// Hàm để hiển thị danh sách bệnh nhân từ sessionStorage
+// function renderPatientList() {
+//   let patients = JSON.parse(sessionStorage.getItem('patients')) || [];
+
+//   const tableBody = document.getElementById("patient-table-body");
+//   tableBody.innerHTML = ''; // Xóa nội dung cũ trước khi hiển thị lại
+
+//   patients.forEach(patient => {
+//     const row = document.createElement("tr");
+
+//     const idCell = document.createElement("td");
+//     idCell.innerText = patient.id;
+//     row.appendChild(idCell);
+
+//     const nameCell = document.createElement("td");
+//     nameCell.innerText = patient.name;
+//     row.appendChild(nameCell);
+
+//     const statusCell = document.createElement("td");
+//     statusCell.innerText = patient.status || "Chưa khám"; // Hiển thị trạng thái
+//     row.appendChild(statusCell);
+
+//     // Thêm dòng vào bảng
+//     tableBody.appendChild(row);
+//   });
+// }
+
+// // Gọi hàm để render danh sách bệnh nhân khi trang được tải
+// window.onload = function() {
+//   renderPatientList();
+// };

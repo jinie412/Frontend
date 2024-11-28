@@ -24,7 +24,7 @@ const patients = [
   },
   {
     id: "BN0003",
-    name: "Nguyễn Văn A",
+    name: "Nguyễn Văn C",
     gender: "Nam",
     ethnicity: "Kinh",
     birthDate: "01/01/1989",
@@ -35,7 +35,7 @@ const patients = [
   },
   {
     id: "BN0004",
-    name: "Nguyễn Văn A",
+    name: "Nguyễn Văn D",
     gender: "Nam",
     ethnicity: "Kinh",
     birthDate: "01/01/1989",
@@ -46,7 +46,7 @@ const patients = [
   },
   {
     id: "BN0005",
-    name: "Nguyễn Văn A",
+    name: "Nguyễn Văn E",
     gender: "Nam",
     ethnicity: "Kinh",
     birthDate: "01/01/1989",
@@ -57,7 +57,7 @@ const patients = [
   },
   {
     id: "BN0006",
-    name: "Nguyễn Văn A",
+    name: "Nguyễn Văn G",
     gender: "Nam",
     ethnicity: "Kinh",
     birthDate: "01/01/1989",
@@ -68,7 +68,7 @@ const patients = [
   },
   {
     id: "BN0007",
-    name: "Nguyễn Văn A",
+    name: "Nguyễn Văn H",
     gender: "Nam",
     ethnicity: "Kinh",
     birthDate: "01/01/1989",
@@ -79,7 +79,7 @@ const patients = [
   },
   {
     id: "BN0008",
-    name: "Trần Thị B",
+    name: "Trần Thị I",
     gender: "Nữ",
     ethnicity: "Kinh",
     birthDate: "12/12/1990",
@@ -90,7 +90,7 @@ const patients = [
   },
   {
     id: "BN0009",
-    name: "Trần Thị B",
+    name: "Trần Thị K",
     gender: "Nữ",
     ethnicity: "Kinh",
     birthDate: "12/12/1990",
@@ -101,7 +101,7 @@ const patients = [
   },
   {
     id: "BN0010",
-    name: "Trần Thị B",
+    name: "Trần Thị L",
     gender: "Nữ",
     ethnicity: "Kinh",
     birthDate: "12/12/1990",
@@ -112,7 +112,7 @@ const patients = [
   },
   {
     id: "BN0011",
-    name: "Trần Thị B",
+    name: "Trần Thị M",
     gender: "Nữ",
     ethnicity: "Kinh",
     birthDate: "12/12/1990",
@@ -123,7 +123,73 @@ const patients = [
   },
   {
     id: "BN0012",
-    name: "Trần Thị B",
+    name: "Trần Thị N",
+    gender: "Nữ",
+    ethnicity: "Kinh",
+    birthDate: "12/12/1990",
+    address: "Phường 3, Quận 10, TP. HCM",
+    phone: "0378272919",
+    job: "Nội trợ",
+    notes: ""
+  },
+  {
+    id: "BN0013",
+    name: "Trần Thị O",
+    gender: "Nữ",
+    ethnicity: "Kinh",
+    birthDate: "12/12/1990",
+    address: "Phường 3, Quận 10, TP. HCM",
+    phone: "0378272919",
+    job: "Nội trợ",
+    notes: ""
+  },
+  {
+    id: "BN0014",
+    name: "Trần Thị Q",
+    gender: "Nữ",
+    ethnicity: "Kinh",
+    birthDate: "12/12/1990",
+    address: "Phường 3, Quận 10, TP. HCM",
+    phone: "0378272919",
+    job: "Nội trợ",
+    notes: ""
+  },
+  {
+    id: "BN0015",
+    name: "Trần Thị R",
+    gender: "Nữ",
+    ethnicity: "Kinh",
+    birthDate: "12/12/1990",
+    address: "Phường 3, Quận 10, TP. HCM",
+    phone: "0378272919",
+    job: "Nội trợ",
+    notes: ""
+  },
+  {
+    id: "BN0016",
+    name: "Trần Thị S",
+    gender: "Nữ",
+    ethnicity: "Kinh",
+    birthDate: "12/12/1990",
+    address: "Phường 3, Quận 10, TP. HCM",
+    phone: "0378272919",
+    job: "Nội trợ",
+    notes: ""
+  },
+  {
+    id: "BN0017",
+    name: "Trần Thị T",
+    gender: "Nữ",
+    ethnicity: "Kinh",
+    birthDate: "12/12/1990",
+    address: "Phường 3, Quận 10, TP. HCM",
+    phone: "0378272919",
+    job: "Nội trợ",
+    notes: ""
+  },
+  {
+    id: "BN0018",
+    name: "Trần Thị U",
     gender: "Nữ",
     ethnicity: "Kinh",
     birthDate: "12/12/1990",
@@ -140,7 +206,7 @@ function renderPatients() {
   patientList.innerHTML = patients
     .map(
       (patient, index) => `
-      <tr>
+      <tr ondblclick="selectPatient('${patient.id}')">
         <td>${index + 1}</td>
         <td>${patient.id}</td>
         <td>${patient.name}</td>
@@ -157,17 +223,21 @@ function renderPatients() {
     .join("");
 }
 
-// Tìm kiếm bệnh nhân
+// Tìm kiếm bệnh nhân và hiển thị lại bảng
 function searchPatients() {
   const filter = document.getElementById("search-filter").value;
   const query = document.getElementById("search-input").value.toLowerCase();
+  
+  // Lọc danh sách bệnh nhân theo từ khóa
   const filteredPatients = patients.filter((patient) =>
     patient[filter]?.toLowerCase().includes(query)
   );
+  
+  // Hiển thị lại bảng sau khi lọc
   document.getElementById("patient-list").innerHTML = filteredPatients
     .map(
       (patient, index) => `
-      <tr>
+      <tr ondblclick="selectPatient('${patient.id}')">
         <td>${index + 1}</td>
         <td>${patient.id}</td>
         <td>${patient.name}</td>
@@ -207,3 +277,10 @@ function toggleSearchInput() {
 document.addEventListener('DOMContentLoaded', () => {
     toggleSearchInput();  // Kiểm tra khi trang tải
 });
+
+// Lưu thông tin bệnh nhân đã chọn vào sessionStorage và chuyển đến Trang nhận bệnh 2
+function selectPatient(patientId) {
+  const selectedPatient = patients.find(patient => patient.id === patientId);
+  sessionStorage.setItem("selectedPatient", JSON.stringify(selectedPatient)); // Lưu thông tin vào sessionStorage
+  window.location.href = "patient-info.html"; // Chuyển hướng tới Trang nhận bệnh 2
+}

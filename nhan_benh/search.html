@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nhận bệnh</title>
+    <link rel="stylesheet" href="style2.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+</head>
+<body>
+    <!-- Thanh điều hướng -->
+    <nav>        
+        <ul>
+            <li><a href="../homepage/index.html"><i class="fas fa-home"></i></a></li>
+            <li><a href="#" class="active">Nhận bệnh</a></li>
+            <li><a href="../kham_benh/index.html">Khám bệnh</a></li>
+            <li><a href="#">Hoá đơn</a></li>
+            <li><a href="#">Báo cáo</a></li>
+            <li><a href="../patient/index.html">Bệnh nhân</a></li>
+            <li><a href="#">Thuốc</a></li>
+            <li><a href="../setting/index.html"><i class="fas fa-cog"></i></a></li>
+        </ul>
+    </nav>
+
+    <main>
+        <section class="search-section">
+            <h2>Tra cứu</h2>
+            <div class="search-table">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Mã BN</th>
+                            <th>Họ và tên</th>
+                            <th>Giới tính</th>
+                            <th>Dân tộc</th>
+                            <th>Ngày sinh</th>
+                            <th>Địa chỉ</th>
+                            <th>Số điện thoại</th>
+                            <th>Nghề nghiệp</th>
+                        </tr>
+                        <tr>
+                            <td><input type="text" id="searchPatientId" placeholder="Nhập mã BN"></td>
+                            <td><input type="text" id="searchFullName" placeholder="Nhập họ và tên"></td>
+                            <td>
+                                <select id="searchGender">
+                                    <option value="">Tất cả</option>
+                                    <option value="Nam">Nam</option>
+                                    <option value="Nữ">Nữ</option>
+                                </select>
+                            </td>
+                            <td><input type="text" id="searchEthnicity" placeholder="Nhập dân tộc"></td>
+                            <td><input type="date" id="searchDob"></td>
+                            <td><input type="text" id="searchAddress" placeholder="Nhập địa chỉ"></td>
+                            <td><input type="text" id="searchPhone" placeholder="Nhập số điện thoại"></td>
+                            <td><input type="text" id="searchOccupation" placeholder="Nhập nghề nghiệp"></td>
+                            <td></td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td colspan="6"></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <button class="btn-search">Tìm kiếm</button>
+        </section>
+
+        <section class="list-section">
+            <h2>Kết quả</h2>
+            <div class="list-table">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>STT</th>
+                            <th>Mã BN</th>
+                            <th>Họ và tên</th>
+                            <th>Giới tính</th>
+                            <th>Dân tộc</th>
+                            <th>Ngày sinh</th>
+                            <th>Địa chỉ</th>
+                            <th>Số điện thoại</th>
+                            <th>Nghề nghiệp</th>
+                            <th>Ghi chú</th>
+                        </tr>
+                    </thead>
+                    <tbody id="resultTableBody">
+                        <!-- Kết quả tìm kiếm sẽ hiển thị tại đây -->
+                    </tbody>
+                </table>
+            </div>
+            <button class="btn-back" onclick="window.location.href='index.html'">Quay lại</button>
+        </section>
+    </main>
+
+    <script>
+        // Dữ liệu bệnh nhân giả lập
+        const patients = [
+            {
+                id: "BN001",
+                name: "Nguyễn Văn A",
+                gender: "Nam",
+                ethnicity: "Kinh",
+                dob: "1990-01-01",
+                address: "Hà Nội",
+                phone: "0123456789",
+                occupation: "Kỹ sư",
+                note: "Không có"
+            },
+            {
+                id: "BN002",
+                name: "Trần Thị B",
+                gender: "Nữ",
+                ethnicity: "Tày",
+                dob: "1995-05-15",
+                address: "TP HCM",
+                phone: "0987654321",
+                occupation: "Giáo viên",
+                note: "Không có"
+            },
+            // Thêm bệnh nhân tại đây
+        ];
+    
+        // Hàm lấy giá trị từ các ô nhập liệu
+        function getSearchCriteria() {
+            return {
+                patientId: document.getElementById("searchPatientId").value.trim(),
+                fullName: document.getElementById("searchFullName").value.trim(),
+                gender: document.getElementById("searchGender").value,
+                ethnicity: document.getElementById("searchEthnicity").value.trim(),
+                dob: document.getElementById("searchDob").value,
+                address: document.getElementById("searchAddress").value.trim(),
+                phone: document.getElementById("searchPhone").value.trim(),
+                occupation: document.getElementById("searchOccupation").value.trim()
+            };
+        }
+    
+        // Hàm lọc bệnh nhân theo tiêu chí
+        function filterPatients(criteria) {
+            return patients.filter(patient => {
+                return (
+                    (!criteria.patientId || patient.id.includes(criteria.patientId)) &&
+                    (!criteria.fullName || patient.name.toLowerCase().includes(criteria.fullName.toLowerCase())) &&
+                    (!criteria.gender || patient.gender === criteria.gender) &&
+                    (!criteria.ethnicity || patient.ethnicity.toLowerCase().includes(criteria.ethnicity.toLowerCase())) &&
+                    (!criteria.dob || patient.dob === criteria.dob) &&
+                    (!criteria.address || patient.address.toLowerCase().includes(criteria.address.toLowerCase())) &&
+                    (!criteria.phone || patient.phone.includes(criteria.phone)) &&
+                    (!criteria.occupation || patient.occupation.toLowerCase().includes(criteria.occupation.toLowerCase()))
+                );
+            });
+        }
+    
+        // Hàm hiển thị kết quả trong bảng
+        function displayResults(filteredPatients) {
+            const resultTableBody = document.getElementById("resultTableBody");
+            resultTableBody.innerHTML = ""; // Xóa kết quả cũ
+    
+            if (filteredPatients.length > 0) {
+                filteredPatients.forEach((patient, index) => {
+                    const row = `
+                        <tr>
+                            <td>${index + 1}</td>
+                            <td>${patient.id}</td>
+                            <td>${patient.name}</td>
+                            <td>${patient.gender}</td>
+                            <td>${patient.ethnicity}</td>
+                            <td>${patient.dob}</td>
+                            <td>${patient.address}</td>
+                            <td>${patient.phone}</td>
+                            <td>${patient.occupation}</td>
+                            <td>${patient.note}</td>
+                        </tr>
+                    `;
+                    resultTableBody.innerHTML += row;
+                });
+            } else {
+                resultTableBody.innerHTML = `<tr><td colspan="10" style="text-align: center;">Không tìm thấy bệnh nhân</td></tr>`;
+            }
+        }
+    
+        // Xử lý khi nhấn nút tìm kiếm
+        document.getElementById("searchButton").addEventListener("click", function () {
+            const criteria = getSearchCriteria(); // Lấy tiêu chí tìm kiếm
+            const filteredPatients = filterPatients(criteria); // Lọc danh sách bệnh nhân
+            displayResults(filteredPatients); // Hiển thị kết quả
+        });
+    </script>        
+</body>
+</html>

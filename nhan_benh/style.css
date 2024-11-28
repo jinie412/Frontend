@@ -56,6 +56,7 @@ nav ul li a.active::after {
   height: 3px;
   background-color: white;
   border-radius: 2px;
+  transition: width 0.3s ease-in-out;
 }
 
 /* Định dạng icon trong thanh điều hướng */
@@ -64,6 +65,8 @@ nav li a i {
   color: white;
   vertical-align: middle;
 }
+
+/* -------------------------------------------------- */
 
 /* Nội dung thông tin bệnh nhân */
 .patient-information {
@@ -74,7 +77,8 @@ nav li a i {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin-bottom: 0px;
+  margin-top: -20px;
+  margin-bottom: 10px;
 }
 
 /* Tiêu đề */
@@ -87,48 +91,270 @@ h2 {
   background-color: white;
   padding: 20px;
   border-radius: 5px;
-  margin-bottom: 10px;
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
+  margin-top: -20px;
 }
 
-.form-row {
+/* .form-row {
   display: flex;
   flex-wrap: wrap;
-}
+} */
 
 /* Định dạng nhóm thông tin trong form */
-.form-group {
-  display: flex;
+
+/* Định dạng form-group1 */
+/* Bố cục ngang cho các phần tử */
+.form-group1 {
+  /* display: flex; */
+  display: grid;
+  grid-template-columns: 0.45fr 3.85fr 0.6fr 0.4fr 0.355fr 0.345fr;
   align-items: center;
   gap: 10px;
-  flex-wrap: wrap;
-  margin-bottom: 15px;
+  /* flex-wrap: wrap; */
+  margin-bottom: 10px; /* Khoảng cách giữa các nhóm nhãn và input */
+  /* position: relative; */
 }
 
-.form-group label {
+/* Định dạng nhãn */
+.form-group1 label {
+  /*display: block; /* Đảm bảo nhãn nằm riêng biệt */
+  /*margin-left: 20px; /* Khoảng cách giữa nhãn và ô input */
+  text-align: right; /* Canh trái nhãn */
   flex: 0 0 auto;
   width: auto;
+  /* position: absolute;
+  top: 0; */
 }
 
-/* Định dạng input và select */
-.form-group input,
-.form-group select {
-  padding: 8px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  width: 150px;
+.form-group1 input {
+  font-size: 1rem;
+  padding: 8px; /* Khoảng cách bên trong ô input */
+  border: 1px solid #ccc; /* Viền nhẹ */
+  border-radius: 4px; /* Bo góc */
+  box-sizing: border-box; /* Đảm bảo kích thước không bị ảnh hưởng bởi padding */
+  /* position: absolute;
+  top: 0; */
 }
 
-/* Định dạng hàng có chiều rộng đầy đủ */
-.full-width {
-  width: 100%;
+/* Định dạng các ô input */
+#patient-id {
+  width: 180px; /* Độ dài tùy chỉnh cho Mã BN */
+  /* margin-left: 5px; */
+  /* position: absolute;
+  left: 100px; */
 }
 
-.full-width input {
-  width: 100%;
+#dob {
+  width: 180px; /* Độ dài tùy chỉnh cho Ngày sinh */
+  /* margin-right: 250px; */
+  /* position: absolute;
+  right: 200px; */
 }
+
+#age {
+  width: 60px; /* Độ dài tùy chỉnh cho Tuổi */
+  /* margin-right: 40px; */
+  /* position: absolute;
+  right: 40px; */
+}
+
+/* Định dạng form-group2 */
+/* Bố cục ngang cho các phần tử */
+.form-group2 {
+  /* display: flex; */
+  display: grid;
+  grid-template-columns: 0.345fr 2.955fr 0.46fr 0.24fr;
+  align-items: center;
+  gap: 10px;
+  /* flex-wrap: wrap; */
+  margin-bottom: 10px; /* Khoảng cách giữa các nhóm nhãn và input */
+  /* position: relative; */
+}
+
+/* Định dạng nhãn */
+.form-group2 label {
+  /*display: block; /* Đảm bảo nhãn nằm riêng biệt */
+  /*margin-left: 1px; /* Khoảng cách giữa nhãn và ô input */
+  text-align: right; /* Canh trái nhãn */
+  flex: 0 0 auto;
+  width: auto;
+  /* position: absolute;
+  top: 0; */
+}
+
+.form-group2 input {
+  font-size: 1rem;
+  padding: 8px; /* Khoảng cách bên trong ô input */
+  border: 1px solid #ccc; /* Viền nhẹ */
+  border-radius: 4px; /* Bo góc */
+  box-sizing: border-box; /* Đảm bảo kích thước không bị ảnh hưởng bởi padding */
+  /* position: absolute;
+  top: 0; */
+}
+
+/* Định dạng các ô input */
+#name {
+  width: 500px; /* Độ dài tùy chỉnh cho Mã BN */
+  /* margin-left: 5px; */
+  /* position: absolute;
+  left: 100px; */
+}
+
+#job {
+  width: 320px; /* Độ dài tùy chỉnh cho Ngày sinh */
+  /* margin-right: 250px; */
+  /* position: absolute;
+  right: 200px; */
+}
+
+/* Định dạng form-group3 */
+/* Bố cục ngang cho các phần tử */
+.form-group3 {
+  /* display: flex; */
+  display: grid;
+  grid-template-columns: 0.535fr 1.595fr 0.5fr 2.27fr 0.78fr 0.32fr;
+  align-items: center;
+  gap: 10px;
+  /* flex-wrap: wrap; */
+  margin-bottom: 10px; /* Khoảng cách giữa các nhóm nhãn và input */
+  /* position: relative; */
+}
+
+/* Định dạng nhãn */
+.form-group3 label {
+  /*display: block; /* Đảm bảo nhãn nằm riêng biệt */
+  /*margin-left: 8px; /* Khoảng cách giữa nhãn và ô input */
+  text-align: right; /* Canh trái nhãn */
+  flex: 0 0 auto;
+  width: auto;
+  /* position: absolute;
+  top: 0; */
+}
+
+.form-group3 input {
+  font-size: 1rem;
+  padding: 8px; /* Khoảng cách bên trong ô input */
+  border: 1px solid #ccc; /* Viền nhẹ */
+  border-radius: 4px; /* Bo góc */
+  box-sizing: border-box; /* Đảm bảo kích thước không bị ảnh hưởng bởi padding */
+  /* position: absolute;
+  top: 0; */
+}
+
+/* Định dạng các ô input */
+#gender {
+  font-size: 1rem;
+  padding: 8px; /* Khoảng cách bên trong ô input */
+  border: 1px solid #ccc; /* Viền nhẹ */
+  border-radius: 4px; /* Bo góc */
+  box-sizing: border-box;
+  width: 180px; /* Độ dài tùy chỉnh cho Mã BN */
+  /* margin-left: 5px; */
+  /* position: absolute;
+  left: 100px; */
+}
+
+#ethnicity {
+  width: 180px; /* Độ dài tùy chỉnh cho Ngày sinh */
+  /* margin-right: 250px; */
+  /* position: absolute;
+  right: 200px; */
+}
+
+#phone {
+  width: 320px; /* Độ dài tùy chỉnh cho Tuổi */
+  /* margin-right: 40px; */
+  /* position: absolute;
+  right: 40px; */
+}
+
+/* Định dạng form-group4 */
+/* Bố cục ngang cho các phần tử */
+.form-group4 {
+  /* display: flex; */
+  display: grid;
+  grid-template-columns: 0.98fr 1.02fr;
+  align-items: center;
+  gap: 10px;
+  /* flex-wrap: wrap; */
+  margin-bottom: 10px; /* Khoảng cách giữa các nhóm nhãn và input */
+  /* position: relative; */
+}
+
+/* Định dạng nhãn */
+.form-group4 label {
+  /*display: block; /* Đảm bảo nhãn nằm riêng biệt */
+  /*margin-left: 20px; /* Khoảng cách giữa nhãn và ô input */
+  text-align: right; /* Canh trái nhãn */
+  flex: 0 0 auto;
+  width: auto;
+  /* position: absolute;
+  top: 0; */
+}
+
+.form-group4 input {
+  font-size: 1rem;
+  padding: 8px; /* Khoảng cách bên trong ô input */
+  border: 1px solid #ccc; /* Viền nhẹ */
+  border-radius: 4px; /* Bo góc */
+  box-sizing: border-box; /* Đảm bảo kích thước không bị ảnh hưởng bởi padding */
+  /* position: absolute;
+  top: 0; */
+}
+
+/* Định dạng các ô input */
+#address {
+  width: 1095px; /* Độ dài tùy chỉnh cho Mã BN */
+  /* margin-left: 5px; */
+  /* position: absolute;
+  left: 100px; */
+}
+
+/* Định dạng form-group4 */
+/* Bố cục ngang cho các phần tử */
+.form-group5 {
+  /* display: flex; */
+  display: grid;
+  grid-template-columns: 0.98fr 1.02fr;
+  align-items: center;
+  gap: 10px;
+  /* flex-wrap: wrap; */
+  margin-bottom: 10px; /* Khoảng cách giữa các nhóm nhãn và input */
+  /* position: relative; */
+}
+
+/* Định dạng nhãn */
+.form-group5 label {
+  /*display: block; /* Đảm bảo nhãn nằm riêng biệt */
+  /*margin-left: 14px; /* Khoảng cách giữa nhãn và ô input */
+  text-align: right; /* Canh trái nhãn */
+  flex: 0 0 auto;
+  width: auto;
+  /* position: absolute;
+  top: 0; */
+}
+
+.form-group5 input {
+  font-size: 1rem;
+  padding: 8px; /* Khoảng cách bên trong ô input */
+  border: 1px solid #ccc; /* Viền nhẹ */
+  border-radius: 4px; /* Bo góc */
+  box-sizing: border-box; /* Đảm bảo kích thước không bị ảnh hưởng bởi padding */
+  /* position: absolute;
+  top: 0; */
+}
+
+#notes {
+  width: 1095px; /* Độ dài tùy chỉnh cho Mã BN */
+  /* margin-left: 5px; */
+  /* position: absolute;
+  left: 100px; */
+}
+
+/* -------------------------------------------------- */
 
 /* Định dạng nút */
-button {
+/* button {
   background-color: #007bff;
   color: white;
   padding: 10px;
@@ -139,7 +365,7 @@ button {
 
 button:hover {
   background-color: #0056b3;
-}
+} */
 
 /* Định dạng nút tra cứu */
 #search {
@@ -155,63 +381,171 @@ button:hover {
   background-color: #0056b3;
 }
 
+.form-submit {
+  text-align: right; /* Căn phải */
+  margin-top: 10px; /* Khoảng cách với form */
+  margin-bottom: -10px;
+}
+
+.form-submit button {
+  background-color: #007bff;
+  color: white;
+  padding: 10px 20px; /* Tăng kích thước nút */
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.form-submit button:hover {
+  background-color: #0056b3;
+}
+
+/* -------------------------------------------------- */
+
+.exam-list {
+  padding: 10px;
+}
+
+.patient-list {
+  /* background-color: white;
+  border-radius: 5px;
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2); */
+  padding: 10px;
+  margin-bottom: -40px;
+}
+
 /* Bảng */
 /* Căn chỉnh header-row trong patient-table */
-.patient-table .header-row {
+.exam-list .header-row {
+  padding: 20px;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin-bottom: 0px;
+  margin-bottom: -30px;
 }
 
-.patient-table .header-row label {
+.exam-list .header-row label {
   margin-right: 8px;
-  font-weight: bold;
+  /* font-weight: bold; */
 }
 
-.patient-table .header-row input[type="date"] {
+.exam-list .header-row input[type="date"] {
   padding: 5px;
   border: 1px solid #ccc;
   border-radius: 4px;
 }
 
-.patient-table .header-row div {
+.exam-list .header-row div {
   display: flex;
   align-items: center;
   gap: 10px;
 }
 
-.patient-table .header-row input[type="checkbox"] {
+.exam-list .header-row input[type="checkbox"] {
   margin-right: 5px;
 }
 
 .patient-table {
-  padding: 20px;
+  /* padding: 20px; */
   background-color: #f9f9f9;
-  margin-bottom: 20px;
-  border-radius: 5px;
+  /* margin-bottom: 20px; */
+  /* border-radius: 5px; */
+  max-width: 100%;
+  overflow-x: auto; /* Thanh trượt ngang */
+  overflow-y: auto; /* Thanh trượt dọc */
+  border: 1px solid #ddd;
+  align-items: center;
+  height: 480px; /* Chiều cao cố định với thanh trượt dọc */
+  width: 1400px; /* Chiều cao cố định với thanh trượt ngang */
+  /*margin-left: 20px; /* Lề trái cố định */
+  /*margin-right: 20px; /* Lề phải cố định */
 }
 
-table {
+.patient-table table {
   width: 100%;
   border-collapse: collapse;
   background-color: white;
+  table-layout: fixed;
 }
 
-table th,
-table td {
+.patient-table table th, table td {
   padding: 10px;
   border: 1px solid #ccc;
-  text-align: center;
+  word-wrap: break-word;
 }
 
-table th {
+.patient-table table th {
   background-color: #396cf0;
   color: white;
+  position: sticky; /* Giữ header cố định khi cuộn */
+  top: 0;
+  z-index: 1;
 }
 
 .selected-row {
   background-color: #cce5ff;
+}
+
+/* Đặt độ rộng cố định cho từng cột */
+.patient-table th:nth-child(1), /* STT */
+.patient-table td:nth-child(1) {
+  width: 35px;
+  text-align: center;
+}
+
+.patient-table th:nth-child(2), /* Trạng thái */
+.patient-table td:nth-child(2) {
+  width: 100px;
+}
+
+.patient-table th:nth-child(3), /* Mã BN */
+.patient-table td:nth-child(3) {
+  width: 100px;
+}
+
+.patient-table th:nth-child(4), /* Họ và tên */
+.patient-table td:nth-child(4) {
+  width: 200px;
+}
+
+.patient-table th:nth-child(5), /* Giới tính */
+.patient-table td:nth-child(5) {
+  width: 80px;
+  text-align: center;
+}
+
+.patient-table th:nth-child(6), /* Dân tộc */
+.patient-table td:nth-child(6) {
+  width: 80px;
+  text-align: center;
+}
+
+.patient-table th:nth-child(7), /* Ngày sinh */
+.patient-table td:nth-child(7) {
+  width: 150px;
+  text-align: center;
+}
+
+.patient-table th:nth-child(8), /* Địa chỉ */
+.patient-table td:nth-child(8) {
+  width: 400px;
+}
+
+.patient-table th:nth-child(9), /* Số điện thoại */
+.patient-table td:nth-child(9) {
+  width: 110px;
+  text-align: center;
+}
+
+.patient-table th:nth-child(10), /* Nghề nghiệp */
+.patient-table td:nth-child(10) {
+  width: 100px;
+  text-align: center;
+}
+
+.patient-table th:nth-child(11), /* Ghi chú */
+.patient-table td:nth-child(11) {
+  width: 100px;
 }
 
 /* Định dạng nút */

@@ -28,47 +28,46 @@
     <section class="patient-info">
       <h2>Thông tin bệnh nhân</h2>
       <form id="patient-form">
-        <div class="form-group">
-          <label for="patient-id">Mã số:</label>
+        <div class="form-group1">
+          <label for="patient-id">Mã BN:</label>
           <input type="text" id="patient-id" disabled>
+          <label for="patient-gender">Giới tính:</label>
+          <input type="text" id="patient-gender" disabled>
         </div>
 
-        <div class="form-group">
+        <div class="form-group2">
           <label for="patient-name">Họ tên:</label>
-          <input type="text" id="patient-name">
+          <input type="text" id="patient-name" disabled>
         </div>
 
-        <div class="form-group">
+        <div class="form-group3">
           <label for="birth-date">Ngày sinh:</label>
-          <input type="date" id="birth-date">
-        </div>
-
-        <div class="form-group">
+          <input type="date" id="birth-date" disabled>
           <label for="age">Tuổi:</label>
           <input type="text" id="age" disabled>
         </div>
 
-        <div class="form-group">
+        <div class="form-group4">
           <label for="address">Địa chỉ:</label>
-          <input type="text" id="address">
+          <input type="text" id="address" disabled>
         </div>
 
-        <div class="form-group">
+        <div class="form-group5">
           <label for="phone">Điện thoại:</label>
-          <input type="text" id="phone">
+          <input type="text" id="phone" disabled>
         </div>
 
-        <div class="form-group">
+        <div class="form-group6">
           <label for="job">Nghề nghiệp:</label>
-          <input type="text" id="job">
+          <input type="text" id="job" disabled>
         </div>
 
-        <div class="form-group">
+        <div class="form-group7">
           <label for="medical-history">Tiền sử:</label>
           <textarea id="medical-history"></textarea>
         </div>
 
-        <div class="form-group">
+        <div class="form-group7">
           <label for="allergy">Dị ứng:</label>
           <textarea id="allergy"></textarea>
         </div>
@@ -93,28 +92,74 @@
     <section class="exam-and-prescription">
       <h2>Phiếu khám bệnh</h2>
       <form id="exam-form">
-        <div class="form-group">
-          <label for="reason">Lý do khám:</label>
-          <textarea id="reason"></textarea>
+        <div class="exam-group1">
+          <div class="col11">
+            <label for="reason">Lý do khám:</label>
+            <textarea id="reason" rows="2"></textarea>
+            <label for="notes">Ghi chú khám:</label>
+            <textarea id="notes" rows="2"></textarea>
+          </div>
+
+          <div class="col12">
+            <table>
+              <thead>
+                  <tr>
+                      <th>Cận lâm sàng</th>
+                      <th>Kết quả</th>
+                  </tr>
+              </thead>
+              <tbody>
+                <!-- Các hàng dữ liệu sẽ được thêm vào đây -->
+              </tbody>
+            </table>
+          </div>
+          
+          <div class="col13">
+            <label for="pulse">Mạch (lần/phút):</label>
+            <input type="number" id="pulse">
+
+            <label for="temperature">Nhiệt độ (°C):</label>
+            <input type="number" id="temperature" step="0.1">
+
+            <label for="blood-pressure">Huyết áp (mmHg):</label>
+            <input type="text" id="blood-pressure">
+
+            <label for="respiration">Nhịp thở (lần/phút):</label>
+            <input type="number" id="respiration">
+
+            <label for="height">Chiều cao (cm):</label>
+            <input type="number" id="height">
+
+            <label for="weight">Cân nặng (kg):</label>
+            <input type="number" id="weight">
+          </div>
         </div>
 
-        <div class="form-group">
+        <div class="exam-group2">
           <label for="symptoms">Triệu chứng:</label>
-          <textarea id="symptoms"></textarea>
+          <input type="text" id="symptoms">
         </div>
 
-        <div class="form-group">
+        <div class="exam-group2">
           <label for="diagnosis">Chẩn đoán:</label>
-          <textarea id="diagnosis"></textarea>
+          <input type="text" id="diagnosis">
         </div>
 
-        <div class="form-group">
-          <label for="notes">Ghi chú:</label>
-          <textarea id="notes"></textarea>
+        <div class="exam-group2">
+          <label for="advice">Lời dặn:</label>
+          <input type="text" id="advice">
         </div>
+      </form>
 
-        <!-- Kê toa thuốc -->
-        <h3>Kê toa thuốc</h3>
+      <div class="prescribe-medicine">
+        <div class="header-row">
+          <h3>Kê toa thuốc</h3>
+          <div>
+            <label for="reexam-date">Ngày tái khám:</label>
+            <input type="date" id="reexam-date" name="reexam-date">
+          </div>
+        </div>
+        
         <table id="prescription-table">
           <thead>
             <tr>
@@ -126,13 +171,13 @@
             </tr>
           </thead>
         </table>
-      </form>
+      </div>
     </section>
   </main>
 
   <footer>
-    <button id="save-btn">Lưu</button>
     <button id="edit-btn">Sửa</button>
+    <button id="save-btn">Lưu</button>    
     <button id="back-btn">Quay lại</button>
   </footer>
 

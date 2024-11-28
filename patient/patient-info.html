@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bệnh nhân</title>
+    <link rel="stylesheet" href="style2.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+</head>
+<body>
+    <!-- Thanh điều hướng -->
+    <nav>        
+        <ul>
+            <li><a href="../homepage/index.html"><i class="fas fa-home"></i></a></li>
+            <li><a href="../nhan_benh/index.html">Nhận bệnh</a></li>
+            <li><a href="../kham_benh/index.html">Khám bệnh</a></li>
+            <li><a href="#">Hoá đơn</a></li>
+            <li><a href="#">Báo cáo</a></li>
+            <li><a href="#" class="active">Bệnh nhân</a></li>
+            <li><a href="#">Thuốc</a></li>
+            <li><a href="../setting/index.html"><i class="fas fa-cog"></i></a></li>
+        </ul>
+    </nav>
+
+    <main>
+        <div class="patient-info-wrapper">
+            <!-- Phần thông tin chi tiết bệnh nhân -->
+            <section class="patient-info1">
+                <!-- Ô upload ảnh (avatar) -->
+                <div class="patient-photo">
+                    <label for="upload-photo" id="photo-label">
+                        <img id="preview-photo"/>
+                    </label>
+                    <input type="file" id="upload-photo" accept="image/*" />
+                </div>
+
+                <p><strong></strong> <span id="patient-id"></span></p>
+                <p><strong></strong> <span id="patient-name"></span></p>
+            </section>
+            
+            <section class="patient-info2">
+                <p><strong>Giới tính:</strong> <span id="gender"></span></p>
+                <p><strong>Dân tộc:</strong> <span id="ethnicity"></span></p>
+                <div class="group">
+                    <p><strong>Ngày sinh:</strong> <span id="dob"></span></p>
+                    <p><strong>Tuổi:</strong> <span id="age"></span></p>
+                </div>
+                <p><strong>Địa chỉ:</strong> <span id="address"></span></p>
+                <p><strong>Số điện thoại:</strong> <span id="phone"></span></p>
+                <p><strong>Nghề nghiệp:</strong> <span id="job"></span></p>
+            </section>
+        </div>
+
+        <section class="history">
+            <!-- Phần lịch sử khám bệnh -->
+            <h2>Lịch sử khám bệnh</h2>
+            <table id="history-table">
+              <thead>
+                <tr>
+                  <th>STT</th>
+                  <th>Ngày khám</th>
+                  <th>Lí do khám</th>
+                  <th>Triệu chứng</th>
+                  <th>Chẩn đoán bệnh</th>
+                  <th>Ngày tái khám</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td colspan="5">Bệnh nhân chưa có lịch sử khám bệnh.</td>
+                </tr>
+              </tbody>
+            </table>
+            <button class="btn-back" onclick="window.location.href='index.html'">Quay lại</button>
+        </section>
+    </main>
+
+    <script>
+        const uploadPhotoInput = document.getElementById("upload-photo");
+        const previewPhoto = document.getElementById("preview-photo");
+    
+        // Xử lý khi tải ảnh lên
+        uploadPhotoInput.addEventListener("change", (event) => {
+            const file = event.target.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = () => {
+                    previewPhoto.src = reader.result; // Hiển thị ảnh trong avatar
+                };
+                reader.readAsDataURL(file);
+            }
+        });
+        
+        // Hàm tính tuổi từ ngày sinh
+        function calculateAge(birthDate) {
+        const birthYear = new Date(birthDate).getFullYear();
+        const currentYear = new Date().getFullYear();
+        return currentYear - birthYear;
+        }
+
+        // Lấy thông tin bệnh nhân từ sessionStorage và hiển thị
+        function displayPatientDetails() {
+        const selectedPatient = JSON.parse(sessionStorage.getItem("selectedPatient"));
+        
+        if (selectedPatient) {
+            document.getElementById("patient-id").textContent = selectedPatient.id;
+            document.getElementById("patient-name").textContent = selectedPatient.name;
+            document.getElementById("gender").textContent = selectedPatient.gender;
+            document.getElementById("ethnicity").textContent = selectedPatient.ethnicity;
+            document.getElementById("dob").textContent = selectedPatient.birthDate;
+            document.getElementById("address").textContent = selectedPatient.address;
+            document.getElementById("phone").textContent = selectedPatient.phone;
+            document.getElementById("job").textContent = selectedPatient.job;
+
+            // Tính và hiển thị tuổi của bệnh nhân
+            const age = calculateAge(selectedPatient.birthDate);
+            document.getElementById("age").textContent = age; // Hiển thị tuổi bệnh nhân
+        } else {
+            alert("No patient selected.");
+        }
+        }
+
+        // Khởi chạy Trang nhận bệnh 2
+        document.addEventListener('DOMContentLoaded', displayPatientDetails);
+
+    </script>    
+</body>
+</html>
