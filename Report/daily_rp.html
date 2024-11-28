@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Báo cáo chi tiết doanh thu</title>
+    <link rel="stylesheet" href="./daily_rp.css">
+    <script src="daily_rp.js"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body class="bg-gray-100">
+    <!-- Navigation -->
+    <nav class="bg-blue-500 p-2">
+        <div class="container mx-auto nav-container flex flex-wrap items-center justify-between text-white">
+            <a href="/src/home.html" class="nav-item flex items-center justify-center">
+                <i class="fas fa-home text-xl mr-2"></i>
+                <span>Home</span>
+            </a>
+            <a href="#" class="nav-item">Nhận bệnh</a>
+            <a href="#" class="nav-item">Khám bệnh</a>
+            <a href="/Payment/index.html" class="nav-item">Hóa đơn</a>
+            <div class="nav-item">
+                Báo cáo
+                <i class="fas fa-caret-down ml-1"></i>
+                <div class="dropdown">
+                    <a href="./index1.html" class="dropdown-item">Doanh thu</a>
+                    <a href="./index2.html" class="dropdown-item">Lượng thuốc</a>
+                </div>
+            </div>
+            <a href="#" class="nav-item">Bệnh nhân</a>
+            <a href="/Medicine/index.html" class="nav-item">Thuốc</a>
+            <a href="#" class="nav-item">
+                <i class="fas fa-cog text-xl"></i>
+            </a>
+        </div>
+    </nav>
+
+    <div class="report-container">
+        <h1 class="text-2xl font-bold mb-6">Báo cáo doanh thu tháng 10/2024</h1>
+
+        <div class="summary-box">
+            <div class="grid grid-cols-2 gap-4">
+                <div>
+                    <p class="text-lg font-medium">Tổng doanh thu: 50.000.000đ</p>
+                </div>
+                <div>
+                    <p class="text-lg font-medium">Số bệnh nhân: 2000</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Bảng dữ liệu -->
+        <table class="data-table">
+            <thead>
+                <tr>
+                    <th>STT</th>
+                    <th>Ngày</th>
+                    <th>Số bệnh nhân</th>
+                    <th>Doanh thu</th>
+                    <th>Tỉ lệ</th>
+                </tr>
+            </thead>
+            <tbody id="reportTableBody">
+                <!-- Dữ liệu sẽ được thêm vào đây bằng JavaScript -->
+            </tbody>
+        </table>
+
+        <!-- Biểu đồ -->
+        <div class="chart-container">
+            <canvas id="revenueChart"></canvas>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="report_data.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Populate table data
+            const tableBody = document.getElementById('reportTableBody');
+            const monthData = reportData.getMonthData('10/2024');
+            
+            if (monthData && monthData.dailyReports) {
+                monthData.dailyReports.forEach((day, index) => {
+                    const row = document.createElement('tr');
+                    row.innerHTML = `
+                        <td>${index + 1}</td>
+                        <td>${day.date}</td>
+                        <td>${day.patients}</td>
+                        <td>${day.revenue.toLocaleString()}đ</td>
+                        <td>${((day.revenue / monthData.totalRevenue) * 100).toFixed(1)}%</td>
+                    `;
+                    tableBody.appendChild(row);
+                });
+            }
+
+            // Create chart
+            const chartCtx = document.getElementById('revenueChart').getContext('2d');
+            new Chart(chartCtx, {
+                type: 'bar',
+                data: {
+                    labels: monthData.dailyReports.map(day => day.date),
+                    datasets: [{
+                        data: monthData.dailyReports.map(day => day.revenue),
+                        backgroundColor: '#3B82F6',
+                        barThickness: 30
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: {
+                            display: false
+                        }
+                    },
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            grid: {
+                                drawBorder: false
+                            }
+                        },
+                        x: {
+                            grid: {
+                                display: false
+                            }
+                        }
+                    }
+                }
+            });
+        });
+    </script>
+</body>
+</html>

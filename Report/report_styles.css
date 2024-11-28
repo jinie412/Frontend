@@ -138,6 +138,21 @@ canvas {
     margin-bottom: 1rem;
 }
 
+/*Search container*/
+.search-container select {
+    appearance: none;
+    background-color: white;
+    cursor: pointer;
+}
+
+.search-container select:focus {
+    box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.2);
+}
+
+.search-container .relative svg {
+    pointer-events: none;
+}
+
 /* Table styles */
 table {
     border-collapse: collapse;
