@@ -1,0 +1,39 @@
+.appointmentTable th,
+.appointmentTable td {
+  padding: 12px 15px;
+  text-align: left;
+}
+
+.appointmentTable thead th {
+  background-color: #f3f4f6;
+  position: sticky;
+  top: 0;
+  z-index: 1;
+}
+
+.appointmentTable tbody tr {
+  border-bottom: 1px solid #e5e7eb;
+  transition: background-color 0.3s;
+}
+
+.appointmentTable tbody tr:hover {
+  background-color: #f9fafb;
+}
+
+.status-pill {
+  display: inline-block;
+  padding: 3px 8px;
+  font-size: 12px;
+  font-weight: bold;
+  border-radius: 9999px;
+  color: white;
+  text-align: center;
+}
+
+.status-pill.đã-khám {
+  background-color: #53c797;
+}
+
+.status-pill.chưa-khám {
+  background-color: #ef6e6e;
+}

@@ -20,6 +20,7 @@ module.exports = {
         yellowNote: "#F1B561",
         grayBut: "#D9D9D9",
         lightBlue: "#D6E2F2",
+        whiteBlue: "#eef2f6",
       },
       width: {
         1296: "1296px",
