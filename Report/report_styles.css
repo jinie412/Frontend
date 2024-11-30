@@ -1,0 +1,231 @@
+
+/*Outcome_report*/
+/* Navigation styles */
+.nav-item {
+    flex: 1;
+    text-align: center;
+    padding: 0.5rem;
+    transition: background-color 0.3s;
+    position: relative;
+    white-space: nowrap;
+}
+.nav-item:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+.dropdown {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    background-color: #3B82F6;
+    z-index: 1000;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+}
+.dropdown-item {
+    display: block;
+    padding: 0.5rem;
+    text-align: center;
+    transition: background-color 0.3s;
+}
+.dropdown-item:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+.nav-item:hover .dropdown {
+    display: block;
+}
+
+/* Search container styles */
+.search-container {
+    position: relative;
+    display: inline-block;
+    width: 100%;
+    max-width: 300px;
+}
+.search-icon {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #6B7280;
+}
+
+/* Pie chart container styles */
+.pie-chart-container {
+    position: relative;
+    width: 50%;
+    height: 50%;
+    min-height: 300px;
+    margin: 0 auto;
+}
+
+/* Bar chart container styles*/
+.bar-chart-container {
+    position: relative;
+    height: 100%;
+    width: 100%;
+    min-height: 350px;
+    margin:0 auto
+}
+
+/* Responsive navigation */
+@media (max-width: 768px) {
+    .nav-container {
+        flex-direction: column;
+    }
+    .nav-item {
+        width: 100%;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    .dropdown {
+        position: static;
+        width: 100%;
+    }
+    .header-container {
+        flex-direction: column;
+        gap: 1rem;
+    }
+    .search-container {
+        width: 100%;
+    }
+    .pie-chart-container {
+    height: 300px;
+    }
+    .bar-chart-container {
+    height: 350px;
+    }
+    .stats-container {
+    grid-template-columns: 1fr;
+    }
+    .stats-column {
+    gap: 1rem;
+    }
+}
+@media (max-width:480px){
+    .pie-chart-container {
+        height: 200px;
+    }
+    .bar-chart-container {
+        height: 350px;
+    }
+}
+
+/* Chart responsiveness */
+canvas {
+    max-width: auto;
+    height: auto !important;
+}
+
+/* Stats container */
+.stats-container {
+    display: grid;
+    grid-template-columns: minmax(200px, 2fr) minmax(200px, 2fr);
+    gap: 1rem;
+}
+
+.stats-column {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+/* Header container */
+.header-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    margin-bottom: 1rem;
+}
+
+/*Search container*/
+.search-container select {
+    appearance: none;
+    background-color: white;
+    cursor: pointer;
+}
+
+.search-container select:focus {
+    box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.2);
+}
+
+.search-container .relative svg {
+    pointer-events: none;
+}
+
+/* Table styles */
+table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+th, td {
+    border: 1px solid #e5e7eb;
+}
+
+th {
+    font-weight: 600;
+}
+
+/* Pie chart container for medication report */
+.pie-chart-container {
+    position: relative;
+    height: 300px;
+    margin: 0 auto;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .pie-chart-container {
+        height: 250px;
+    }
+}
+
+@media (max-width: 480px) {
+    .pie-chart-container {
+        height: 200px;
+    }
+    
+    th, td {
+        padding: 0.5rem 0.25rem;
+        font-size: 0.875rem;
+    }
+}
+
+/* Additional styles for monthly detail page */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* Table hover effect */
+tr.hover\:bg-gray-100:hover {
+    background-color: #f3f4f6;
+    transition: background-color 0.2s;
+}
+
+/* Back button styles */
+.back-button {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.5rem;
+    color: #3B82F6;
+    transition: color 0.2s;
+}
+
+.back-button:hover {
+    color: #2563EB;
+}
+
+/* Responsive table */
+@media (max-width: 640px) {
+    table {
+        display: block;
+        overflow-x: auto;
+        white-space: nowrap;
+    }
+}
