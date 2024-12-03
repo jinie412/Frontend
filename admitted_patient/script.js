@@ -154,7 +154,7 @@ document.getElementById("exam").addEventListener("click", function () {
     // Lưu thông tin bệnh nhân vào sessionStorage
     sessionStorage.setItem('patientData', JSON.stringify(patientData));
     // Chuyển hướng sang Trang khám bệnh
-    window.location.href = "../kham_benh/index.html?patientId=" + patientId;
+    window.location.href = "../examination_health/index.html?patientId=" + patientId;
   } else {
     alert("Vui lòng chọn một bệnh nhân để khám bệnh.");
   }

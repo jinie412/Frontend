@@ -1,4 +1,4 @@
-.nav-container {
+/* .nav-container {
     display: flex;
     align-items: center;
 }
@@ -38,7 +38,7 @@
 
 .dropdown-item:hover {
     background-color: #f7fafc;
-}
+} */
 
 .table-container {
     margin: 2rem auto;
@@ -86,7 +86,7 @@ th {
     color: white;
 }
 
-.nav-item {
+/* .nav-item {
     flex: 1;
     text-align: center;
     padding: 0.5rem;
@@ -117,7 +117,7 @@ th {
 }
 .nav-item:hover .dropdown {
     display: block;
-}
+} */
 
 .editable-mode tr:hover {
     background-color: #e5e7eb;

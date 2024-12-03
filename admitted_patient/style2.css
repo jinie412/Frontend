@@ -1,70 +1,10 @@
 /* Cài đặt chung */
-body {
+/* body {
   font-family: Arial, sans-serif;
   background-color: #f5f5f5;
   margin: 0;
   padding: 0;
-}
-
-/* Thanh điều hướng */
-nav {
-  background-color: #396cf0;
-  color: white;
-  padding: 1rem;
-  text-align: center;
-}
-
-/* Căn giữa tiêu đề trong thanh điều hướng */
-nav h1 {
-  margin: 0;
-}
-
-/* Định dạng danh sách liên kết trong thanh điều hướng */
-nav ul {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-  display: flex;
-  justify-content: space-between;
-}
-
-/* Các liên kết trong thanh điều hướng */
-nav ul li {
-  margin: 0 15px;
-}
-
-nav ul li a {
-  color: white;
-  text-decoration: none;
-  font-weight: normal;
-  padding: 8px 15px;
-}
-
-/* Làm nổi bật mục "Nhận bệnh" */
-nav ul li a.active {
-  font-weight: bold;
-  position: relative;
-}
-
-/* Thanh trắng dưới chữ "Nhận bệnh" */
-nav ul li a.active::after {
-  content: "";
-  position: absolute;
-  left: 0;
-  right: 0;
-  bottom: -9px;
-  height: 3px;
-  background-color: white;
-  border-radius: 2px;
-  transition: width 0.3s ease-in-out;
-}
-
-/* Định dạng icon trong thanh điều hướng */
-nav li a i {
-  font-size: 18px;
-  color: white;
-  vertical-align: middle;
-}
+} */
 
 /* Tiêu đề các phần */
 h2 {

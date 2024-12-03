@@ -1,6 +1,5 @@
-
 /* Thanh công cụ */
-.nav-item {
+/* .nav-item {
     flex: 1;
     text-align: center;
     padding: 0.5rem;
@@ -12,7 +11,7 @@
 }
 .nav-item:hover .dropdown {
     display: block;
-}
+} */
 /*  */
 .patient-details {
     flex: 1;
@@ -118,7 +117,7 @@ table.patient-table {
     padding: 0.5rem;
     text-align: left;
 }
-.dropdown {
+/* .dropdown {
     display: none;
     position: absolute;
     top: 100%;
@@ -136,7 +135,7 @@ table.patient-table {
 }
 .dropdown-item:hover {
     background-color: rgba(255, 255, 255, 0.1);
-}
+} */
 
 .patient-table {
     width: 100%;

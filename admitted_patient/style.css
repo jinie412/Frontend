@@ -1,70 +1,10 @@
 /* Cài đặt chung */
-body {
+/* body {
   font-family: Arial, sans-serif;
   background-color: #f5f5f5;
   margin: 0;
   padding: 0;
-}
-
-/* Thanh điều hướng */
-nav {
-  background-color: #396cf0;
-  color: white;
-  padding: 1rem;
-  text-align: center;
-}
-
-/* Căn giữa tiêu đề trong thanh điều hướng */
-nav h1 {
-  margin: 0;
-}
-
-/* Định dạng danh sách liên kết trong thanh điều hướng */
-nav ul {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-  display: flex;
-  justify-content: space-between;
-}
-
-/* Các liên kết trong thanh điều hướng */
-nav ul li {
-  margin: 0 15px;
-}
-
-nav ul li a {
-  color: white;
-  text-decoration: none;
-  font-weight: normal;
-  padding: 8px 15px;
-}
-
-/* Làm nổi bật mục "Nhận bệnh" */
-nav ul li a.active {
-  font-weight: bold;
-  position: relative;
-}
-
-/* Thanh trắng dưới chữ "Nhận bệnh" */
-nav ul li a.active::after {
-  content: "";
-  position: absolute;
-  left: 0;
-  right: 0;
-  bottom: -9px;
-  height: 3px;
-  background-color: white;
-  border-radius: 2px;
-  transition: width 0.3s ease-in-out;
-}
-
-/* Định dạng icon trong thanh điều hướng */
-nav li a i {
-  font-size: 18px;
-  color: white;
-  vertical-align: middle;
-}
+} */
 
 /* -------------------------------------------------- */
 
@@ -489,13 +429,13 @@ button:hover {
 /* Đặt độ rộng cố định cho từng cột */
 .patient-table th:nth-child(1), /* STT */
 .patient-table td:nth-child(1) {
-  width: 35px;
+  width: 50px;
   text-align: center;
 }
 
 .patient-table th:nth-child(2), /* Trạng thái */
 .patient-table td:nth-child(2) {
-  width: 100px;
+  width: 120px;
 }
 
 .patient-table th:nth-child(3), /* Mã BN */
@@ -505,24 +445,24 @@ button:hover {
 
 .patient-table th:nth-child(4), /* Họ và tên */
 .patient-table td:nth-child(4) {
-  width: 200px;
+  width: 250px;
 }
 
 .patient-table th:nth-child(5), /* Giới tính */
 .patient-table td:nth-child(5) {
-  width: 80px;
+  width: 100px;
   text-align: center;
 }
 
 .patient-table th:nth-child(6), /* Dân tộc */
 .patient-table td:nth-child(6) {
-  width: 80px;
+  width: 120px;
   text-align: center;
 }
 
 .patient-table th:nth-child(7), /* Ngày sinh */
 .patient-table td:nth-child(7) {
-  width: 150px;
+  width: 130px;
   text-align: center;
 }
 
@@ -533,13 +473,13 @@ button:hover {
 
 .patient-table th:nth-child(9), /* Số điện thoại */
 .patient-table td:nth-child(9) {
-  width: 110px;
+  width: 130px;
   text-align: center;
 }
 
 .patient-table th:nth-child(10), /* Nghề nghiệp */
 .patient-table td:nth-child(10) {
-  width: 100px;
+  width: 140px;
   text-align: center;
 }
 

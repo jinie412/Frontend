@@ -1,7 +1,6 @@
-
 /*Outcome_report*/
 /* Navigation styles */
-.nav-item {
+/* .nav-item {
     flex: 1;
     text-align: center;
     padding: 0.5rem;
@@ -33,7 +32,7 @@
 }
 .nav-item:hover .dropdown {
     display: block;
-}
+} */
 
 /* Search container styles */
 .search-container {
