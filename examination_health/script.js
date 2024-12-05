@@ -48,5 +48,5 @@ document.getElementById("back-btn").addEventListener("click", function () {
   sessionStorage.setItem('patients', JSON.stringify(patients));
 
   // Quay lại Trang nhận bệnh
-  window.location.href = "../nhan_benh/index.html";
+  window.location.href = "../admitted_patient/index.html";
 });

@@ -45,60 +45,84 @@ let selectedRow = null;
 
 // Thêm bệnh nhân vào bảng khi người dùng submit form
 document
-  .getElementById("submit")
+  .getElementById("btn-save")
   .addEventListener("click", function (event) {
     event.preventDefault(); // Ngăn trang không bị reload
 
     // Lấy giá trị từ form
     const patientId = document.getElementById("patient-id").value;
-    const name = document.getElementById("name").value;
-    const gender = document.getElementById("gender").value;
-    const ethnicity = document.getElementById("ethnicity").value;
-    const dob = document.getElementById("dob").value;
-    const address = document.getElementById("address").value;
-    const phone = document.getElementById("phone").value;
-    const job = document.getElementById("job").value;
-    const notes = document.getElementById("notes").value;
+    const name = document.getElementById("name").value.trim();
+    const gender = document.getElementById("gender").value.trim();
+    const ethnicity = document.getElementById("ethnicity").value.trim();
+    const dob = document.getElementById("dob").value.trim();
+    const address = document.getElementById("address").value.trim();
+    const phone = document.getElementById("phone").value.trim();
+    const job = document.getElementById("job").value.trim();
+    const notes = document.getElementById("notes").value.trim();
+
+    // Kiểm tra các trường bắt buộc
+    // if (!name || !gender || !dob || !phone) {
+    //   alert("Vui lòng nhập đầy đủ các thông tin bắt buộc sau: Họ và tên, Giới tính, Ngày sinh, Số điện thoại.");
+    //   return; // Không thêm bệnh nhân nếu thông tin không hợp lệ
+    // }
+
+    // Kiểm tra nếu dòng thông báo mặc định đang hiển thị và xóa nó
+    const defaultMessage = document.getElementById("default-message");
+    if (defaultMessage) {
+        defaultMessage.remove();
+    }
 
     // Tạo hàng mới cho bảng
     const table = document.getElementById("patient-table");
-    const newRow = document.createElement("tr");
 
-    // Tăng số thứ tự bệnh nhân
-    patientCount++;
+    if (selectedRow) {
+      // Cập nhật dòng đã chọn
+      selectedRow.cells[2].innerText = patientId;
+      selectedRow.cells[3].innerText = name;
+      selectedRow.cells[4].innerText = gender;
+      selectedRow.cells[5].innerText = ethnicity;
+      selectedRow.cells[6].innerText = dob;
+      selectedRow.cells[7].innerText = address;
+      selectedRow.cells[8].innerText = phone;
+      selectedRow.cells[9].innerText = job;
+      selectedRow.cells[10].innerText = notes;
 
-    // Thêm các cột thông tin vào hàng
-    newRow.innerHTML = `
-        <td>${patientCount}</td>
-        <td class="status">Chưa khám</td>
-        <td>${patientId}</td>
-        <td>${name}</td>
-        <td>${gender}</td>
-        <td>${ethnicity}</td>
-        <td>${dob}</td>
-        <td>${address}</td>
-        <td>${phone}</td>
-        <td>${job}</td>
-        <td>${notes}</td>
-    `;
+      // Sau khi cập nhật, bỏ chọn dòng
+      selectedRow.classList.remove("selected-row");
+      selectedRow = null;
+    } else {
+      // Nếu không có dòng nào được chọn, tạo một dòng mới
+      const newRow = document.createElement("tr");
 
-    // Thêm hàng vào bảng
-    table.appendChild(newRow);
+      // Tăng số thứ tự bệnh nhân
+      patientCount++;
 
+      // Thêm các cột thông tin vào hàng
+      newRow.innerHTML = `
+          <td>${patientCount}</td>
+          <td class="status">Chưa khám</td>
+          <td>${patientId}</td>
+          <td>${name}</td>
+          <td>${gender}</td>
+          <td>${ethnicity}</td>
+          <td>${dob}</td>
+          <td>${address}</td>
+          <td>${phone}</td>
+          <td>${job}</td>
+          <td>${notes}</td>
+      `;
+
+      // Thêm hàng vào bảng
+      table.appendChild(newRow);
+    }
+    
     // Xóa dữ liệu form sau khi thêm và sinh mã BN mới
     document.getElementById("patient-form").reset();
     document.getElementById("patient-id").value = generatePatientId();
-
-    // Thêm sự kiện chọn dòng cho hàng mới
-    newRow.addEventListener("click", function () {
-      if (selectedRow) selectedRow.classList.remove("selected-row");
-      selectedRow = newRow;
-      selectedRow.classList.add("selected-row");
-    });
   });
 
 // Xử lý nút Sửa
-document.getElementById("edit").addEventListener("click", function () {
+document.getElementById("btn-edit").addEventListener("click", function () {
   if (selectedRow) {
     document.getElementById("patient-id").value =
       selectedRow.cells[2].innerText;
@@ -115,8 +139,24 @@ document.getElementById("edit").addEventListener("click", function () {
   }
 });
 
+// Hàm kiểm tra và hiển thị thông báo mặc định nếu bảng trống
+function checkDefaultMessage() {
+  const patientTable = document.getElementById("patient-table");
+  const rows = patientTable.getElementsByTagName("tr");
+
+  // Nếu không còn dòng dữ liệu nào, thêm lại dòng thông báo
+  if (rows.length === 0) {
+      const defaultMessageRow = document.createElement("tr");
+      defaultMessageRow.id = "default-message";
+      defaultMessageRow.innerHTML = `
+          <td colspan="11" style="text-align: left;">Chưa có bệnh nhân đến khám bệnh trong hôm nay.</td>
+      `;
+      patientTable.appendChild(defaultMessageRow);
+  }
+}
+
 // Xử lý nút Xoá
-document.getElementById("delete").addEventListener("click", function () {
+document.getElementById("btn-delete").addEventListener("click", function () {
   if (selectedRow) {
     selectedRow.remove();
     selectedRow = null;
@@ -124,6 +164,9 @@ document.getElementById("delete").addEventListener("click", function () {
   } else {
     alert("Vui lòng chọn một bệnh nhân để xoá.");
   }
+
+  // Kiểm tra và hiển thị lại thông báo nếu cần
+  checkDefaultMessage();
 });
 
 // Cập nhật lại STT sau khi xóa hàng
@@ -136,8 +179,17 @@ function updatePatientCount() {
   });
 }
 
-// Xử lý nút Khám bệnh trên Trang nhận bệnh
-document.getElementById("exam").addEventListener("click", function () {
+// Thêm sự kiện chọn dòng cho bảng
+document.getElementById("patient-table").addEventListener("click", function (event) {
+  if (event.target.tagName === "TD") {
+    if (selectedRow) selectedRow.classList.remove("selected-row");  // Bỏ chọn dòng cũ
+    selectedRow = event.target.parentElement;  // Lấy dòng cha của ô được click
+    selectedRow.classList.add("selected-row");  // Thêm lớp cho dòng được chọn
+  }
+});
+
+// Xử lý nút Khám bệnh
+document.getElementById("btn-exam").addEventListener("click", function () {
   if (selectedRow) {
     const patientId = selectedRow.cells[2].innerText; // Lấy mã bệnh nhân từ bảng
     const patientData = {
@@ -204,6 +256,29 @@ document
   .getElementById("filter-examined")
   .addEventListener("change", filterPatients);
 
+// Lấy thông tin bệnh nhân từ localStorage
+window.onload = function() {
+  const patientData = JSON.parse(localStorage.getItem("patientData"));
+  if (patientData) {
+      // Điền thông tin bệnh nhân vào các trường trong form
+      document.getElementById("patient-id").value = patientData.id;
+      document.getElementById("name").value = patientData.name;
+      document.getElementById("gender").value = patientData.gender;
+      document.getElementById("ethnicity").value = patientData.ethnicity;
+      document.getElementById("dob").value = patientData.dob;
+      document.getElementById("address").value = patientData.address;
+      document.getElementById("phone").value = patientData.phone;
+      document.getElementById("job").value = patientData.job;
+      document.getElementById("notes").value = patientData.note;
+
+      // Tính và hiển thị tuổi của bệnh nhân
+      const age = calculateAge(patientData.dob);
+      document.getElementById("age").value = age; // Hiển thị tuổi bệnh nhân
+
+      // Xóa thông tin khỏi localStorage để không hiển thị lại lần sau
+      localStorage.removeItem("patientData");
+  }
+};
 
 // Hàm để hiển thị danh sách bệnh nhân từ sessionStorage
 // function renderPatientList() {

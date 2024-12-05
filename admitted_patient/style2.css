@@ -12,16 +12,18 @@ h2 {
     text-align: center;
     color: #333;
     font-size: 1.5rem;
+    margin-top: -5px;
+    margin-bottom: 15px;
 }
 
 /* Khu vực tìm kiếm */
 .search-section, .list-section {
     padding: 20px;
     background-color: white;
-    margin: 20px auto;
+    margin: 20px 20px 20px 20px;
     border-radius: 8px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    max-width: 90%;
+    max-width: 100%;
 }
 
 /* Bảng */
@@ -29,7 +31,7 @@ h2 {
 .search-table {
     max-width: 100%;
     overflow-x: auto; /* Thanh trượt ngang */
-    overflow-y: auto; /* Thanh trượt dọc */
+    overflow-y: hidden; /* Thanh trượt dọc */
     border: 1px solid #ddd;
     align-items: center;
     height: 100px; /* Chiều cao cố định với thanh trượt dọc */
@@ -47,8 +49,11 @@ h2 {
 
 .search-table th, .search-table td {
     border: 1px solid #ddd;
-    padding: 8px;
     word-wrap: break-word; /* Ngắt dòng khi nội dung quá dài */
+}
+
+.search-table th {
+  padding: 8px;
 }
 
 .search-table th {
@@ -59,32 +64,41 @@ h2 {
   z-index: 1;
 }
 
+thead input, thead select {
+  width: 100%;
+  padding: 10px;
+  box-sizing: border-box;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  font-size: 16px;
+}
+
 /* Đặt độ rộng cố định cho từng cột */
 .search-table th:nth-child(1), /* Mã BN */
 .search-table td:nth-child(1) {
-  width: 100px;
+  width: 120px;
 }
 
 .search-table th:nth-child(2), /* Họ và tên */
 .search-table td:nth-child(2) {
-  width: 200px;
+  width: 250px;
 }
 
 .search-table th:nth-child(3), /* Giới tính */
 .search-table td:nth-child(3) {
-  width: 80px;
+  width: 100px;
   text-align: center;
 }
 
 .search-table th:nth-child(4), /* Dân tộc */
 .search-table td:nth-child(4) {
-  width: 80px;
+  width: 120px;
   text-align: center;
 }
 
 .search-table th:nth-child(5), /* Ngày sinh */
 .search-table td:nth-child(5) {
-  width: 150px;
+  width: 140px;
   text-align: center;
 }
 
@@ -95,36 +109,25 @@ h2 {
 
 .search-table th:nth-child(7), /* Số điện thoại */
 .search-table td:nth-child(7) {
-  width: 110px;
+  width: 160px;
   text-align: center;
 }
 
 .search-table th:nth-child(8), /* Nghề nghiệp */
 .search-table td:nth-child(8) {
-  width: 100px;
+  width: 160px;
   text-align: center;
-}
-
-thead input, thead select {
-    width: 100%;
-    padding: 5px;
-    box-sizing: border-box;
-    border: 1px solid #ccc;
-    border-radius: 3px;
-}
-
-thead select {
-    height: 32px;
 }
 
 /* Bảng danh sách bệnh nhân */
 .list-table {
     max-width: 100%;
+    max-height: 500px;
     overflow-x: auto; /* Thanh trượt ngang */
     overflow-y: auto; /* Thanh trượt dọc */
     border: 1px solid #ddd;
     align-items: center;
-    height: 100px; /* Chiều cao cố định với thanh trượt dọc */
+    /*height: 100px; /* Chiều cao cố định với thanh trượt dọc */
     width: 1400px; /* Chiều dài cố định với thanh trượt ngang */
 }
 
@@ -154,7 +157,7 @@ thead select {
 /* Đặt độ rộng cố định cho từng cột */
 .list-table th:nth-child(1), /* STT */
 .list-table td:nth-child(1) {
-  width: 35px;
+  width: 50px;
   text-align: center;
 }
 
@@ -165,24 +168,24 @@ thead select {
 
 .list-table th:nth-child(3), /* Họ và tên */
 .list-table td:nth-child(3) {
-  width: 200px;
+  width: 250px;
 }
 
 .list-table th:nth-child(4), /* Giới tính */
 .list-table td:nth-child(4) {
-  width: 80px;
+  width: 100px;
   text-align: center;
 }
 
 .list-table th:nth-child(5), /* Dân tộc */
 .list-table td:nth-child(5) {
-  width: 80px;
+  width: 120px;
   text-align: center;
 }
 
 .list-table th:nth-child(6), /* Ngày sinh */
 .list-table td:nth-child(6) {
-  width: 150px;
+  width: 130px;
   text-align: center;
 }
 
@@ -193,13 +196,13 @@ thead select {
 
 .list-table th:nth-child(8), /* Số điện thoại */
 .list-table td:nth-child(8) {
-  width: 110px;
+  width: 130px;
   text-align: center;
 }
 
 .list-table th:nth-child(9), /* Nghề nghiệp */
 .list-table td:nth-child(9) {
-  width: 100px;
+  width: 140px;
   text-align: center;
 }
 
@@ -209,6 +212,22 @@ thead select {
 }
 
 /* Nút bấm */
+/* .action-buttons {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 1000;
+} */
+
+.action-buttons {
+  display: flex;
+  justify-content: flex-end;
+  padding: 20px;
+  background-color: #f5f5f5;
+  border-top: 1px solid #ccc;
+  margin-top: 20px;
+}
+
 button {
     display: block;
     margin: 20px auto;
@@ -219,6 +238,7 @@ button {
     border-radius: 5px;
     cursor: pointer;
     font-size: 1rem;
+    margin-bottom: 5px;
 }
 
 button:hover {

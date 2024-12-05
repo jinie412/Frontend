@@ -80,7 +80,7 @@ main {
 /* Đặt độ rộng cố định cho từng cột */
 .patient-table th:nth-child(1), /* STT */
 .patient-table td:nth-child(1) {
-  width: 35px;
+  width: 50px;
   text-align: center;
 }
 
@@ -91,24 +91,24 @@ main {
 
 .patient-table th:nth-child(3), /* Họ và tên */
 .patient-table td:nth-child(3) {
-  width: 200px;
+  width: 250px;
 }
 
 .patient-table th:nth-child(4), /* Giới tính */
 .patient-table td:nth-child(4) {
-  width: 80px;
+  width: 100px;
   text-align: center;
 }
 
 .patient-table th:nth-child(5), /* Dân tộc */
 .patient-table td:nth-child(5) {
-  width: 80px;
+  width: 120px;
   text-align: center;
 }
 
 .patient-table th:nth-child(6), /* Ngày sinh */
 .patient-table td:nth-child(6) {
-  width: 150px;
+  width: 130px;
   text-align: center;
 }
 
@@ -119,13 +119,13 @@ main {
 
 .patient-table th:nth-child(8), /* Số điện thoại */
 .patient-table td:nth-child(8) {
-  width: 110px;
+  width: 130px;
   text-align: center;
 }
 
 .patient-table th:nth-child(9), /* Nghề nghiệp */
 .patient-table td:nth-child(9) {
-  width: 100px;
+  width: 140px;
   text-align: center;
 }
 

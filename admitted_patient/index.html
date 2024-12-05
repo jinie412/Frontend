@@ -95,7 +95,7 @@
     <section class="patient-information">
         <div class="header-row">
             <h2>Thông tin bệnh nhân</h2>
-            <button id="search" onclick="window.location.href='search.html'">Tra cứu</button>
+            <button id="btn-search" onclick="window.location.href='search.html'">Tra cứu</button>
         </div>
 
         <!-- Form nhập thông tin bệnh nhân -->
@@ -118,14 +118,14 @@
 
             <div class="form-group3">
                 <label for="gender">Giới tính:</label>
-                <select id="gender" name="gender">
+                <select id="gender" name="gender" required>
                     <option value="Nam">Nam</option>
                     <option value="Nữ">Nữ</option>
                 </select>
                 <label for="ethnicity">Dân tộc:</label>
                 <input type="text" id="ethnicity" name="ethnicity">
                 <label for="phone">Số điện thoại:</label>
-                <input type="text" id="phone" name="phone">
+                <input type="text" id="phone" name="phone" required>
             </div>
 
             <div class="form-group4">
@@ -139,8 +139,8 @@
             </div>
         </form>
 
-        <div class="form-submit">
-            <button id="submit">Lưu</button>
+        <div class="form-save">
+            <button id="btn-save">Lưu</button>
         </div>
     </section>
 
@@ -174,7 +174,9 @@
                         </tr>
                     </thead>
                     <tbody id="patient-table">
-                        <!-- Các hàng dữ liệu sẽ được thêm vào đây -->
+                        <tr id="default-message">
+                          <td colspan="11" style="text-align: left;">Chưa có bệnh nhân đến khám bệnh trong hôm nay.</td>
+                        </tr>
                     </tbody>
                 </table>
             </div>
@@ -183,11 +185,11 @@
 
     <section class="action-buttons">
         <div class="left-buttons">
-            <button id="edit">Sửa</button>
-            <button id="delete">Xoá</button>
+            <button id="btn-edit">Sửa</button>
+            <button id="btn-delete">Xoá</button>
         </div>
         <div class="right-buttons">
-            <button id="exam">Khám bệnh</button>
+            <button id="btn-exam">Khám bệnh</button>
         </div>
     </section>
     

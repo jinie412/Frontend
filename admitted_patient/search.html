@@ -7,10 +7,10 @@
     <link href="../style/navigation_bar.css" rel="stylesheet" />
     <link href="../style/setting_active.css" rel="stylesheet" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style2.css">
 </head>
 
-<body>
+<body class="m-0 p-0 flex flex-col min-h-screen bg-gray-100">
     <!-- Thanh điều hướng -->
     <nav class="bg-blueTaskbar text-white p-3 w-full text-center">
       <ul class="flex justify-between list-none p-0 m-0">
@@ -99,18 +99,21 @@
                             <td><input type="date" id="searchDob"></td>
                             <td><input type="text" id="searchAddress" placeholder="Nhập địa chỉ"></td>
                             <td><input type="text" id="searchPhone" placeholder="Nhập số điện thoại"></td>
-                            <td><input type="text" id="searchOccupation" placeholder="Nhập nghề nghiệp"></td>
+                            <td><input type="text" id="searchJob" placeholder="Nhập nghề nghiệp"></td>
                             <td></td>
                         </tr>
                     </thead>
                     <tbody>
                         <tr>
-                            <td colspan="6"></td>
+                            <!-- <td colspan="6"></td> -->
                         </tr>
                     </tbody>
                 </table>
             </div>
-            <button class="btn-search">Tìm kiếm</button>
+            <button id="searchButton" class="btn-search">
+                Tìm kiếm
+                <i class="fas fa-search"></i>
+            </button>
         </section>
 
         <section class="list-section">
@@ -136,7 +139,13 @@
                     </tbody>
                 </table>
             </div>
-            <button class="btn-back" onclick="window.location.href='index.html'">Quay lại</button>
+        </section>
+
+        <section class="action-buttons">
+            <button class="btn-back" onclick="window.location.href='index.html'">
+                <i class="fas fa-long-arrow-alt-left"></i>
+                Quay lại
+            </button>
         </section>
     </main>
 
@@ -151,7 +160,7 @@
                 dob: "1990-01-01",
                 address: "Hà Nội",
                 phone: "0123456789",
-                occupation: "Kỹ sư",
+                job: "Kỹ sư",
                 note: "Không có"
             },
             {
@@ -162,9 +171,31 @@
                 dob: "1995-05-15",
                 address: "TP HCM",
                 phone: "0987654321",
-                occupation: "Giáo viên",
+                job: "Giáo viên",
                 note: "Không có"
             },
+            {
+                id: "BN003",
+                name: "Trần Thị B",
+                gender: "Nữ",
+                ethnicity: "Tày",
+                dob: "1995-05-15",
+                address: "TP HCM",
+                phone: "0987654321",
+                job: "Giáo viên",
+                note: "Không có"
+            },
+            {
+                id: "BN004",
+                name: "Trần Thị B",
+                gender: "Nữ",
+                ethnicity: "Tày",
+                dob: "1995-05-15",
+                address: "TP HCM",
+                phone: "0987654321",
+                job: "Giáo viên",
+                note: "Không có"
+            }
             // Thêm bệnh nhân tại đây
         ];
     
@@ -178,7 +209,7 @@
                 dob: document.getElementById("searchDob").value,
                 address: document.getElementById("searchAddress").value.trim(),
                 phone: document.getElementById("searchPhone").value.trim(),
-                occupation: document.getElementById("searchOccupation").value.trim()
+                job: document.getElementById("searchJob").value.trim()
             };
         }
     
@@ -193,7 +224,7 @@
                     (!criteria.dob || patient.dob === criteria.dob) &&
                     (!criteria.address || patient.address.toLowerCase().includes(criteria.address.toLowerCase())) &&
                     (!criteria.phone || patient.phone.includes(criteria.phone)) &&
-                    (!criteria.occupation || patient.occupation.toLowerCase().includes(criteria.occupation.toLowerCase()))
+                    (!criteria.job || patient.job.toLowerCase().includes(criteria.job.toLowerCase()))
                 );
             });
         }
@@ -215,14 +246,14 @@
                             <td>${patient.dob}</td>
                             <td>${patient.address}</td>
                             <td>${patient.phone}</td>
-                            <td>${patient.occupation}</td>
+                            <td>${patient.job}</td>
                             <td>${patient.note}</td>
                         </tr>
                     `;
                     resultTableBody.innerHTML += row;
                 });
             } else {
-                resultTableBody.innerHTML = `<tr><td colspan="10" style="text-align: center;">Không tìm thấy bệnh nhân</td></tr>`;
+                resultTableBody.innerHTML = `<tr><td colspan="10" style="text-align: left;">Không tìm thấy bệnh nhân.</td></tr>`;
             }
         }
     
@@ -231,6 +262,33 @@
             const criteria = getSearchCriteria(); // Lấy tiêu chí tìm kiếm
             const filteredPatients = filterPatients(criteria); // Lọc danh sách bệnh nhân
             displayResults(filteredPatients); // Hiển thị kết quả
+        });
+
+        // Thêm sự kiện cho mỗi dòng của bảng để lắng nghe sự kiện nhấn đúp
+        document.getElementById("resultTableBody").addEventListener("dblclick", function (event) {
+            // Kiểm tra nếu người dùng nhấn đúp vào một dòng (trừ ô tiêu đề)
+            const row = event.target.closest("tr");
+            if (row) {
+                const cells = row.querySelectorAll("td");
+                // Lấy thông tin bệnh nhân từ các ô trong dòng
+                const patient = {
+                    id: cells[1].innerText,
+                    name: cells[2].innerText,
+                    gender: cells[3].innerText,
+                    ethnicity: cells[4].innerText,
+                    dob: cells[5].innerText,
+                    address: cells[6].innerText,
+                    phone: cells[7].innerText,
+                    job: cells[8].innerText,
+                    note: cells[9].innerText
+                };
+
+                // Lưu thông tin bệnh nhân vào localStorage để chuyển sang trang khác
+                localStorage.setItem("patientData", JSON.stringify(patient));
+
+                // Chuyển hướng đến trang nhận bệnh
+                window.location.href = "./index.html"; // Địa chỉ của trang nhận bệnh
+            }
         });
     </script>        
 </body>
