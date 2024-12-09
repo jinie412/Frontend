@@ -44,6 +44,7 @@ function populateTable() {
     });
 }
 
+
 function handleRowClick(row) {
     if (isEditMode) {
         if (!row.classList.contains('editing')) {
@@ -136,5 +137,48 @@ function saveChanges() {
     const table = document.getElementById('medicineTable');
     table.classList.remove('editable-mode', 'delete-mode');
 }
-
 document.addEventListener('DOMContentLoaded', populateTable);
+
+//Pop-up
+let nextId = medicineData.length + 1;
+
+function showAddModal() {
+    const modal = document.getElementById('addModal');
+    modal.classList.add('show');
+}
+
+function closeModal() {
+    const modal = document.getElementById('addModal');
+    modal.classList.remove('show');
+    document.getElementById('addMedicineForm').reset();
+}
+
+document.getElementById('addMedicineForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+    
+    const inputQuantity = parseInt(document.getElementById('medicineInputQuantity').value);
+    // Giả sử ban đầu chưa kê thuốc nào nên số lượng còn = số lượng nhập
+    const remainingQuantity = inputQuantity;
+
+    const newMedicine = {
+        id: nextId++,
+        name: document.getElementById('medicineName').value,
+        unit: document.getElementById('medicineUnit').value,
+        inputQuantity: inputQuantity,
+        remainingQuantity: remainingQuantity, // Tự động tính
+        usage: document.getElementById('medicineUsage').value,
+        price: parseInt(document.getElementById('medicinePrice').value)
+    };
+
+    medicineData.push(newMedicine);
+    populateTable();
+    closeModal();
+});
+
+// Thêm event listener để đóng modal khi click bên ngoài
+window.onclick = function(event) {
+    const modal = document.getElementById('addModal');
+    if (event.target === modal) {
+        closeModal();
+    }
+}
