@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html lang="vi">
 <head>
     <meta charset="UTF-8">
@@ -8,10 +8,24 @@
     <script src="daily_rp.js"></script>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head> -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Báo cáo doanh thu</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="daily_rp.js"></script>
+    <link href="../style/navigation_bar.css" rel="stylesheet" />
+    <link href="../style/setting_active.css" rel="stylesheet" />
+    <link rel="stylesheet" href="./daily_rp.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body class="bg-gray-100">
     <!-- Navigation -->
-    <nav class="bg-blue-500 p-2">
+    <!-- <nav class="bg-blue-500 p-2">
         <div class="container mx-auto nav-container flex flex-wrap items-center justify-between text-white">
             <a href="/src/home.html" class="nav-item flex items-center justify-center">
                 <i class="fas fa-home text-xl mr-2"></i>
@@ -34,6 +48,65 @@
                 <i class="fas fa-cog text-xl"></i>
             </a>
         </div>
+    </nav> -->
+    <!-- Thanh điều hướng -->
+    <nav class="bg-blueTaskbar text-white p-3 w-full text-center">
+        <ul class="flex justify-between list-none p-0 m-0">
+          <li class="nav-item">
+            <a href="../homepage/index.html" class="font-normal"
+              ><i class="fas fa-home text-white text-lg"></i
+            ></a>
+          </li>
+          <li class="nav-item">
+            <a
+              href="../admitted_patient/index.html" class="font-normal text-white px-[15px] py-2"
+              >Nhận bệnh</a
+            >
+          </li>
+          <li class="nav-item">
+            <a href="../examination_health/index.html" class="font-normal text-white px-[15px] py-2"
+              >Khám bệnh</a
+            >
+          </li>
+          <li class="nav-item">
+            <a href="../payment/index.html" class="font-normal text-white px-[15px] py-2"
+            >Hoá đơn</a>
+          </li>
+          <li class="nav-item">
+              <a
+                  href="#" class="active relative font-bold text-white px-1.5 py-3"
+                  >Báo cáo</a
+              >
+              <div class="dropdown">
+                  <a href="./index1.html" class="dropdown-item">Doanh thu</a>
+                  <a href="./index2.html" class="dropdown-item">Lượng thuốc</a>
+              </div>
+          </li>
+          <li class="nav-item">
+            <a href="../patient/index.html" class="font-normal text-white px-[15px] py-2"
+              >Bệnh nhân</a
+            >
+          </li>
+          <li class="nav-item">
+            <a href="../medicine/index.html" class="font-normal text-white px-[15px] py-2"
+            >Thuốc</a>
+          </li>
+          <li class="nav-item">
+            <a href="#" class="font-normal"
+              ><i class="fas fa-user text-white text-lg"></i
+            ></a>
+            <div class="dropdown">
+              <a href="../setting/index.html" class="dropdown-item">
+                Cài đặt
+                <i class="fas fa-cog text-white text-lg"></i
+              ></a>
+              <a href="../login/index.html" class="dropdown-item">
+                Đăng xuất
+                <i class="fas fa-sign-out-alt text-white text-lg"></i
+              ></a>
+            </div>
+          </li>
+        </ul>
     </nav>
 
     <div class="report-container">
