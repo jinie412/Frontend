@@ -64,9 +64,18 @@ const validation_login = (username, password) => {
   return false;
 };
 
+
+// Function to generate a simple access token (for demonstration purposes)
+const generateAccessToken = () => {
+  return 'token-' + Math.random().toString(36);
+};
+
+
 // Tài khoản và mật khẩu để đăng nhập
 const login = (username, password) => {
   if (username === "admin" && password === "123456") {
+    const accessToken = generateAccessToken();
+    localStorage.setItem("accessToken", accessToken);
     window.location.assign("../homepage/index.html");
     return true;
   }
