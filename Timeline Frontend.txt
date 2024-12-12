@@ -1,0 +1,23 @@
+Trang đăng nhập: 2 trang (1 tuần)
+Trang chủ: 1 trang (1 tuần - 1.5 tuần)
+Trang nhận bệnh: 2 trang (1.5 tuần - 2 tuần)
+Trang khám bệnh: 1 trang (1 tuần)
+Trang hoá đơn: 1 trang (1 tuần)
+Trang báo cáo lượng thuốc: 2 trang (1 tuần - 1.5 tuần)
+Trang báo cáo doanh thu: 2 trang (1 tuần - 1.5 tuần)
+Trang bệnh nhân: 3 trang (2 tuần)
+Trang thuốc: 1 trang (1 tuần)
+Trang cài đặt: 3 trang (2 tuần)
+Tổng: 18 trang
+
+Chia chức năng và thứ tự thực hiện:
+Hân: trang đăng nhập (1), trang chủ (3), trang cài đặt (2)
+Hạnh: trang nhận bệnh (1), trang khám bệnh (2), trang bệnh nhân (3)
+Long: trang hoá đơn (1), trang báo cáo lượng thuốc (2), trang báo cáo doanh thu (3), trang thuốc (4)
+
+TIMELINE:
+22/10-28/10: Trang đăng nhập, Trang nhận bệnh 1, Trang hoá đơn
+29/10-4/11: Trang cài đặt, Trang nhận bệnh 2, Trang báo cáo lượng thuốc
+5/11-11/11: Trang cài đặt, Trang khám bệnh, Trang báo cáo doanh thu
+12/11-18/11: Trang chủ, Trang bệnh nhân, Trang báo cáo
+19/11-25/11: Trang chủ, Trang bệnh nhân, Trang thuốc

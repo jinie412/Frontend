@@ -1,0 +1,174 @@
+/* Tổng thể */
+/* body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f4f4f9;
+} */
+
+/* Phần chính */
+main {
+    max-width: 1500px;
+    margin: 20px 20px;
+    padding: 5px;
+    /* background-color: white; */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+}
+
+section {
+    background-color: white;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    /* margin: 10px;
+    padding: 10px; */
+    flex: 1;
+}
+
+/* Wrapper cho thông tin bệnh nhân */
+.patient-info-wrapper {
+    display: flex; /* Bố trí ngang */
+    gap: 20px; /* Khoảng cách giữa các phần */
+    margin-bottom: 20px;
+}
+
+/* patient-info1 */
+.patient-info1 {
+    flex: 1;
+    text-align: center;
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px;
+    font-weight: bold;
+}
+
+/* Các đối tượng trong patient-info */
+.patient-info1 p {
+    margin: 5px 0;
+    font-size: 18px;
+    width: 100%; /* Mỗi đối tượng nằm trên một hàng */
+}
+
+/* Ô chứa ảnh bệnh nhân */
+.patient-photo {
+    position: relative;
+    margin-bottom: 20px;
+    width: 180px;
+    height: 180px;
+}
+
+/* Ảnh avatar */
+#preview-photo {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    border: 2px solid #ddd;
+    object-fit: cover; /* Đảm bảo ảnh không bị méo */
+    cursor: pointer; /* Trỏ chuột giống nút */
+    transition: 0.3s; /* Hiệu ứng khi hover */
+    background-color: #f0f0f0; /* Màu nền placeholder */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #aaa;
+}
+
+/* Hiệu ứng khi hover vào ảnh */
+#preview-photo:hover {
+    opacity: 0.8;
+    transform: scale(1.05); /* Phóng to nhẹ */
+}
+
+/* Ẩn input file */
+#upload-photo {
+    display: none;
+}
+
+/* patient-info2 (bên phải, chiếm 2/3) */
+.patient-info2 {
+    flex: 2; /* Tương đương 2/3 */
+    /*background-color: white; /* Màu nền nhẹ để dễ phân biệt */
+    padding: 10px;
+    /* text-align: right; */
+    border-radius: 8px;
+}
+
+.patient-info2 p {
+    display: flex;                /* Sử dụng flexbox để căn chỉnh */
+    justify-content: flex-start;  /* Căn các phần tử con bắt đầu từ bên trái */
+    align-items: center;          /* Căn giữa theo chiều dọc */
+    margin: 20px 0;
+}
+
+.patient-info2 p strong {
+    width: 120px;   /* Đặt chiều rộng cố định cho tiêu đề, đảm bảo ":" thẳng hàng */
+    text-align: right; /* Căn tiêu đề và dấu ":" sang phải */
+    margin-right: 10px; /* Khoảng cách giữa tiêu đề và giá trị */
+}
+
+.group {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    gap: 10px;
+    /* flex-wrap: wrap; */
+    margin-top: -20px;
+    margin-bottom: -20px;
+}
+
+/* Lịch sử khám bệnh */
+.history h2 {
+    margin: 20px 5px 10px;
+    font-size: 20px;
+    color: #333;
+    font-style: italic;
+}
+
+#history-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+}
+
+#history-table th,
+#history-table td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    /* text-align: center; */
+}
+
+#history-table th {
+    background-color: #396cf0;
+    color: white;
+    /* text-transform: uppercase; */
+    font-size: 16px;
+    text-align: center;
+}
+
+#history-table tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+#history-table tr:hover {
+    background-color: #f1f1f1;
+}
+
+/* Nút quay lại */
+button {
+    margin-top: 20px;
+    background-color: #396cf0;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    border-radius: 4px;
+    cursor: pointer;
+    float: right;
+}
+
+button:hover {
+    background-color: #003366;
+}

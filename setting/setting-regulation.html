@@ -1,0 +1,271 @@
+<!-- <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="../style/output.css" rel="stylesheet" />
+    <link href="../style/setting_active.css" rel="stylesheet" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    />
+
+    <title>Thay đổi quy định</title>
+  </head> -->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+      <meta charset="UTF-8" />
+      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <title>Đổi mật khẩu</title>
+      <link href="../style/navigation_bar.css" rel="stylesheet" />
+      <link href="../style/output.css" rel="stylesheet" />
+      <link href="../style/setting_active.css" rel="stylesheet" />
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  </head>
+
+  <body class="m-0 p-0 flex flex-col min-h-screen bg-grayBg">
+    <!-- Thanh điều hướng -->
+    <nav class="bg-blueTaskbar text-white p-3 w-full text-center">
+      <ul class="flex justify-between list-none p-0 m-0">
+        <li class="nav-item">
+          <a href="../homepage/index.html" class="font-normal"
+            ><i class="fas fa-home text-white text-lg"></i
+          ></a>
+        </li>
+        <li class="nav-item">
+          <a
+            href="../admitted_patient/index.html" class="font-normal text-white px-[15px] py-2"
+            >Nhận bệnh</a
+          >
+        </li>
+        <li class="nav-item">
+          <a href="../examination_health/index.html" class="font-normal text-white px-[15px] py-2"
+            >Khám bệnh</a
+          >
+        </li>
+        <li class="nav-item">
+          <a href="../payment/index.html" class="font-normal text-white px-[15px] py-2">Hoá đơn</a>
+        </li>
+        <li class="nav-item">
+          <a
+              href="#" class="font-normal text-white px-[15px] py-2"
+              >Báo cáo</a
+          >
+          <div class="dropdown">
+            <a href="../report/index1.html" class="dropdown-item">Doanh thu</a>
+            <a href="../report/index2.html" class="dropdown-item">Lượng thuốc</a>
+          </div>
+        </li>
+        <li class="nav-item">
+          <a href="../patient/index.html" class="font-normal text-white px-[15px] py-2"
+            >Bệnh nhân</a
+          >
+        </li>
+        <li class="nav-item">
+          <a href="../medicine/index.html" class="font-normal text-white px-[15px] py-2">Thuốc</a>
+        </li>
+        <li class="nav-item">
+          <a href="#" class="active relative font-bold px-1.5 py-2"
+            ><i class="fas fa-user text-white text-lg"></i
+          ></a>
+          <div class="dropdown">
+            <a href="../setting/index.html" class="dropdown-item">
+              Cài đặt
+              <i class="fas fa-cog text-white text-lg"></i
+            ></a>
+            <a href="../login/index.html" class="dropdown-item">
+              Đăng xuất
+              <i class="fas fa-sign-out-alt text-white text-lg"></i
+            ></a>
+          </div>
+        </li>
+      </ul>
+    </nav>
+    
+    <!-- <nav class="bg-blueTaskbar text-white p-3 w-full text-center">
+      <ul class="flex justify-between list-none p-0 m-0">
+        <li class="mx-[15px] my-0">
+          <a href="../homepage/index.html" class="font-normal"
+            ><i class="fas fa-home text-white text-lg"></i
+          ></a>
+        </li>
+        <li class="mx-[15px] my-0">
+          <a
+            href="../nhan_benh/index.html"
+            class="font-normal text-white px-[15px] py-2"
+            >Nhận bệnh</a
+          >
+        </li>
+        <li class="mx-[15px] my-0">
+          <a href="#" class="font-normal text-white px-[15px] py-2"
+            >Khám bệnh</a
+          >
+        </li>
+        <li class="mx-[15px] my-0">
+          <a href="#" class="font-normal text-white px-[15px] py-2">Hoá đơn</a>
+        </li>
+        <li class="mx-[15px] my-0">
+          <a href="#" class="font-normal text-white px-[15px] py-2">Báo cáo</a>
+        </li>
+        <li class="mx-[15px] my-0">
+          <a href="#" class="font-normal text-white px-[15px] py-2"
+            >Bệnh nhân</a
+          >
+        </li>
+        <li class="mx-[15px] my-0">
+          <a href="#" class="font-normal text-white px-[15px] py-2">Thuốc</a>
+        </li>
+        <li class="mx-[15px] my-0">
+          <a href="../setting/index.html" class="active relative font-normal"
+            ><i class="fas fa-cog text-white text-lg"></i
+          ></a>
+        </li>
+      </ul>
+    </nav> -->
+
+    <div class="flex h-full justify-center">
+      <!-- Thanh điều hướng dọc bên trái -->
+      <aside class="bg-white w-[200px] h-full border-r-[1px]">
+        <ul class="list-none">
+          <li class="text-center">
+            <a
+              href="index.html"
+              class="block py-2 px-4 text-black hover:bg-gray-300"
+              >Thông tin chung</a
+            >
+          </li>
+          <li class="text-center">
+            <a
+              href="setting-change-pass.html"
+              class="block py-2 px-4 text-black hover:bg-gray-300"
+              >Mật khẩu</a
+            >
+          </li>
+          <li class="text-center">
+            <a
+              href="setting-regulation.html"
+              class="block py-2 px-4 text-black hover:bg-gray-300"
+              >Quy định</a
+            >
+          </li>
+        </ul>
+      </aside>
+
+      <!-- Nội dung chính -->
+
+      <main
+        class="w-3/4 h-4/5 mx-auto mt-12 px-7 py-2.5 border bg-white rounded-[5px] shadow-lg overflow-hidden"
+      >
+        <!-- Phần tiêu đề -->
+        <div class="w-full">
+          <h1 class="mb-1 text-xl font-bold">Thay đổi quy định phòng khám</h1>
+          <div class="border-b-[1px]"></div>
+        </div>
+
+        <!-- Phần form -->
+        <form id="changeForm" class="form w-full pt-1 flex flex-col">
+          <div class="flex items-center w-full border-b-[1px] pb-1">
+            <div class="mr-28 w-2/3 mb-1">
+              <h1 class="text-lg font-medium">Số lượng bệnh nhân tối đa</h1>
+              <h6 class="font-thin italic text-xs">
+                Thay đổi số lượng bệnh nhân tối đa trong ngày
+              </h6>
+            </div>
+            <input
+              type="text"
+              id="soLuongBenhNhan"
+              name="soLuongBenhNhan"
+              class="border border-gray-500 px-1.5 py-1.5 mr-2 w-1/3 rounded-[5px]"
+            />
+          </div>
+          <div class="flex items-center w-full border-b-[1px]">
+            <div class="mr-28 w-2/3 my-1.5">
+              <h1 class="text-lg font-medium">Số lượng loại bệnh</h1>
+              <h6 class="font-thin italic text-xs">
+                Thay đổi số lượng loại bệnh
+              </h6>
+            </div>
+            <input
+              type="text"
+              id="soLuongLoaiBenh"
+              name="soLuongLoaiBenh"
+              class="border border-gray-500 px-1.5 py-1 mr-2 w-1/3 rounded-[5px]"
+            />
+          </div>
+
+          <div class="flex items-center w-full border-b-[1px]">
+            <div class="mr-28 w-2/3 my-1.5">
+              <h1 class="text-lg font-medium">Số lượng thuốc</h1>
+              <h6 class="font-thin italic text-xs">Thay đổi số lượng thuốc</h6>
+            </div>
+            <input
+              type="text"
+              id="soLuongThuoc"
+              name="soLuongThuoc"
+              class="border border-gray-500 px-1.5 py-1 mr-2 w-1/3 rounded-[5px]"
+            />
+          </div>
+
+          <div class="flex items-center w-full border-b-[1px]">
+            <div class="mr-28 w-2/3 my-1.5">
+              <h1 class="text-lg font-medium">Số lượng đơn vị tính</h1>
+              <h6 class="font-thin italic text-xs">
+                Thay đổi số lượng đơn vị tính
+              </h6>
+            </div>
+            <input
+              type="text"
+              id="soLuongDonViTinh"
+              name="soLuongDonViTinh"
+              class="border border-gray-500 px-1.5 py-1 mr-2 w-1/3 rounded-[5px]"
+            />
+          </div>
+
+          <div class="flex items-center w-full border-b-[1px]">
+            <div class="mr-28 w-2/3 my-1.5">
+              <h1 class="text-lg font-medium">Số lượng cách dùng</h1>
+              <h6 class="font-thin italic text-xs">
+                Thay đổi số lượng cách dùng
+              </h6>
+            </div>
+            <input
+              type="text"
+              id="soLuongCachDung"
+              name="soLuongCachDung"
+              class="border border-gray-500 px-1.5 py-1 mr-2 w-1/3 rounded-[5px]"
+            />
+          </div>
+
+          <div class="flex items-center w-full border-b-[1px]">
+            <div class="mr-28 w-2/3 my-1.5">
+              <h1 class="text-lg font-medium">Tiền khám</h1>
+              <h6 class="font-thin italic text-xs">Thay đổi tiền khám</h6>
+            </div>
+            <input
+              type="text"
+              id="tienKham"
+              name="tienKham"
+              class="border border-gray-500 px-1.5 py-1 mr-2 w-1/3 rounded-[5px]"
+            />
+          </div>
+        </form>
+
+        <div class="flex justify-center items-center mt-5 ml-6 mr-7">
+          <button
+            type="submit"
+            class="mr-20 w-40 max-w-xs px-2 py-1.5 text-white font-medium bg-greenNote rounded-[5px] hover:bg-green-700 transition-colors"
+          >
+            Cập nhật
+          </button>
+          <button
+            type="submit"
+            class="w-40 max-w-xs px-2 py-1.5 text-black font-medium bg-grayBut rounded-[5px] hover:bg-gray-500 transition-colors"
+          >
+            Hủy bỏ
+          </button>
+        </div>
+      </main>
+    </div>
+  </body>
+</html>

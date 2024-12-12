@@ -1,0 +1,69 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    />
+    <!-- SweetAlert2 -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/7.2.0/sweetalert2.min.css"
+    />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/7.2.0/sweetalert2.all.min.js"></script>
+
+    <!-- TailwindCSS -->
+    <link href="../style/output.css" rel="stylesheet" />
+
+    <title>Xác thực mật khẩu</title>
+  </head>
+
+  <body class="m-0 p-0 flex flex-col items-center min-h-screen bg-grayBg">
+    <nav class="bg-blueTaskbar p-4 h-14 w-full"></nav>
+    <section
+      class="flex flex-col itessms-start mt-20 w-[590px] h-[300px] py-4 bg-white border border-gray-800 border-opacity-40 shadow-md rounded-[5px] mx-auto overflow-hidden"
+    >
+      <h1 class="mx-10 mb-3 mt-1 font-bold text-3xl text-left">
+        Nhập mã bảo mật
+      </h1>
+
+      <div class="border-b border-black border-opacity-40"></div>
+
+      <div class="w-4/5 mt-2 mb-6 ml-10 mr-4 flex-col">
+        <div class="mt-1 mb-5">
+          Vui lòng kiểm tra email để lấy mã bảo mật. Mã bảo mật của bạn dài 6 số
+        </div>
+        <form class="mt-4 w-full flex justify-between items-stretch">
+          <input
+            type="text"
+            id="enterCode"
+            placeholder="Nhập mã"
+            class="w-1/2 px-4 py-2 border border-gray-600 border-opacity-40 rounded-[5px] focus:outline-none focus:ring-2 focus:ring-blue-400"
+          />
+          <div class="h-full flex flex-col">
+            <div class="h-1/2">Chúng tôi đã gửi mã đến:</div>
+            <div class="h-1/2"></div>
+          </div>
+        </form>
+      </div>
+
+      <div class="mb-2 border-b border-black border-opacity-40"></div>
+      <div class="w-4/5 flex justify-end mt-2 mb-1 ml-10 mr-4">
+        <button
+          type="submit"
+          class="mr-10 w-28 max-w-xs py-1.5 font-medium rounded-[5px] border-[1px] border-gray-500 bg-white hover:bg-grayBut transition-colors"
+        >
+          Hủy bỏ
+        </button>
+        <button
+          type="submit"
+          class="w-28 max-w-xs py-1.5 text-white font-medium bg-blueTaskbar rounded-[5px] hover:bg-blue-600 transition-colors"
+        >
+          Tiếp tục
+        </button>
+      </div>
+    </section>
+  </body>
+</html>

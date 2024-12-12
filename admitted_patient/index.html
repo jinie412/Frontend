@@ -1,0 +1,198 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nhận bệnh</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"> -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Nhận bệnh</title>
+    <link href="../style/navigation_bar.css" rel="stylesheet" />
+    <link href="../style/setting_active.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body class="m-0 p-0 flex flex-col min-h-screen bg-gray-100">
+    <!-- Thanh điều hướng -->
+    <nav class="bg-blueTaskbar text-white p-3 w-full text-center">
+      <ul class="flex justify-between list-none p-0 m-0">
+        <li class="nav-item">
+          <a href="../homepage/index.html" class="font-normal"
+            ><i class="fas fa-home text-white text-lg"></i
+          ></a>
+        </li>
+        <li class="nav-item">
+          <a
+            href="#" class="active relative font-bold text-white px-1.5 py-2"
+            >Nhận bệnh</a
+          >
+        </li>
+        <li class="nav-item">
+          <a href="../examination_health/index.html" class="font-normal"
+            >Khám bệnh</a
+          >
+        </li>
+        <li class="nav-item">
+          <a href="../payment/index.html" class="font-normal"
+          >Hoá đơn</a>
+        </li>
+        <li class="nav-item">
+            <a
+                href="#" class="font-normal text-white px-[15px] py-2"
+                >Báo cáo</a
+            >
+            <div class="dropdown">
+              <a href="../report/index1.html" class="dropdown-item">Doanh thu</a>
+              <a href="../report/index2.html" class="dropdown-item">Lượng thuốc</a>
+            </div>
+        </li>
+        <li class="nav-item">
+          <a href="../patient/index.html" class="font-normal text-white px-[15px] py-2"
+            >Bệnh nhân</a
+          >
+        </li>
+        <li class="nav-item">
+          <a href="../medicine/index.html" class="font-normal text-white px-[15px] py-2">Thuốc</a>
+        </li>
+        <li class="nav-item">
+            <a href="#" class="font-normal"
+              ><i class="fas fa-user text-white text-lg"></i
+            ></a>
+            <div class="dropdown">
+              <a href="../setting/index.html" class="dropdown-item">
+                Cài đặt
+                <i class="fas fa-cog text-white text-lg"></i
+              ></a>
+              <a href="../login/index.html" class="dropdown-item">
+                Đăng xuất
+                <i class="fas fa-sign-out-alt text-white text-lg"></i
+              ></a>
+            </div>
+        </li>
+      </ul>
+    </nav>
+
+    <!-- <nav>        
+        <ul>
+            <li><a href="../homepage/index.html"><i class="fas fa-home"></i></a></li>
+            <li><a href="#" class="active">Nhận bệnh</a></li>
+            <li><a href="../kham_benh/index.html">Khám bệnh</a></li>
+            <li><a href="#">Hoá đơn</a></li>
+            <li><a href="#">Báo cáo</a></li>
+            <li><a href="../patient/index.html">Bệnh nhân</a></li>
+            <li><a href="#">Thuốc</a></li>
+            <li><a href="../setting/index.html"><i class="fas fa-cog"></i></a></li>
+        </ul>
+    </nav> -->
+
+    <!-- Phần thông tin quản lý bệnh nhân -->
+    <section class="patient-information">
+        <div class="header-row">
+            <h2>Thông tin bệnh nhân</h2>
+            <button id="btn-search" onclick="window.location.href='search.html'">Tra cứu</button>
+        </div>
+
+        <!-- Form nhập thông tin bệnh nhân -->
+        <form id="patient-form">
+            <div class="form-group1">
+                <label for="patient-id">Mã BN:</label>
+                <input type="text" id="patient-id" name="patient-id" readonly>
+                <label for="dob">Ngày sinh:</label>
+                <input type="date" id="dob" name="dob" required>
+                <label for="age">Tuổi:</label>
+                <input type="text" id="age" name="age" readonly>
+            </div>
+
+            <div class="form-group2">
+                <label for="name">Họ và tên:</label>
+                <input type="text" id="name" name="name" required>
+                <label for="job">Nghề nghiệp:</label>
+                <input type="text" id="job" name="job">
+            </div>
+
+            <div class="form-group3">
+                <label for="gender">Giới tính:</label>
+                <select id="gender" name="gender" required>
+                    <option value="Nam">Nam</option>
+                    <option value="Nữ">Nữ</option>
+                </select>
+                <label for="ethnicity">Dân tộc:</label>
+                <input type="text" id="ethnicity" name="ethnicity">
+                <label for="phone">Số điện thoại:</label>
+                <input type="text" id="phone" name="phone" required>
+            </div>
+
+            <div class="form-group4">
+                <label for="address">Địa chỉ:</label>
+                <input type="text" id="address" name="address">
+            </div>
+
+            <div class="form-group5">
+                <label for="notes">Ghi chú:</label>
+                <input type="text" id="notes" name="notes">
+            </div>
+        </form>
+
+        <div class="form-save">
+            <button id="btn-save">Lưu</button>
+        </div>
+    </section>
+
+    <section class="exam-list">
+        <div class="header-row">
+            <h2>Danh sách khám bệnh</h2>
+            <div>
+                <label for="exam-date">Ngày khám:</label>
+                <input type="date" id="exam-date" name="exam-date">
+                <label><input type="checkbox" id="filter-examined"> Đã khám</label>
+                <label><input type="checkbox" id="filter-unexamined"> Chưa khám</label>
+            </div>
+        </div>
+        
+        <div class="patient-list">
+            <div class="patient-table">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>STT</th>
+                            <th>Trạng thái</th>
+                            <th>Mã BN</th>
+                            <th>Họ và tên</th>
+                            <th>Giới tính</th>
+                            <th>Dân tộc</th>
+                            <th>Ngày sinh</th>
+                            <th>Địa chỉ</th>
+                            <th>Số điện thoại</th>
+                            <th>Nghề nghiệp</th>
+                            <th>Ghi chú</th>
+                        </tr>
+                    </thead>
+                    <tbody id="patient-table">
+                        <tr id="default-message">
+                          <td colspan="11" style="text-align: left;">Chưa có bệnh nhân đến khám bệnh trong hôm nay.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
+    <section class="action-buttons">
+        <div class="left-buttons">
+            <button id="btn-edit">Sửa</button>
+            <button id="btn-delete">Xoá</button>
+        </div>
+        <div class="right-buttons">
+            <button id="btn-exam">Khám bệnh</button>
+        </div>
+    </section>
+    
+    <script src="script.js"></script>
+</body>
+</html>

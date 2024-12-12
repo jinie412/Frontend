@@ -1,0 +1,266 @@
+<!-- <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="../style/output.css" rel="stylesheet" />
+    <link href="../style/setting_active.css" rel="stylesheet" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    />
+
+    <title>Thay đổi thông tin</title>
+  </head> -->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+      <meta charset="UTF-8" />
+      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <title>Thay đổi thông tin</title>
+      <link href="../style/navigation_bar.css" rel="stylesheet" />
+      <link href="../style/output.css" rel="stylesheet" />
+      <link href="../style/setting_active.css" rel="stylesheet" />
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  </head>
+
+  <body class="m-0 p-0 flex flex-col min-h-screen bg-grayBg">
+    <!-- Thanh điều hướng -->
+    <nav class="bg-blueTaskbar text-white p-3 w-full text-center">
+      <ul class="flex justify-between list-none p-0 m-0">
+        <li class="nav-item">
+          <a href="../homepage/index.html" class="font-normal"
+            ><i class="fas fa-home text-white text-lg"></i
+          ></a>
+        </li>
+        <li class="nav-item">
+          <a
+            href="../admitted_patient/index.html" class="font-normal text-white px-[15px] py-2"
+            >Nhận bệnh</a
+          >
+        </li>
+        <li class="nav-item">
+          <a href="../examination_health/index.html" class="font-normal text-white px-[15px] py-2"
+            >Khám bệnh</a
+          >
+        </li>
+        <li class="nav-item">
+          <a href="../payment/index.html" class="font-normal text-white px-[15px] py-2">Hoá đơn</a>
+        </li>
+        <li class="nav-item">
+          <a
+              href="#" class="font-normal text-white px-[15px] py-2"
+              >Báo cáo</a
+          >
+          <div class="dropdown">
+            <a href="../report/index1.html" class="dropdown-item">Doanh thu</a>
+            <a href="../report/index2.html" class="dropdown-item">Lượng thuốc</a>
+          </div>
+        </li>
+        <li class="nav-item">
+          <a href="../patient/index.html" class="font-normal text-white px-[15px] py-2"
+            >Bệnh nhân</a
+          >
+        </li>
+        <li class="nav-item">
+          <a href="../medicine/index.html" class="font-normal text-white px-[15px] py-2">Thuốc</a>
+        </li>
+        <li class="nav-item">
+          <a href="#" class="active relative font-bold px-1.5 py-2"
+            ><i class="fas fa-user text-white text-lg"></i
+          ></a>
+          <div class="dropdown">
+            <a href="../setting/index.html" class="dropdown-item">
+              Cài đặt
+              <i class="fas fa-cog text-white text-lg"></i
+            ></a>
+            <a href="../login/index.html" class="dropdown-item">
+              Đăng xuất
+              <i class="fas fa-sign-out-alt text-white text-lg"></i
+            ></a>
+          </div>
+        </li>
+      </ul>
+    </nav>
+
+    <!-- <nav class="bg-blueTaskbar text-white p-3 w-full text-center">
+      <ul class="flex justify-between list-none p-0 m-0">
+        <li class="mx-[15px] my-0">
+          <a href="../homepage/index.html" class="font-normal"
+            ><i class="fas fa-home text-white text-lg"></i
+          ></a>
+        </li>
+        <li class="mx-[15px] my-0">
+          <a
+            href="../nhan_benh/index.html"
+            class="font-normal text-white px-[15px] py-2"
+            >Nhận bệnh</a
+          >
+        </li>
+        <li class="mx-[15px] my-0">
+          <a href="#" class="font-normal text-white px-[15px] py-2"
+            >Khám bệnh</a
+          >
+        </li>
+        <li class="mx-[15px] my-0">
+          <a href="#" class="font-normal text-white px-[15px] py-2">Hoá đơn</a>
+        </li>
+        <li class="mx-[15px] my-0">
+          <a href="#" class="font-normal text-white px-[15px] py-2">Báo cáo</a>
+        </li>
+        <li class="mx-[15px] my-0">
+          <a href="#" class="font-normal text-white px-[15px] py-2"
+            >Bệnh nhân</a
+          >
+        </li>
+        <li class="mx-[15px] my-0">
+          <a href="#" class="font-normal text-white px-[15px] py-2">Thuốc</a>
+        </li>
+        <li class="mx-[15px] my-0">
+          <a href="../setting/index.html" class="active relative font-normal"
+            ><i class="fas fa-cog text-white text-lg"></i
+          ></a>
+        </li>
+      </ul>
+    </nav> -->
+
+    <div class="flex h-full justify-center">
+      <!-- Thanh điều hướng dọc bên trái -->
+      <aside class="bg-white w-[200px] h-full border-r-[1px]">
+        <ul class="list-none">
+          <li class="text-center">
+            <a
+              href="index.html"
+              class="block py-2 px-4 text-black hover:bg-gray-300"
+              >Thông tin chung</a
+            >
+          </li>
+          <li class="text-center">
+            <a
+              href="setting-change-pass.html"
+              class="block py-2 px-4 text-black hover:bg-gray-300"
+              >Mật khẩu</a
+            >
+          </li>
+          <li class="text-center">
+            <a
+              href="setting-regulation.html"
+              class="block py-2 px-4 text-black hover:bg-gray-300"
+              >Quy định</a
+            >
+          </li>
+        </ul>
+      </aside>
+
+      <!-- Nội dung chính -->
+
+      <main
+        class="flex-grow mx-12 mt-9 p-2 h-4/5 border bg-white rounded-[5px] shadow-lg overflow-hidden"
+      >
+        <!-- Phần tiêu đề -->
+        <div class="w-full pr-5 pt-2 mb-1">
+          <h1 class="mx-4 mb-1 text-xl font-bold">Thông tin chung</h1>
+          <div class="ml-4 mr-2 border-b-[1px] border-black mb-2"></div>
+        </div>
+
+        <!-- Phần form + upload hình -->
+        <div class="w-full h-3/4 flex justify-start">
+          <!-- Phần form -->
+          <form class="flex flex-col w-[600px] h-[300px] mr-14 justify-between">
+            <div class="flex items-center w-full mt-2">
+              <label for="name" class="w-[175px] ml-4">Họ và tên</label>
+              <input
+                type="text"
+                id="name"
+                name="name"
+                class="border border-gray-500 px-1.5 py-[1.5px] mr-2 w-2/3 rounded-[5px]"
+              />
+            </div>
+
+            <div class="flex items-center w-full mt-2">
+              <label for="email" class="w-[175px] ml-4">Email</label>
+              <input
+                type="text"
+                id="email"
+                name="email"
+                class="border border-gray-500 px-1.5 py-[1.5px] mr-2 w-2/3 rounded-[5px]"
+              />
+            </div>
+            <div class="flex items-center w-full mt-2">
+              <label for="city" class="w-[175px] ml-4">Tỉnh/Thành phố</label>
+              <input
+                type="text"
+                id="city"
+                name="city"
+                class="border border-gray-500 px-1.5 py-[1.5px] mr-2 w-2/3 rounded-[5px]"
+              />
+            </div>
+            <div class="flex items-center w-full mt-2">
+              <label for="gender" class="w-[175px] ml-4">Giới tính</label>
+              <input
+                type="text"
+                id="gender"
+                name="gender"
+                class="border border-gray-500 px-1.5 py-[1.5px] mr-2 w-2/3 rounded-[5px]"
+              />
+            </div>
+            <div class="flex items-center w-full mt-2">
+              <label for="dob" class="w-[175px] ml-4">Ngày sinh</label>
+              <input
+                type="date"
+                id="dob"
+                name="dob"
+                class="border border-gray-500 px-1.5 py-[1.5px] mr-2 w-2/3 rounded-[5px]"
+              />
+            </div>
+            <div class="flex items-center w-full mt-2">
+              <label for="phone" class="w-[175px] ml-4">Số điện thoại</label>
+              <input
+                type="text"
+                id="phone"
+                name="phone"
+                class="border border-gray-500 px-1.5 py-[1.5px] mr-2 w-2/3 rounded-[5px]"
+              />
+            </div>
+          </form>
+
+          <!-- Khung upload hình ảnh -->
+          <div
+            class="flex flex-col justify-center items-center w-1/3 h-[280px] mr-5"
+          >
+            <div class="frame-picture flex flex-col items-center">
+              <div
+                class="w-44 h-44 mt-2 mb-6 rounded-full border border-gray-300 bg-grayBut flex items-center justify-center"
+              >
+                <span class="text-gray-400">Hình ảnh</span>
+              </div>
+
+              <input type="file" id="fileInput" class="hidden" />
+              <label
+                for="fileInput"
+                class="bg-grayBut text-center text-black w-2/3 px-5 py-1 rounded cursor-pointer hover:bg-gray-500"
+              >
+                Chọn tệp
+              </label>
+            </div>
+          </div>
+        </div>
+
+        <div class="flex justify-center items-center mt-1">
+          <button
+            type="submit"
+            class="mr-20 w-40 max-w-xs px-2 py-1.5 text-white font-medium bg-greenNote rounded-[5px] hover:bg-green-700 transition-colors"
+          >
+            Cập nhật
+          </button>
+          <button
+            type="submit"
+            class="w-40 max-w-xs px-2 py-1.5 text-black font-medium bg-grayBut rounded-[5px] hover:bg-gray-500 transition-colors"
+          >
+            Hủy bỏ
+          </button>
+        </div>
+      </main>
+    </div>
+  </body>
+</html>

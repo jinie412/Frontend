@@ -1,0 +1,248 @@
+/* Cài đặt chung */
+/* body {
+  font-family: Arial, sans-serif;
+  background-color: #f5f5f5;
+  margin: 0;
+  padding: 0;
+} */
+
+/* Tiêu đề các phần */
+h2 {
+    margin: 20px 0;
+    text-align: center;
+    color: #333;
+    font-size: 1.5rem;
+    margin-top: -5px;
+    margin-bottom: 15px;
+}
+
+/* Khu vực tìm kiếm */
+.search-section, .list-section {
+    padding: 20px;
+    background-color: white;
+    margin: 20px 20px 20px 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    max-width: 100%;
+}
+
+/* Bảng */
+/* Bảng tra cứu bệnh nhân */
+.search-table {
+    max-width: 100%;
+    overflow-x: auto; /* Thanh trượt ngang */
+    overflow-y: hidden; /* Thanh trượt dọc */
+    border: 1px solid #ddd;
+    align-items: center;
+    height: 100px; /* Chiều cao cố định với thanh trượt dọc */
+    width: 1400px; /* Chiều dài cố định với thanh trượt ngang */
+}
+
+.search-table table {
+    width: 100%; /* Đảm bảo bảng chiếm đủ chiều ngang */
+    border-collapse: collapse;
+    table-layout: fixed; /* Bắt buộc các cột giữ đúng kích thước đã quy định */
+    /* width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px; */
+}
+
+.search-table th, .search-table td {
+    border: 1px solid #ddd;
+    word-wrap: break-word; /* Ngắt dòng khi nội dung quá dài */
+}
+
+.search-table th {
+  padding: 8px;
+}
+
+.search-table th {
+  background-color: #396cf0;
+  color: white;
+  position: sticky; /* Giữ header cố định khi cuộn */
+  top: 0;
+  z-index: 1;
+}
+
+thead input, thead select {
+  width: 100%;
+  padding: 10px;
+  box-sizing: border-box;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  font-size: 16px;
+}
+
+/* Đặt độ rộng cố định cho từng cột */
+.search-table th:nth-child(1), /* Mã BN */
+.search-table td:nth-child(1) {
+  width: 120px;
+}
+
+.search-table th:nth-child(2), /* Họ và tên */
+.search-table td:nth-child(2) {
+  width: 250px;
+}
+
+.search-table th:nth-child(3), /* Giới tính */
+.search-table td:nth-child(3) {
+  width: 100px;
+  text-align: center;
+}
+
+.search-table th:nth-child(4), /* Dân tộc */
+.search-table td:nth-child(4) {
+  width: 120px;
+  text-align: center;
+}
+
+.search-table th:nth-child(5), /* Ngày sinh */
+.search-table td:nth-child(5) {
+  width: 140px;
+  text-align: center;
+}
+
+.search-table th:nth-child(6), /* Địa chỉ */
+.search-table td:nth-child(6) {
+  width: 400px;
+}
+
+.search-table th:nth-child(7), /* Số điện thoại */
+.search-table td:nth-child(7) {
+  width: 160px;
+  text-align: center;
+}
+
+.search-table th:nth-child(8), /* Nghề nghiệp */
+.search-table td:nth-child(8) {
+  width: 160px;
+  text-align: center;
+}
+
+/* Bảng danh sách bệnh nhân */
+.list-table {
+    max-width: 100%;
+    max-height: 500px;
+    overflow-x: auto; /* Thanh trượt ngang */
+    overflow-y: auto; /* Thanh trượt dọc */
+    border: 1px solid #ddd;
+    align-items: center;
+    /*height: 100px; /* Chiều cao cố định với thanh trượt dọc */
+    width: 1400px; /* Chiều dài cố định với thanh trượt ngang */
+}
+
+.list-table table {
+    width: 100%; /* Đảm bảo bảng chiếm đủ chiều ngang */
+    border-collapse: collapse;
+    table-layout: fixed; /* Bắt buộc các cột giữ đúng kích thước đã quy định */
+    /* width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px; */
+}
+
+.list-table th, .list-table td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    word-wrap: break-word; /* Ngắt dòng khi nội dung quá dài */
+}
+
+.list-table th {
+  background-color: #396cf0;
+  color: white;
+  position: sticky; /* Giữ header cố định khi cuộn */
+  top: 0;
+  z-index: 1;
+}
+
+/* Đặt độ rộng cố định cho từng cột */
+.list-table th:nth-child(1), /* STT */
+.list-table td:nth-child(1) {
+  width: 50px;
+  text-align: center;
+}
+
+.list-table th:nth-child(2), /* Mã BN */
+.list-table td:nth-child(2) {
+  width: 100px;
+}
+
+.list-table th:nth-child(3), /* Họ và tên */
+.list-table td:nth-child(3) {
+  width: 250px;
+}
+
+.list-table th:nth-child(4), /* Giới tính */
+.list-table td:nth-child(4) {
+  width: 100px;
+  text-align: center;
+}
+
+.list-table th:nth-child(5), /* Dân tộc */
+.list-table td:nth-child(5) {
+  width: 120px;
+  text-align: center;
+}
+
+.list-table th:nth-child(6), /* Ngày sinh */
+.list-table td:nth-child(6) {
+  width: 130px;
+  text-align: center;
+}
+
+.list-table th:nth-child(7), /* Địa chỉ */
+.list-table td:nth-child(7) {
+  width: 400px;
+}
+
+.list-table th:nth-child(8), /* Số điện thoại */
+.list-table td:nth-child(8) {
+  width: 130px;
+  text-align: center;
+}
+
+.list-table th:nth-child(9), /* Nghề nghiệp */
+.list-table td:nth-child(9) {
+  width: 140px;
+  text-align: center;
+}
+
+.list-table th:nth-child(10), /* Ghi chú */
+.list-table td:nth-child(10) {
+  width: 100px;
+}
+
+/* Nút bấm */
+/* .action-buttons {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 1000;
+} */
+
+.action-buttons {
+  display: flex;
+  justify-content: flex-end;
+  padding: 20px;
+  background-color: #f5f5f5;
+  border-top: 1px solid #ccc;
+  margin-top: 20px;
+}
+
+button {
+    display: block;
+    margin: 20px auto;
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+    margin-bottom: 5px;
+}
+
+button:hover {
+    background-color: #0056b3;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
