@@ -4,10 +4,10 @@ const router = () => {
 
   if (!accessToken && currentPath !== "/login/index.html") {
     localStorage.removeItem("accessToken");
-    window.location.assign("/login/index.html");
+    window.location.assign("../login/index.html");
   } else if (accessToken && currentPath === "/login/index.html") {
     localStorage.removeItem("accessToken");
-    window.location.assign("/login/index.html");
+    window.location.assign("../login/index.html");
   }
 };
 
