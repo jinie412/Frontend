@@ -5,6 +5,8 @@ function calculateAge(birthDate) {
   return currentYear - birthYear;
   }
 
+
+
 // Lấy dữ liệu bệnh nhân từ sessionStorage
 const patientData = JSON.parse(sessionStorage.getItem('patientData'));
 
