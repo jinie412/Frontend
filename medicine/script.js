@@ -2,26 +2,33 @@ let isEditMode = false;
 let isDeleteMode = false;
 let selectedRows = new Set();
 
-const medicineData = [
-    {
-        id: 1,
-        name: "Paracetamol",
-        unit: "Viên",
-        inputQuantity: 1000,
-        remainingQuantity: 850,
-        usage: "2 viên/ngày",
-        price: 2000
-    },
-    {
-        id: 2,
-        name: "Amoxicillin",
-        unit: "Viên",
-        inputQuantity: 500,
-        remainingQuantity: 320,
-        usage: "3 viên/ngày",
-        price: 5000
+let medicineData = [];
+// Function to fetch medicine data from the backend
+async function fetchMedicineData() {
+    try {
+        const response = await fetch('http://localhost:3000/api/thuoc');
+        const result = await response.json();
+        if (result.success) {
+            medicineData = result.data.map(medicine => ({
+                id: medicine.mathuoc,
+                name: medicine.tenthuoc,
+                unit: medicine.donvitinh.tendonvi,
+                inputQuantity: medicine.soluongnhap,
+                remainingQuantity: medicine.soluongcon,
+                usage: medicine.cachdungthuocs.length > 0 ? medicine.cachdungthuocs[0].cachdung.motacachdung : '',
+                price: parseFloat(medicine.dongia)
+            }));
+            populateTable(medicineData);
+        } else {
+            console.error('Failed to fetch medicine data');
+        }
+    } catch (error) {
+        console.error('Error fetching medicine data:', error);
     }
-];
+}
+
+fetchMedicineData();
+
 
 function populateTable() {
     const tbody = document.querySelector('#medicineTable tbody');
