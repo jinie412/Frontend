@@ -1,211 +1,25 @@
-// // Danh sách mẫu bệnh nhân
-// const patients = [
-//   {
-//     id: "BN0001",
-//     name: "Nguyễn Văn A",
-//     gender: "Nam",
-//     ethnicity: "Kinh",
-//     birthDate: "01/01/1989",
-//     address: "Phường 10, Quận 5, TP. HCM",
-//     phone: "0927382912",
-//     job: "Kỹ sư",
-//     notes: ""
-//   },
-//   {
-//     id: "BN0002",
-//     name: "Trần Thị B",
-//     gender: "Nữ",
-//     ethnicity: "Kinh",
-//     birthDate: "12/12/1990",
-//     address: "Phường 3, Quận 10, TP. HCM",
-//     phone: "0378272919",
-//     job: "Nội trợ",
-//     notes: ""
-//   },
-//   {
-//     id: "BN0003",
-//     name: "Nguyễn Văn C",
-//     gender: "Nam",
-//     ethnicity: "Kinh",
-//     birthDate: "01/01/1989",
-//     address: "Phường 10, Quận 5, TP. HCM",
-//     phone: "0927382912",
-//     job: "Kỹ sư",
-//     notes: ""
-//   },
-//   {
-//     id: "BN0004",
-//     name: "Nguyễn Văn D",
-//     gender: "Nam",
-//     ethnicity: "Kinh",
-//     birthDate: "01/01/1989",
-//     address: "162 Lý Thường Kiệt, Phường 10, Quận 5, TP. HCM",
-//     phone: "0927382912",
-//     job: "Kỹ sư",
-//     notes: ""
-//   },
-//   {
-//     id: "BN0005",
-//     name: "Nguyễn Văn E",
-//     gender: "Nam",
-//     ethnicity: "Kinh",
-//     birthDate: "01/01/1989",
-//     address: "Phường 10, Quận 5, TP. HCM",
-//     phone: "0927382912",
-//     job: "Kỹ sư",
-//     notes: ""
-//   },
-//   {
-//     id: "BN0006",
-//     name: "Nguyễn Văn G",
-//     gender: "Nam",
-//     ethnicity: "Kinh",
-//     birthDate: "01/01/1989",
-//     address: "Phường 10, Quận 5, TP. HCM",
-//     phone: "0927382912",
-//     job: "Kỹ sư",
-//     notes: ""
-//   },
-//   {
-//     id: "BN0007",
-//     name: "Nguyễn Văn H",
-//     gender: "Nam",
-//     ethnicity: "Kinh",
-//     birthDate: "01/01/1989",
-//     address: "Phường 10, Quận 5, TP. HCM",
-//     phone: "0927382912",
-//     job: "Kỹ sư",
-//     notes: ""
-//   },
-//   {
-//     id: "BN0008",
-//     name: "Trần Thị I",
-//     gender: "Nữ",
-//     ethnicity: "Kinh",
-//     birthDate: "12/12/1990",
-//     address: "Phường 3, Quận 10, TP. HCM",
-//     phone: "0378272919",
-//     job: "Nội trợ",
-//     notes: ""
-//   },
-//   {
-//     id: "BN0009",
-//     name: "Trần Thị K",
-//     gender: "Nữ",
-//     ethnicity: "Kinh",
-//     birthDate: "12/12/1990",
-//     address: "Phường 3, Quận 10, TP. HCM",
-//     phone: "0378272919",
-//     job: "Nội trợ",
-//     notes: ""
-//   },
-//   {
-//     id: "BN0010",
-//     name: "Trần Thị L",
-//     gender: "Nữ",
-//     ethnicity: "Kinh",
-//     birthDate: "12/12/1990",
-//     address: "Phường 3, Quận 10, TP. HCM",
-//     phone: "0378272919",
-//     job: "Nội trợ",
-//     notes: ""
-//   },
-//   {
-//     id: "BN0011",
-//     name: "Trần Thị M",
-//     gender: "Nữ",
-//     ethnicity: "Kinh",
-//     birthDate: "12/12/1990",
-//     address: "Phường 3, Quận 10, TP. HCM",
-//     phone: "0378272919",
-//     job: "Nội trợ",
-//     notes: ""
-//   },
-//   {
-//     id: "BN0012",
-//     name: "Trần Thị N",
-//     gender: "Nữ",
-//     ethnicity: "Kinh",
-//     birthDate: "12/12/1990",
-//     address: "Phường 3, Quận 10, TP. HCM",
-//     phone: "0378272919",
-//     job: "Nội trợ",
-//     notes: ""
-//   },
-//   {
-//     id: "BN0013",
-//     name: "Trần Thị O",
-//     gender: "Nữ",
-//     ethnicity: "Kinh",
-//     birthDate: "12/12/1990",
-//     address: "Phường 3, Quận 10, TP. HCM",
-//     phone: "0378272919",
-//     job: "Nội trợ",
-//     notes: ""
-//   },
-//   {
-//     id: "BN0014",
-//     name: "Trần Thị Q",
-//     gender: "Nữ",
-//     ethnicity: "Kinh",
-//     birthDate: "12/12/1990",
-//     address: "Phường 3, Quận 10, TP. HCM",
-//     phone: "0378272919",
-//     job: "Nội trợ",
-//     notes: ""
-//   },
-//   {
-//     id: "BN0015",
-//     name: "Trần Thị R",
-//     gender: "Nữ",
-//     ethnicity: "Kinh",
-//     birthDate: "12/12/1990",
-//     address: "Phường 3, Quận 10, TP. HCM",
-//     phone: "0378272919",
-//     job: "Nội trợ",
-//     notes: ""
-//   },
-//   {
-//     id: "BN0016",
-//     name: "Trần Thị S",
-//     gender: "Nữ",
-//     ethnicity: "Kinh",
-//     birthDate: "12/12/1990",
-//     address: "Phường 3, Quận 10, TP. HCM",
-//     phone: "0378272919",
-//     job: "Nội trợ",
-//     notes: ""
-//   },
-//   {
-//     id: "BN0017",
-//     name: "Trần Thị T",
-//     gender: "Nữ",
-//     ethnicity: "Kinh",
-//     birthDate: "12/12/1990",
-//     address: "Phường 3, Quận 10, TP. HCM",
-//     phone: "0378272919",
-//     job: "Nội trợ",
-//     notes: ""
-//   },
-//   {
-//     id: "BN0018",
-//     name: "Trần Thị U",
-//     gender: "Nữ",
-//     ethnicity: "Kinh",
-//     birthDate: "12/12/1990",
-//     address: "Phường 3, Quận 10, TP. HCM",
-//     phone: "0378272919",
-//     job: "Nội trợ",
-//     notes: ""
-//   }
-// ];
+// Function to fetch patient data from the backend
+async function fetchPatientData() {
+    try {
+        const response = await fetch('http://localhost:3000/api/benh-nhan');
+        const result = await response.json();
+        if (result.success) {
+            const patients = result.data;
+            console.log(patients);
+            renderPatients(patients);
+        } else {
+            console.error('Failed to fetch patient data');
+        }
+    } catch (error) {
+        console.error('Error fetching patient data:', error);
+    }
+}
 
-fetch("http://localhost:3000/api/benhnhan")
-.then(response => response.json())
-.then(patients => {
+// Call the function to fetch patient data
+fetchPatientData();
 
 // Render danh sách bệnh nhân
-function renderPatients() {
+function renderPatients(patients) {
   const patientList = document.getElementById("patient-list");
   patientList.innerHTML = patients
     .map(
@@ -288,4 +102,3 @@ function selectPatient(patientId) {
   sessionStorage.setItem("selectedPatient", JSON.stringify(selectedPatient)); // Lưu thông tin vào sessionStorage
   window.location.href = "patient-info.html"; // Chuyển hướng tới Trang nhận bệnh 2
 }
-});

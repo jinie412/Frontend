@@ -8,6 +8,9 @@
     <link href="../style/setting_active.css" rel="stylesheet" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="style.css">
+
+    <script src="../checkLogin.js"></script>
+
 </head>
 
 <body>
@@ -188,7 +191,9 @@
 
         <div class="exam-group2">
           <label for="diagnosis">Chẩn đoán:</label>
-          <input type="text" id="diagnosis">
+          <select id="diagnosis" class="text-lg">
+            <!-- Options will be populated here -->
+        </select>
         </div>
 
         <div class="exam-group2">
@@ -205,17 +210,31 @@
             <input type="date" id="reexam-date" name="reexam-date">
           </div>
         </div>
+
+        <div>
+          <label for="medicine-select" class="text-lg">Chọn thuốc:</label>
+          <select id="medicine-select" class="text-lg">
+              <!-- Options will be populated here -->
+          </select>
+          <button class="text-lg" id="add-row-btn">Thêm dòng</button>
+      </div>
         
         <table id="prescription-table">
           <thead>
             <tr>
               <th>STT</th>
+              <th>Mã thuốc</th>
               <th>Tên thuốc</th>
               <th>Đơn vị</th>
               <th>Số lượng</th>
               <th>Cách dùng</th>
             </tr>
           </thead>
+
+          <tbody>
+            <!-- Các hàng dữ liệu sẽ được thêm vào đây -->
+          </tbody>
+
         </table>
       </div>
     </section>

@@ -16,6 +16,9 @@
     <link href="../style/setting_active.css" rel="stylesheet" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="style.css">
+
+    <script src="../checkLogin.js"></script>
+
 </head>
 
 <body class="m-0 p-0 flex flex-col min-h-screen bg-gray-100">
@@ -101,8 +104,8 @@
         <!-- Form nhập thông tin bệnh nhân -->
         <form id="patient-form">
             <div class="form-group1">
-                <label for="patient-id">Mã BN:</label>
-                <input type="text" id="patient-id" name="patient-id" readonly>
+                <label for="patient-id" class="text-gray-400">Mã BN:</label>
+                <input type="text" id="patient-id" name="patient-id" class="text-gray-500" readonly>
                 <label for="dob">Ngày sinh:</label>
                 <input type="date" id="dob" name="dob" required>
                 <label for="age">Tuổi:</label>

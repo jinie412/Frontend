@@ -64,13 +64,54 @@ const validation_login = (username, password) => {
   return false;
 };
 
-// Tài khoản và mật khẩu để đăng nhập
-const login = (username, password) => {
-  if (username === "admin" && password === "123456") {
-    window.location.assign("../homepage/index.html");
-    return true;
+
+// Function to generate a simple access token (for demonstration purposes)
+const generateAccessToken = () => {
+  return 'token-' + Math.random().toString(36);
+};
+
+
+// // Tài khoản và mật khẩu để đăng nhập
+// const login = (username, password) => {
+//   if (username === "admin" && password === "123456") {
+//     const accessToken = generateAccessToken();
+//     localStorage.setItem("accessToken", accessToken);
+//     window.location.assign("../homepage/index.html");
+//     return true;
+//   }
+//   return false;
+// };
+
+// Function to handle login
+const login = async (username, password) => {
+  try {
+    const response = await fetch('http://localhost:3000/api/bac-si/login', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({ username, password })
+    });
+
+    if (!response.ok) {
+      throw new Error('Network response was not ok');
+    }
+
+    const data = await response.json();
+
+    if (data.success) { // Assuming the backend returns a success flag
+      const accessToken = generateAccessToken();
+      localStorage.setItem('accessToken', accessToken);
+      console.log('Login successful');
+      window.location.assign("../homepage/index.html");
+      return true;
+    } else {
+      return false;
+    }
+  } catch (error) {
+    console.error('There was a problem with the fetch operation:', error);
+    return false;
   }
-  return false;
 };
 
 // Kiểm tra đúng/sai mật khẩu và tài khoản khi ấn nút đăng nhập
@@ -78,6 +119,8 @@ const onSubmitFormLogin = (login_form) => {
   const username = login_form.username.value;
   const password = login_form.password.value;
   const checValidation = validation_login(username, password);
+  console.log(username, password);
+  console.log(checValidation);
   if (checValidation === true) {
     const checkLogin = login(username, password);
     if (checkLogin == false) {
