@@ -44,7 +44,7 @@ document.getElementById("back-btn").addEventListener("click", function () {
   window.location.href = "../admitted_patient/index.html";
 });
 
-
+// Hàm lấy thông tin thuốc từ API
 async function fetchMedicineData() {
   try {
     const response = await fetch('http://localhost:3000/api/thuoc');
@@ -59,6 +59,7 @@ async function fetchMedicineData() {
   }
 }
 
+// Hàm điền dữ liệu vào dropdown thuốc
 function populateMedicineDropdown(medicines) {
   const select = document.getElementById('medicine-select');
   select.innerHTML = '';
@@ -70,12 +71,14 @@ function populateMedicineDropdown(medicines) {
   });
 }
 
+// Thêm sự kiện click cho nút Thêm dòng
 document.getElementById('add-row-btn').addEventListener('click', function () {
   const select = document.getElementById('medicine-select');
   const selectedMedicine = JSON.parse(select.value);
   addPrescriptionRow(selectedMedicine);
 });
 
+// Hàm thêm dòng vào bảng toa thuốc
 function addPrescriptionRow(medicine) {
   const tbody = document.querySelector('#prescription-table tbody');
   const rowCount = tbody.rows.length + 1;
@@ -95,13 +98,14 @@ function addPrescriptionRow(medicine) {
   `;
   tbody.appendChild(row);
 
-  // Add event listener to the delete button
+  // Thêm sự kiện xóa hàng
   row.querySelector('.delete-row-btn').addEventListener('click', function () {
     row.remove();
     updateRowNumbers();
   });
 }
 
+// Hàm cập nhật số thứ tự dòng trong bảng
 function updateRowNumbers() {
   const rows = document.querySelectorAll('#prescription-table tbody tr');
   rows.forEach((row, index) => {
@@ -109,6 +113,7 @@ function updateRowNumbers() {
   });
 }
 
+// Hàm lấy dữ liệu loại bệnh từ API
 async function fetchDiagnosisData() {
   try {
     const response = await fetch('http://localhost:3000/api/loai-benh');
@@ -123,6 +128,7 @@ async function fetchDiagnosisData() {
   }
 }
 
+// Hàm điền dữ liệu vào dropdown loại bệnh
 function populateDiagnosisDropdown(diagnoses) {
   const select = document.getElementById('diagnosis');
   select.innerHTML = '';
@@ -135,13 +141,17 @@ function populateDiagnosisDropdown(diagnoses) {
 }
 
 // Hàm lấy thông tin bệnh nhân từ API
-async function fetchPatientData(patientId) {
+async function fetchPatientData(patientId, medicalExaminationId) {
   try {
       const response = await fetch(`http://localhost:3000/api/benh-nhan/getkhambenh/${patientId}`);
       const result = await response.json();
       console.log('API response:', result);
       if (result.success) {
-          populatePatientData(result.data);
+          result.data.forEach(patient => {
+              if (patient.maphieukham === medicalExaminationId) {
+                  populatePatientData(patient);
+              }
+          })
       } else {
           console.error('Failed to fetch patient data');
       }
@@ -152,15 +162,17 @@ async function fetchPatientData(patientId) {
 
 function populatePatientData(patient) {
   if (!patient) {
-      console.error("No patient data provided.");
+      alert("No patient data provided.");
       return;
   }
+
+  alert("Thông tin bệnh nhân: " + patient.hoten);
 
   // Điền thông tin bệnh nhân cơ bản
   document.getElementById("patient-id").value = patient.mabenhnhan || "";
   document.getElementById("patient-name").value = patient.hoten || "";
   document.getElementById("patient-gender").value = patient.gioitinh || "";
-  document.getElementById("birth-date").value = patient.ngaysinh || "";
+  document.getElementById("birth-date").value = patient.ngaysinh.split('T')[0] || "";
   document.getElementById("address").value = patient.diachi || "";
   document.getElementById("phone").value = patient.sodienthoai || "";
   document.getElementById("job").value = patient.nghenghiep || "";
@@ -218,18 +230,20 @@ function populatePatientData(patient) {
   }
 }
 
+// Hàm tính tuổi từ ngày sinh
 function calculateAge(birthDate) {
   const birthYear = new Date(birthDate).getFullYear();
   const currentYear = new Date().getFullYear();
   return currentYear - birthYear;
 }
 
-
+// Hàm xử lý sự kiện khi trang tải xong
 document.addEventListener('DOMContentLoaded', async function () {
-  const patientId = new URLSearchParams(window.location.search).get('patientId');
+  const patientId = new URLSearchParams(window.location.search).get('patient-id');
+  const medicalExaminationId = new URLSearchParams(window.location.search).get('medical-examination-id');
   if (patientId) {
-    await fetchPatientData(patientId);
-    
+    await fetchPatientData(parseInt(patientId), parseInt(medicalExaminationId));
+    await fetchExaminationHistory(parseInt(patientId));
   } else {
     alert("Không tìm thấy thông tin bệnh nhân.");
   }
@@ -237,6 +251,7 @@ document.addEventListener('DOMContentLoaded', async function () {
   await fetchMedicineData();
 });
 
+// Lưu thông tin khám bệnh
 document.getElementById("save-btn").addEventListener("click", () => {
   const trieuchung = document.getElementById("symptoms").value;
   const tiensu = document.getElementById("medical-history").value;
@@ -303,4 +318,67 @@ document.getElementById("save-btn").addEventListener("click", () => {
       console.error('Error saving examination record:', error);
       alert('Lưu hồ sơ khám bệnh thất bại');
     });
+});
+
+// Hàm lấy lịch sử khám bệnh từ API
+function fetchExaminationHistory(patientId) {
+  fetch(`http://localhost:3000/api/benh-nhan/getkhambenh/${patientId}`)
+    .then(response => response.json())
+    .then(result => {
+      if (result.success) {
+        addExaminationHistory(result.data);
+      } else {
+        console.error('Lấy lịch sử khám bệnh thất bại');
+      }
+    })
+    .catch(error => {
+      console.error('Lỗi khi lấy lịch sử khám:', error);
+    });
+}
+
+// Hàm hiển thị lịch sử khám bệnh
+function addExaminationHistory(examinations) {
+  const tbody = document.querySelector('#history-table tbody');
+
+  tbody.innerHTML = '';
+
+  // Nếu không có lịch sử khám bệnh
+  if (!examinations || examinations.length === 0) {
+    tbody.innerHTML = `
+      <tr id="default-message">
+        <td colspan="11" style="text-align: left;">Chưa có lịch sử khám bệnh</td>
+      </tr>`;
+    return;
+  }
+
+  // Hiển thị lịch sử khám bệnh
+  examinations.forEach(exam => {
+    const row = document.createElement('tr');
+
+    const examDate = new Date(exam.ngaykham).toLocaleDateString('vi-VN');
+    const followUpDate = exam.ngaytaikham ? 
+      new Date(exam.ngaytaikham).toLocaleDateString('vi-VN') : 
+      '---';
+
+    row.innerHTML = `
+      <td>${exam.maphieukham}</td>
+      <td>${examDate}</td>
+      <td>${exam.chandoan || '---'}</td>
+      <td>${followUpDate}</td>
+    `;
+
+    tbody.appendChild(row);
+  });
+}
+
+// Thêm sự kiện cho mỗi dòng của bảng để lắng nghe sự kiện nhấn đúp
+document.getElementById("history-table-body").addEventListener("dblclick",async function (event) {
+  // Kiểm tra nếu người dùng nhấn đúp vào một dòng (trừ ô tiêu đề)
+  const row = event.target.closest("tr");
+  if (row) {
+      const cells = row.querySelectorAll("td");
+      const patientId = new URLSearchParams(window.location.search).get('patient-id');
+      const medicalExaminationId = cells[0].textContent;
+      window.location.href = `../examination_health/index.html?patient-id=${patientId}&medical-examination-id=${medicalExaminationId}`;
+  }
 });

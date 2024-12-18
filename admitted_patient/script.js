@@ -61,7 +61,7 @@ async function fetchPatientData() {
 // Function to set the patient ID to the highest ID + 1
 function setPatientId(patients) {
   if (patients.length > 0) {
-      const highestId = Math.max(...patients.map(patient => patient.id));
+      const highestId = Math.max(...patients.map(patient => patient.mabenhnhan));
       document.getElementById("patient-id").value = highestId + 1;
   } else {
       document.getElementById("patient-id").value = "Error";
@@ -74,26 +74,30 @@ function populateTable(patients) {
   const tbody = document.getElementById("patient-table");
   tbody.innerHTML = '';
   const date = document.getElementById("exam-date").value;
-  console.log(date);
+
+  // normalize date
+  const normalizeDate = (date) => {
+    return date.split("T")[0];
+  }
 
   let countSTT = 1;
   patients.forEach((patient, index) => {
-    if(patient.phieukhambenhs.length > 0 && patient.phieukhambenhs[0].ngaykham === date) {
+    if(patient.phieukhambenhs.length > 0 &&  normalizeDate(patient.phieukhambenhs[0].ngaykham) === date) {
       const row = document.createElement('tr');
-      row.setAttribute('data-id', patient.id);
+      row.setAttribute('data-id', patient.mabenhnhan);
       
       row.innerHTML = `
           <td>${countSTT}</td>
           <td class="status">${patient.phieukhambenhs.length > 0 ? patient.phieukhambenhs[0].trangthai : ''}</td>
-          <td>${patient.id}</td>
-          <td>${patient.name}</td>
-          <td>${patient.gender}</td>
-          <td>${patient.ethnicity}</td>
-          <td>${patient.birthDate}</td>
-          <td>${patient.address}</td>
-          <td>${patient.phone}</td>
-          <td>${patient.job}</td>
-          <td>${patient.notes}</td>
+          <td>${patient.mabenhnhan}</td>
+          <td>${patient.hoten}</td>
+          <td>${patient.gioitinh}</td>
+          <td>${patient.dantoc}</td>
+          <td>${normalizeDate(patient.ngaysinh)}</td>
+          <td>${patient.diachi}</td>
+          <td>${patient.sodienthoai}</td>
+          <td>${patient.nghenghiep}</td>
+          <td>${patient.ghichu}</td>
       `;
       tbody.appendChild(row);
       countSTT++;
@@ -228,34 +232,35 @@ document.addEventListener("DOMContentLoaded", function () {
 // selectedRow = null;
 // });
 
+// Function to add a new patient to the table
 document.getElementById("btn-save").addEventListener("click", async function (event) {
   event.preventDefault(); // Prevent the form from submitting normally
 
   // Get values from the form
-  const patientId = document.getElementById("patient-id").value;
-  const name = document.getElementById("name").value.trim();
-  const gender = document.getElementById("gender").value.trim();
-  const ethnicity = document.getElementById("ethnicity").value.trim();
-  const dob = document.getElementById("dob").value.trim();
-  const address = document.getElementById("address").value.trim();
-  const phone = document.getElementById("phone").value.trim();
-  const job = document.getElementById("job").value.trim();
-  const notes = document.getElementById("notes").value.trim();
+  const mabenhnhan = document.getElementById("patient-id").value;
+  const hoten = document.getElementById("name").value.trim();
+  const gioitinh = document.getElementById("gender").value.trim();
+  const dantoc = document.getElementById("ethnicity").value.trim();
+  const ngaysinh = document.getElementById("dob").value.trim();
+  const diachi = document.getElementById("address").value.trim();
+  const sodienthoai = document.getElementById("phone").value.trim();
+  const nghenghiep = document.getElementById("job").value.trim();
+  const ghichu = document.getElementById("notes").value.trim();
 
   const patient = {
-      id: patientId,
-      name,
-      gender,
-      ethnicity,
-      birthDate: dob,
-      address,
-      phone,
-      job,
-      notes
+      mabenhnhan,
+      hoten,
+      gioitinh,
+      dantoc,
+      ngaysinh,
+      diachi,
+      sodienthoai,
+      nghenghiep,
+      ghichu
   };
 
   try {
-      const response = await fetch('http://localhost:3000/api/benh-nhan/new', {
+      const response = await fetch('http://localhost:3000/api/benh-nhan/add', {
           method: 'POST',
           headers: {
               'Content-Type': 'application/json'
@@ -353,25 +358,50 @@ document.getElementById("patient-table").addEventListener("click", function (eve
   }
 });
 
+// Lấy mã phiếu khám từ mã bệnh nhân
+const getMedicalExaminationID = async (patientId) => {
+  try {
+    const response = await fetch(`http://localhost:3000/api/benh-nhan/getkhambenh/${patientId}`);
+    const result = await response.json();
+
+    if (result.success) {
+      // let medicalExamination = undefined;
+
+      // for (let i = 0; i < result.data.length; i++) {
+      //   if (String(result.data[i].mabenhnhan) === patientId) {
+      //     medicalExamination = result.data[i];
+      //     break; 
+      //   }
+      // }
+      // return medicalExamination ? medicalExamination.maphieukham : undefined;
+
+      return result.data.length > 0 ? result.data[0].maphieukham : undefined;
+    } else {
+      console.error('Failed to fetch medical examination ID');
+      return undefined;
+    }
+  } catch (error) {
+    console.error('Error fetching medical examination ID:', error);
+    return undefined;
+  }
+};
+
 // Xử lý nút Khám bệnh
-document.getElementById("btn-exam").addEventListener("click", function () {
+document.getElementById("btn-exam").addEventListener("click", async function () {
   if (selectedRow) {
     const patientId = selectedRow.cells[2].innerText; // Lấy mã bệnh nhân từ bảng
-    // const patientData = {
-    //   id: patientId,
-    //   name: selectedRow.cells[3].innerText, // Lấy tên bệnh nhân
-    //   gender: selectedRow.cells[4].innerText, // Lấy giới tính
-    //   ethnicity: selectedRow.cells[5].innerText, //Lấy dân tộc
-    //   birthDate: selectedRow.cells[6].innerText, // Lấy ngày sinh
-    //   address: selectedRow.cells[7].innerText, // Lấy địa chỉ
-    //   phone: selectedRow.cells[8].innerText, // Lấy điện thoại
-    //   job: selectedRow.cells[9].innerText, // Lấy nghề nghiệp
-    // };
-
-    // // Lưu thông tin bệnh nhân vào sessionStorage
-    // sessionStorage.setItem('patientData', JSON.stringify(patientData));
-    // Chuyển hướng sang Trang khám bệnh
-    window.location.href = "../examination_health/index.html?patientId=" + patientId;
+    try {
+      const medicalExaminationId = await getMedicalExaminationID(patientId);
+      
+      if (medicalExaminationId) {
+        window.location.href = `../examination_health/index.html?patient-id=${patientId}&medical-examination-id=${medicalExaminationId}`;
+      } else {
+        alert("Không tìm thấy phiếu khám cho bệnh nhân này.");
+      }
+    } catch (error) {
+      console.error('Error:', error);
+      alert("Có lỗi xảy ra khi tìm phiếu khám.");
+    }
   } else {
     alert("Vui lòng chọn một bệnh nhân để khám bệnh.");
   }
@@ -420,6 +450,7 @@ document
 document
   .getElementById("filter-examined")
   .addEventListener("change", filterPatients);
+
 
 // // Lấy thông tin bệnh nhân từ localStorage
 // window.onload = function() {
