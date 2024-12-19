@@ -82,7 +82,11 @@ function populateTable(patients) {
 
   let countSTT = 1;
   patients.forEach((patient, index) => {
-    if(patient.phieukhambenhs.length > 0 &&  normalizeDate(patient.phieukhambenhs[0].ngaykham) === date) {
+    const matchedDates = patient.phieukhambenhs.filter(phieu => {
+      const ngayKham = normalizeDate(phieu.ngaykham);
+      return ngayKham === date;
+    });
+    if(matchedDates.length > 0) {
       const row = document.createElement('tr');
       row.setAttribute('data-id', patient.mabenhnhan);
       

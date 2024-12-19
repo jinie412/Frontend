@@ -26,15 +26,15 @@ function renderPatients(patients) {
       (patient, index) => `
       <tr ondblclick="selectPatient('${patient.id}')">
         <td>${index + 1}</td>
-        <td>${patient.id}</td>
-        <td>${patient.name}</td>
-        <td>${patient.gender}</td>
-        <td>${patient.ethnicity}</td>
-        <td>${patient.birthDate}</td>
-        <td>${patient.address}</td>
-        <td>${patient.phone}</td>
-        <td>${patient.job}</td>
-        <td>${patient.notes}</td>
+        <td>${patient.mabenhnhan}</td>
+        <td>${patient.hoten}</td>
+        <td>${patient.gioitinh}</td>
+        <td>${patient.dantoc}</td>
+        <td>${patient.ngaysinh.split('T')[0]}</td>
+        <td>${patient.diachi}</td>
+        <td>${patient.sodienthoai}</td>
+        <td>${patient.nghenghiep}</td>
+        <td>${patient.ghichu}</td>
       </tr>
     `
     )

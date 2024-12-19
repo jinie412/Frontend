@@ -251,74 +251,248 @@ document.addEventListener('DOMContentLoaded', async function () {
   await fetchMedicineData();
 });
 
+// // Lưu thông tin khám bệnh
+// document.getElementById("save-btn").addEventListener("click", () => {
+//   const trieuchung = document.getElementById("symptoms").value;
+//   const tiensu = document.getElementById("medical-history").value;
+//   const diung = document.getElementById("allergy").value;
+//   const mach = document.getElementById("pulse").value;
+//   const nhietdo = document.getElementById("temperature").value;
+//   const huyetap = document.getElementById("blood-pressure").value;
+//   const nhiptho = document.getElementById("respiration").value;
+//   const chieucao = document.getElementById("height").value;
+//   const cannang = document.getElementById("weight").value;
+//   const lydokham = document.getElementById("reason").value;
+//   const ghichukham = document.getElementById("notes").value;
+//   const loidan = document.getElementById("advice").value;
+//   const ngaytaikham = document.getElementById("reexam-date").value;
+//   const ngaykham = new Date().toISOString().split("T")[0];
+//   const mabenhnhan = document.getElementById("patient-id").value;
+//   const maloaibenh = document.getElementById("diagnosis").value;
+//   const prescriptionRows = document.querySelectorAll('#prescription-table tbody tr');
+//   const trangthai = "Đã khám";
+//   const patientId = new URLSearchParams(window.location.search).get('patient-id');
+//   const medicalExaminationId = new URLSearchParams(window.location.search).get('medical-examination-id');
+
+//   const toaThuoc = Array.from(prescriptionRows).map(row => {
+//     const maphieukham = medicalExaminationId;
+//     const mathuoc = row.querySelector('td:nth-child(2)').textContent;
+//     const soluong = row.querySelector('td:nth-child(5) input').value;
+//     return {maphieukham, mathuoc, soluong };
+//   });
+
+//   const phieuKhamBenh = {
+//     ngaykham,
+//     trieuchung,
+//     mach,
+//     nhietdo,
+//     huyetap,
+//     nhiptho,
+//     chieucao,
+//     cannang,
+//     lydokham,
+//     ghichukham,
+//     loidan,
+//     ngaytaikham,
+//     trangthai,
+//     mabenhnhan,
+//   };
+
+//   const loaiBenh = {
+//     maphieukham: medicalExaminationId,
+//     maloaibenh
+//   }
+
+//   const benhNhan = {
+//     mabenhnhan: patientId,
+//     tiensu,
+//     diung
+//   }
+  
+//   // Lưu thông tin toa thuốc
+//   fetch(`http://localhost:3000/api/toa-thuoc/add`, {
+//     method: 'POST',
+//     headers: {
+//       'Content-Type': 'application/json'
+//     },
+//     body: JSON.stringify(toaThuoc)
+//   })
+//     .then(response => response.json())
+//     .then(result => {
+//       if (!result.success) {
+//         alert('Lưu thông tin toa thuốc thất bại');
+//       }
+//     })
+//     .catch(error => {
+//       console.error('Error saving examination record:', error);
+//       alert('Lỗi khi lưu thông tin toa thuốc:', error);
+//     });
+
+//   // Lưu thông tin loại bệnh trong phiếu khám
+//   fetch(`http://localhost:3000/api/loai-benh-trong-phieu-kham/add`, {
+//     method: 'POST',
+//     headers: {
+//       'Content-Type': 'application/json'
+//     },
+//     body: JSON.stringify(loaiBenh)
+//   })
+//     .then(response => response.json())
+//     .then(result => {
+//       if (!result.success) {
+//         alert('Lưu thông tin loại bệnh thất bại');
+//       }
+//     })
+//     .catch(error => {
+//       console.error('Error saving examination record:', error);
+//       alert('Lỗi khi lưu thông tin loại bệnh:', error);
+//     });
+  
+//   // Lưu thông tin bệnh nhân
+//   fetch(`http://localhost:3000/api/benh-nhan/update/${patientId}`, {
+//     method: 'PUT',
+//     headers: {
+//       'Content-Type': 'application/json'
+//     },
+//     body: JSON.stringify(benhNhan)
+//   })
+//     .then(response => response.json())
+//     .then(result => {
+//       if (!result.success) {
+//         alert('Lưu thông tin bệnh nhân thất bại');
+//       }
+//     })
+//     .catch(error => {
+//       console.error('Error saving examination record:', error);
+//       alert('Lỗi khi lưu thông tin bệnh nhân:', error);
+//     });
+
+//   // Lưu thông tin khám bệnh
+//   fetch(`http://localhost:3000/api/phieu-kham-benh/update/${medicalExaminationId}`, {
+//     method: 'PUT',
+//     headers: {
+//       'Content-Type': 'application/json'
+//     },
+//     body: JSON.stringify(phieuKhamBenh)
+//   })
+//     .then(response => response.json())
+//     .then(result => {
+//       if (result.success) {
+//         alert('Lưu hồ sơ khám bệnh thành công');
+//         window.location.href = '../admitted_patient/index.html';
+//       } else {
+//         alert('lưu hồ sơ khám bệnh thất bại');
+//       }
+//     })
+//     .catch(error => {
+//       alert('Lưu hồ sơ khám bệnh thất bại', error);
+//     });
+// });
+
 // Lưu thông tin khám bệnh
-document.getElementById("save-btn").addEventListener("click", () => {
-  const trieuchung = document.getElementById("symptoms").value;
-  const tiensu = document.getElementById("medical-history").value;
-  const diung = document.getElementById("allergy").value;
-  const mach = document.getElementById("pulse").value;
-  const nhietdo = document.getElementById("temperature").value;
-  const huyetap = document.getElementById("blood-pressure").value;
-  const nhiptho = document.getElementById("respiration").value;
-  const chieucao = document.getElementById("height").value;
-  const cannang = document.getElementById("weight").value;
-  const lydokham = document.getElementById("reason").value;
-  const ghichukham = document.getElementById("notes").value;
-  const loidan = document.getElementById("advice").value;
-  const ngaytaikham = document.getElementById("reexam-date").value;
-  const ngaykham = new Date().toISOString().split("T")[0];
-  const mabenhnhan = document.getElementById("patient-id").value;
-  const maloaibenh = document.getElementById("diagnosis").value;
-  const prescriptionRows = document.querySelectorAll('#prescription-table tbody tr');
-  const trangthai = "Đã khám";
-  const thuoc = Array.from(prescriptionRows).map(row => {
-    const mathuoc = row.querySelector('td:nth-child(2)').textContent;
-    const soluong = row.querySelector('td:nth-child(5) input').value;
-    return { mathuoc, soluong };
-  });
+document.getElementById("save-btn").addEventListener("click", async () => {
+  try {
+    const trieuchung = document.getElementById("symptoms").value;
+    const tiensu = document.getElementById("medical-history").value;
+    const diung = document.getElementById("allergy").value;
+    const mach = document.getElementById("pulse").value;
+    const nhietdo = document.getElementById("temperature").value;
+    const huyetap = document.getElementById("blood-pressure").value;
+    const nhiptho = document.getElementById("respiration").value;
+    const chieucao = document.getElementById("height").value;
+    const cannang = document.getElementById("weight").value;
+    const lydokham = document.getElementById("reason").value;
+    const ghichukham = document.getElementById("notes").value;
+    const loidan = document.getElementById("advice").value;
+    const ngaytaikham = document.getElementById("reexam-date").value;
+    const ngaykham = new Date().toISOString().split("T")[0];
+    const mabenhnhan = document.getElementById("patient-id").value;
+    const maloaibenh = document.getElementById("diagnosis").value;
+    const prescriptionRows = document.querySelectorAll("#prescription-table tbody tr");
+    const trangthai = "Đã khám";
+    const patientId = new URLSearchParams(window.location.search).get("patient-id");
+    const medicalExaminationId = new URLSearchParams(window.location.search).get("medical-examination-id");
 
-  const data = {
-    tiensu,
-    diung,
-    trieuchung,
-    mach,
-    nhietdo,
-    huyetap,
-    nhiptho,
-    chieucao,
-    cannang,
-    lydokham,
-    ghichukham,
-    loidan,
-    ngaykham,
-    ngaytaikham,
-    trangthai,
-    mabenhnhan,
-    maloaibenh,
-    thuoc
-  };
+    // Chuẩn bị dữ liệu
+    const toaThuoc = Array.from(prescriptionRows).map(row => ({
+      maphieukham: medicalExaminationId,
+      mathuoc: row.querySelector("td:nth-child(2)").textContent,
+      soluong: row.querySelector("td:nth-child(5) input").value,
+    }));
 
-  fetch('http://localhost:3000/api/phieu-kham-benh/add', {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json'
-    },
-    body: JSON.stringify(data)
-  })
-    .then(response => response.json())
-    .then(result => {
-      if (result.success) {
-        alert('Lưu hồ sơ khám bệnh thành công');
-        window.location.href = '../admitted_patient/index.html';
-      } else {
-        alert('Lưu hồ sơ khám bệnh thất bại');
-      }
-    })
-    .catch(error => {
-      console.error('Error saving examination record:', error);
-      alert('Lưu hồ sơ khám bệnh thất bại');
-    });
+    const phieuKhamBenh = {
+      ngaykham,
+      trieuchung,
+      mach,
+      nhietdo,
+      huyetap,
+      nhiptho,
+      chieucao,
+      cannang,
+      lydokham,
+      ghichukham,
+      loidan,
+      ngaytaikham,
+      trangthai,
+      mabenhnhan,
+    };
+
+    const loaiBenh = {
+      maphieukham: medicalExaminationId,
+      maloaibenh,
+    };
+
+    const benhNhan = {
+      mabenhnhan: patientId,
+      tiensu,
+      diung,
+    };
+
+    // Tạo các request API
+    const apiRequests = [
+      fetch(`http://localhost:3000/api/toa-thuoc/add`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(toaThuoc),
+      }),
+      fetch(`http://localhost:3000/api/loai-benh-trong-phieu-kham/add`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(loaiBenh),
+      }),
+      fetch(`http://localhost:3000/api/benh-nhan/update/${patientId}`, {
+        method: "PUT",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(benhNhan),
+      }),
+      fetch(`http://localhost:3000/api/phieu-kham-benh/update/${medicalExaminationId}`, {
+        method: "PUT",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(phieuKhamBenh),
+      }),
+    ];
+
+    // Gửi đồng thời các request
+    const responses = await Promise.all(apiRequests);
+
+    // Kiểm tra kết quả từng request
+    const failedResponses = await Promise.all(
+      responses.map(async res => (res.ok ? null : await res.json()))
+    );
+
+    if (failedResponses.some(response => response)) {
+      console.error("Một số yêu cầu thất bại", failedResponses);
+      alert("Lưu thông tin thất bại. Vui lòng kiểm tra lại!");
+      return;
+    }
+
+    alert("Lưu hồ sơ khám bệnh thành công!");
+    window.location.href = "../admitted_patient/index.html";
+  } catch (error) {
+    console.error("Lỗi khi lưu hồ sơ khám bệnh:", error);
+    alert("Đã xảy ra lỗi trong quá trình lưu. Vui lòng thử lại!");
+  }
 });
+
 
 // Hàm lấy lịch sử khám bệnh từ API
 function fetchExaminationHistory(patientId) {
