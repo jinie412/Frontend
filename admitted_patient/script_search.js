@@ -106,39 +106,104 @@ const getMedicalExaminationID = async (patientId) => {
     }
 };
 
-// Thêm sự kiện cho mỗi dòng của bảng để lắng nghe sự kiện nhấn đúp
-document.getElementById("resultTableBody").addEventListener("dblclick",async function (event) {
-    // Kiểm tra nếu người dùng nhấn đúp vào một dòng (trừ ô tiêu đề)
-    const row = event.target.closest("tr");
-    if (row) {
-        const cells = row.querySelectorAll("td");
-        // Lấy thông tin bệnh nhân từ các ô trong dòng
-        const patient = {
-            mabenhnhan: cells[1].innerText,
-            hoten: cells[2].innerText,
-            gioitinh: cells[3].innerText,
-            dantoc: cells[4].innerText,
-            ngaysinh: cells[5].innerText,
-            diachi: cells[6].innerText,
-            sodienthoai: cells[7].innerText,
-            nghenghiep: cells[8].innerText,
-            ghichu: cells[9].innerText
-        };
+let selectedRow = null;
 
-        // Lưu thông tin bệnh nhân vào localStorage để chuyển sang trang khác
-        // localStorage.setItem("patientData", JSON.stringify(patient));
+// Thêm sự kiện chọn dòng
+document.getElementById("resultTableBody").addEventListener("click", function (event) {
+    const clickedCell = event.target.closest("td");
+    if (clickedCell) {
+        const clickedRow = clickedCell.parentElement;
+        if (selectedRow) {
+            selectedRow.classList.remove("selected-row");
+        }
+        selectedRow = clickedRow;
+        selectedRow.classList.add("selected-row");
+    }
+});
 
+// Hàm thêm sự kiện cho nút xem phiếu khám
+document.getElementById("viewRecordButton").addEventListener("click", async function () {
+    if(selectedRow){
+        const patientId = selectedRow.cells[1].innerText;
         try{
-            const medicalExaminationId = await getMedicalExaminationID(patient.mabenhnhan);
+            const medicalExaminationId = await getMedicalExaminationID(patientId);
             if(medicalExaminationId){
                 // Chuyển hướng đến phiếu khám bệnh
-                window.location.href = `../examination_health/index.html?patient-id=${patient.mabenhnhan}&medical-examination-id=${medicalExaminationId}`;
+                window.location.href = `../examination_health/index.html?patient-id=${patientId}&medical-examination-id=${medicalExaminationId}`;
             }else{
                 alert("Không tìm thấy mã phiếu khám bệnh của bệnh nhân này.");
             }
         }catch(error){
             alert("Lỗi khi lấy mã phiếu khám bệnh: " + error.message);
         }
+    }
+})
 
+// Hàm thêm sự kiện cho nút thêm phiếu khám bệnh
+document.getElementById("addRecordButton").addEventListener("click", async function () {
+    if(selectedRow){
+        const patientId = selectedRow.cells[1].innerText;
+        const date = new Date().toISOString().split('T')[0];
+        try{
+            const response = await fetch(`http://localhost:3000/api/phieu-kham-benh/new`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    mabenhnhan: patientId,
+                    ngaykham: date,
+                })
+            })
+            const result = await response.json();
+            if(result.success){
+                alert("Thêm phiếu khám bệnh thành công.");
+                window.location.href = `../examination_health/index.html?patient-id=${patientId}&medical-examination-id=${result.data.maphieukham}`;
+            }else{
+                alert("Thêm phiếu khám bệnh thất bại.");
+            }
+        }catch(error){
+            alert("Lỗi khi thêm phiếu khám bệnh: " + error.message);
+        }
+    }else{
+        alert("Vui lòng chọn một bệnh nhân để thêm phiếu khám bệnh.");
     }
 });
+
+
+// // Thêm sự kiện cho mỗi dòng của bảng để lắng nghe sự kiện nhấn đúp
+// document.getElementById("resultTableBody").addEventListener("dblclick",async function (event) {
+//     // Kiểm tra nếu người dùng nhấn đúp vào một dòng (trừ ô tiêu đề)
+//     const row = event.target.closest("tr");
+//     if (row) {
+//         const cells = row.querySelectorAll("td");
+//         // Lấy thông tin bệnh nhân từ các ô trong dòng
+//         const patient = {
+//             mabenhnhan: cells[1].innerText,
+//             hoten: cells[2].innerText,
+//             gioitinh: cells[3].innerText,
+//             dantoc: cells[4].innerText,
+//             ngaysinh: cells[5].innerText,
+//             diachi: cells[6].innerText,
+//             sodienthoai: cells[7].innerText,
+//             nghenghiep: cells[8].innerText,
+//             ghichu: cells[9].innerText
+//         };
+
+//         // Lưu thông tin bệnh nhân vào localStorage để chuyển sang trang khác
+//         // localStorage.setItem("patientData", JSON.stringify(patient));
+
+//         try{
+//             const medicalExaminationId = await getMedicalExaminationID(patient.mabenhnhan);
+//             if(medicalExaminationId){
+//                 // Chuyển hướng đến phiếu khám bệnh
+//                 window.location.href = `../examination_health/index.html?patient-id=${patient.mabenhnhan}&medical-examination-id=${medicalExaminationId}`;
+//             }else{
+//                 alert("Không tìm thấy mã phiếu khám bệnh của bệnh nhân này.");
+//             }
+//         }catch(error){
+//             alert("Lỗi khi lấy mã phiếu khám bệnh: " + error.message);
+//         }
+
+//     }
+// });

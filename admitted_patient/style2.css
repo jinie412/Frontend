@@ -16,6 +16,10 @@ h2 {
     margin-bottom: 15px;
 }
 
+.selected-row {
+  background-color: #cce5ff;
+}
+
 /* Khu vực tìm kiếm */
 .search-section, .list-section {
     padding: 20px;
