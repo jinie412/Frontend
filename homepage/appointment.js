@@ -1,36 +1,29 @@
-const appointments = [
-  {
-    id: 1,
-    name: "Nguyễn Văn A",
-    phone: "0909123123",
-    disease: "Viêm phổi",
-    status: "Đã khám",
-  },
-  {
-    id: 2,
-    name: "Trần Thị B",
-    phone: "0707456456",
-    disease: "Viêm họng",
+async function fetchAndRenderAppointments() {
+  try {
+    const response = await fetch('http://localhost:3000/api/benh-nhan/getkhambenh');
+    const data = await response.json();
 
-    status: "Chưa khám",
-  },
-  {
-    id: 3,
-    name: "Lê Văn C",
-    phone: "0909333444",
-    disease: "Đau mắt",
+    const appointments = data.data.map((patient, index) => {
+      if (!patient.phieukhambenhs || patient.phieukhambenhs.length === 0) {
+        console.error('No visit records found for patient:', patient);
+        return null;
+      }
+      const firstVisit = patient.phieukhambenhs[0]; // Access the first visit record
+      return {
+        stt: index + 1, // Sequential number
+        id: patient.mabenhnhan,
+        name: patient.hoten,
+        phone: patient.sodienthoai,
+        disease: firstVisit.lydokham, // Reason for the visit from the first visit record
+        status: firstVisit.trangthai, // Status of the visit from the first visit record
+      };
+    }).filter(appointment => appointment !== null); // Filter out null values
 
-    status: "Chưa khám",
-  },
-  {
-    id: 4,
-    name: "Lê Văn C",
-    phone: "0909333444",
-    disease: "Viêm phế quản",
-
-    status: "Chưa khám",
-  },
-];
+    renderAppointments(appointments);
+  } catch (error) {
+    console.error('Error fetching appointments:', error);
+  }
+}
 
 function renderAppointments(appointments) {
   const tableBody = document.querySelector(".appointmentTable tbody");
@@ -42,7 +35,7 @@ function renderAppointments(appointments) {
       appointment.status === "Đã khám" ? "đã-khám" : "chưa-khám";
 
     row.innerHTML = `
-        <td class="py-3 px-4">${appointment.id}</td>
+        <td class="py-3 px-4">${appointment.stt}</td>
         <td class="py-3 px-4">
           ${appointment.name}<br>
           <small class="text-gray-500">${appointment.phone}</small>
@@ -57,4 +50,5 @@ function renderAppointments(appointments) {
   });
 }
 
-renderAppointments(appointments);
+// Fetch and render appointments on page load
+fetchAndRenderAppointments();
