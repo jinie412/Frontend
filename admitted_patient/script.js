@@ -1,10 +1,5 @@
 let patientCount = 0;
 
-// // Sinh mã bệnh nhân tự động
-// function generatePatientId() {
-//   return Math.floor(Math.random() * 100000);
-// }
-
 // Tính tuổi dựa vào ngày sinh
 function calculateAge(dob) {
   const birthDate = new Date(dob);
@@ -21,11 +16,6 @@ function calculateAge(dob) {
   }
   return age;
 }
-
-// // Khi trang load, sinh mã BN
-// document.addEventListener("DOMContentLoaded", function () {
-//   document.getElementById("patient-id").value = generatePatientId();
-// });
 
 // Cập nhật tuổi khi người dùng chọn ngày sinh
 document.getElementById("dob").addEventListener("change", function () {
@@ -67,7 +57,6 @@ function setPatientId(patients) {
       document.getElementById("patient-id").value = "Error";
   }
 }
-
 
 // Function to populate the table with patient data
 function populateTable(patients) {
@@ -120,125 +109,56 @@ document.addEventListener("DOMContentLoaded", function () {
   fetchPatientData();
 });
 
-// Thêm bệnh nhân vào bảng khi người dùng submit form
-// document
-//   .getElementById("btn-save")
-//   .addEventListener("click", function (event) {
-//     event.preventDefault(); // Ngăn trang không bị reload
+// Kiểm tra số lượng bệnh nhân và hiển thị thông báo
+async function checkPatientLimit() {
+  try {
+    // Lấy dữ liệu bệnh nhân
+    const patientResponse = await fetch('http://localhost:3000/api/benh-nhan/getkhambenh');
+    const patientResult = await patientResponse.json();
 
-//     // Lấy giá trị từ form
-//     const patientId = document.getElementById("patient-id").value;
-//     const name = document.getElementById("name").value.trim();
-//     const gender = document.getElementById("gender").value.trim();
-//     const ethnicity = document.getElementById("ethnicity").value.trim();
-//     const dob = document.getElementById("dob").value.trim();
-//     const address = document.getElementById("address").value.trim();
-//     const phone = document.getElementById("phone").value.trim();
-//     const job = document.getElementById("job").value.trim();
-//     const notes = document.getElementById("notes").value.trim();
+    // Lấy quy định số lượng bệnh nhân tối đa
+    const quyDinhResponse = await fetch('http://localhost:3000/api/quy-dinh');
+    const quyDinhResult = await quyDinhResponse.json();
 
-//     // Kiểm tra các trường bắt buộc
-//     // if (!name || !gender || !dob || !phone) {
-//     //   alert("Vui lòng nhập đầy đủ các thông tin bắt buộc sau: Họ và tên, Giới tính, Ngày sinh, Số điện thoại.");
-//     //   return; // Không thêm bệnh nhân nếu thông tin không hợp lệ
-//     // }
+    if (patientResult.success && quyDinhResult.success) {
+      const patients = patientResult.data;
+      const maxNumOfPatient = quyDinhResult.data[0].soluongbenhnhantoida;
+      // const maxNumOfPatient = 3;
 
-//     // Kiểm tra nếu dòng thông báo mặc định đang hiển thị và xóa nó
-//     const defaultMessage = document.getElementById("default-message");
-//     if (defaultMessage) {
-//         defaultMessage.remove();
-//     }
+      // Lấy ngày khám từ input
+      const date = document.getElementById("exam-date").value.split('T')[0];
+      let count = 0;
 
-//     // Tạo hàng mới cho bảng
-//     const table = document.getElementById("patient-table");
+      // Đếm số lượng bệnh nhân trong ngày
+      patients.forEach(patient => {
+        patient.phieukhambenhs.forEach(phieu => {
+          if (phieu.ngaykham.split('T')[0] === date) {
+            count++;
+          }
+        });
+      });
 
-//     if (selectedRow) {
-//       // Cập nhật dòng đã chọn
-//       selectedRow.cells[2].innerText = patientId;
-//       selectedRow.cells[3].innerText = name;
-//       selectedRow.cells[4].innerText = gender;
-//       selectedRow.cells[5].innerText = ethnicity;
-//       selectedRow.cells[6].innerText = dob;
-//       selectedRow.cells[7].innerText = address;
-//       selectedRow.cells[8].innerText = phone;
-//       selectedRow.cells[9].innerText = job;
-//       selectedRow.cells[10].innerText = notes;
+      return count >= maxNumOfPatient;
 
-//       // Sau khi cập nhật, bỏ chọn dòng
-//       selectedRow.classList.remove("selected-row");
-//       selectedRow = null;
-//     } else {
-//       // Nếu không có dòng nào được chọn, tạo một dòng mới
-//       const newRow = document.createElement("tr");
-
-//       // Tăng số thứ tự bệnh nhân
-//       patientCount++;
-
-//       // Thêm các cột thông tin vào hàng
-//       newRow.innerHTML = `
-//           <td>${patientCount}</td>
-//           <td class="status">Chưa khám</td>
-//           <td>${patientId}</td>
-//           <td>${name}</td>
-//           <td>${gender}</td>
-//           <td>${ethnicity}</td>
-//           <td>${dob}</td>
-//           <td>${address}</td>
-//           <td>${phone}</td>
-//           <td>${job}</td>
-//           <td>${notes}</td>
-//       `;
-
-//       // Thêm hàng vào bảng
-//       table.appendChild(newRow);
-//     }
-    
-//     // Xóa dữ liệu form sau khi thêm và sinh mã BN mới
-//     document.getElementById("patient-form").reset();
-//     document.getElementById("patient-id").value = generatePatientId();
-//   });
-
-// Add event listener to the save button
-// document.getElementById("btn-save").addEventListener("click", function (event) {
-//   event.preventDefault(); // Ngăn trang không bị reload
-
-//   // Lấy giá trị từ form
-//   const patientId = document.getElementById("patient-id").value;
-//   const name = document.getElementById("name").value.trim();
-//   const gender = document.getElementById("gender").value.trim();
-//   const ethnicity = document.getElementById("ethnicity").value.trim();
-//   const dob = document.getElementById("dob").value.trim();
-//   const address = document.getElementById("address").value.trim();
-//   const phone = document.getElementById("phone").value.trim();
-//   const job = document.getElementById("job").value.trim();
-//   const notes = document.getElementById("notes").value.trim();
-
-//   const patient = {
-//       id: patientId,
-//       name,
-//       gender,
-//       ethnicity,
-//       birthDate: dob,
-//       address,
-//       phone,
-//       job,
-//       notes
-//   };
-
-//   if (selectedRow) {
-//     updatePatient(patient);
-// } else {
-//     addPatient(patient);
-// }
-
-// // Reset form
-// document.getElementById("patient-form").reset();
-// selectedRow = null;
-// });
+    } else {
+      console.error('Failed to fetch data');
+    }
+  } catch (error) {
+    console.error('Error fetching data:', error);
+  }
+}
 
 // Function to add a new patient to the table
 document.getElementById("btn-save").addEventListener("click", async function (event) {
   event.preventDefault(); // Prevent the form from submitting normally
+
+  // Kiểm tra số lượng bệnh nhân trong ngày có vượt quá quy định không
+  const isFull = await checkPatientLimit();
+  if (isFull) {
+    alert("Số lượng bệnh nhân trong ngày đã đạt tối đa.");
+    window.location.reload();
+    return;
+  }
 
   // Get values from the form
   const mabenhnhan = document.getElementById("patient-id").value;
@@ -250,6 +170,24 @@ document.getElementById("btn-save").addEventListener("click", async function (ev
   const sodienthoai = document.getElementById("phone").value.trim();
   const nghenghiep = document.getElementById("job").value.trim();
   const ghichu = document.getElementById("notes").value.trim();
+
+  // Kiểm tra các thông tin không được để trống
+  if (!hoten || !gioitinh || !dantoc || !ngaysinh || !diachi || !sodienthoai || !nghenghiep) {
+    alert("Vui lòng nhập đầy đủ thông tin bệnh nhân.");
+    return;
+  }
+
+  // Kiểm tra số điện thoại có hợp lệ không
+  if (sodienthoai.length !== 10 || /^\d+$/.test(sodienthoai) === false) {
+    alert("Số điện thoại không hợp lệ.");
+    return;
+  }
+
+  // Kiểm tra ngày sinh có hợp lệ không
+  if (ngaysinh > new Date().toISOString().split('T')[0]) {
+    alert("Ngày sinh không hợp lệ.");
+    return;
+  }
 
   const patient = {
       mabenhnhan,
@@ -263,6 +201,7 @@ document.getElementById("btn-save").addEventListener("click", async function (ev
       ghichu
   };
 
+  // Thêm bệnh nhân vào DB
   try {
       const response = await fetch('http://localhost:3000/api/benh-nhan/add', {
           method: 'POST',
@@ -273,7 +212,7 @@ document.getElementById("btn-save").addEventListener("click", async function (ev
       });
       const result = await response.json();
       if (result.success) {
-          fetchPatientData(); // Refresh the table with the new data
+          fetchPatientData();
       } else {
           console.error('Failed to add patient');
       }
@@ -281,7 +220,7 @@ document.getElementById("btn-save").addEventListener("click", async function (ev
       console.error('Error adding patient:', error);
   }
 
-  // Reset form
+  // khởi tạo lại form
   document.getElementById("patient-form").reset();
   selectedRow = null;
 });
