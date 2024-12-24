@@ -225,6 +225,17 @@
                 class="border border-gray-500 px-1.5 py-[1.5px] mr-2 w-2/3 rounded-[5px]"
               />
             </div>
+
+            <div class="flex items-center w-full mt-2">
+              <label for="username" class="w-[175px] ml-4">Tên tài khoản</label>
+              <input
+                type="text"
+                id="username"
+                name="username"
+                readonly
+                class="border border-gray-400 bg-gray-400 text-gray-500 px-1.5 py-[1.5px] mr-2 w-2/3 rounded-[5px]"
+              />
+            </div>
           </form>
 
           <!-- Khung upload hình ảnh -->
@@ -249,21 +260,16 @@
           </div>
         </div>
 
-        <div class="flex justify-center items-center mt-1">
+        <div class="flex justify-center items-center mt-4">
           <button
             type="submit"
             class="mr-20 w-40 max-w-xs px-2 py-1.5 text-white font-medium bg-greenNote rounded-[5px] hover:bg-green-700 transition-colors"
           >
             Cập nhật
           </button>
-          <button
-            type="submit"
-            class="w-40 max-w-xs px-2 py-1.5 text-black font-medium bg-grayBut rounded-[5px] hover:bg-gray-500 transition-colors"
-          >
-            Hủy bỏ
-          </button>
         </div>
       </main>
     </div>
+    <script src="./index.js"></script>
   </body>
 </html>

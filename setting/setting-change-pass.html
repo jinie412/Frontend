@@ -163,14 +163,26 @@
         <!-- Phần tiêu đề -->
         <div class="w-full pr-5 pt-2 mb-1">
           <h1 class="ml-6 mr-2 mb-2 text-2xl font-bold">Đổi mật khẩu</h1>
-          <h1 class="ml-6 mr-2 mb-2 text-sm font-extralight">
+          <!-- <h1 class="ml-6 mr-2 mb-2 text-sm font-extralight">
             Mật khẩu của bạn phải có tối thiểu 6 ký tự, đồng thời bao gồm cả chữ
             số, chữ cái và ký tự đặc biệt (!$@%).
-          </h1>
+          </h1> -->
         </div>
 
         <!-- Phần form -->
         <form id="changeForm" class="form w-full pr-5 pt-2 mb-1">
+          <span class=" font-light ml-6 mr-2 mb-2">
+            Tên tài khoản</span
+          >
+          <div class="mt-1 mb-3 ml-6 mr-2">
+            <input
+              type="text"
+              id="username"
+              readonly
+              class="bg-gray-400 text-gray-400 w-full px-2 py-1 border rounded-[5px] focus:outline-none focus:ring-2 focus:ring-blue-400"
+            />
+          </div>
+
           <span class="text-black font-light ml-6 mr-2 mb-2">
             Mật khẩu hiện tại</span
           >
@@ -201,23 +213,19 @@
               class="w-full px-2 py-1 border rounded-[5px] focus:outline-none focus:ring-2 focus:ring-blue-400"
             />
           </div>
+          <div class="flex justify-center items-center">
+            <button
+              type="submit"
+              class="mr-20 w-40 max-w-xs px-2 py-1.5 text-white font-medium bg-greenNote rounded-sm hover:bg-green-700 transition-colors"
+            >
+              Cập nhật
+            </button>
+          </div>
         </form>
 
-        <div class="flex justify-center items-center mt-5 ml-6 mr-7">
-          <button
-            type="submit"
-            class="mr-20 w-40 max-w-xs px-2 py-1.5 text-white font-medium bg-greenNote rounded-sm hover:bg-green-700 transition-colors"
-          >
-            Cập nhật
-          </button>
-          <button
-            type="submit"
-            class="w-40 max-w-xs px-2 py-1.5 text-black font-medium bg-grayBut rounded-sm hover:bg-gray-500 transition-colors"
-          >
-            Hủy bỏ
-          </button>
-        </div>
+        
       </main>
     </div>
+    <script src="./setting-change-pass.js"></script>
   </body>
 </html>

@@ -15,7 +15,7 @@ async function fetchMedicineData() {
                 unit: medicine.donvitinh.tendonvi,
                 inputQuantity: medicine.soluongnhap,
                 remainingQuantity: medicine.soluongcon,
-                usage: medicine.cachdungthuocs.length > 0 ? medicine.cachdungthuocs[0].cachdung.motacachdung : '',
+                usage: medicine.cachdungthuocs.map(cachdungthuoc => cachdungthuoc.cachdung.motacachdung),
                 price: parseFloat(medicine.dongia)
             }));
             populateTable(medicineData);
@@ -30,7 +30,14 @@ async function fetchMedicineData() {
 fetchMedicineData();
 
 
-function populateTable() {
+function populateTable(medicineData) {
+    medicineData = Object.values(medicineData);
+    
+    if (!Array.isArray(medicineData)) {
+        console.error('Expected medicineData to be an array');
+        return;
+    }
+
     const tbody = document.querySelector('#medicineTable tbody');
     tbody.innerHTML = '';
     
@@ -43,8 +50,8 @@ function populateTable() {
             <td>${item.unit}</td>
             <td>${item.inputQuantity}</td>
             <td>${item.remainingQuantity}</td>
-            <td>${item.usage}</td>
-            <td>${item.price}</td>
+            <td class="py-2 px-4">${Array.isArray(item.usage) ? item.usage.join('<br>'): ""}</td>
+            <td>${item.price ? item.price.toLocaleString('vi-VN', { style: 'currency', currency: 'VND' }): ""}</td>
         `;
         row.addEventListener('click', () => handleRowClick(row));
         tbody.appendChild(row);
@@ -144,7 +151,63 @@ function saveChanges() {
     const table = document.getElementById('medicineTable');
     table.classList.remove('editable-mode', 'delete-mode');
 }
-document.addEventListener('DOMContentLoaded', populateTable);
+
+
+let sortDirection = {
+    price: 'asc', // Default sort direction for price
+    name: 'asc'   // Default sort direction for name
+};
+
+function sortTableByPrice() {
+    medicineData.sort((a, b) => {
+        if (sortDirection.price === 'asc') {
+            return a.price - b.price;
+        } else {
+            return b.price - a.price;
+        }
+    });
+    sortDirection.price = sortDirection.price === 'asc' ? 'desc' : 'asc';
+    updateSortArrow('price');
+    populateTable(medicineData);
+}
+
+function updateSortArrow(column) {
+    const priceHeader = document.querySelector('#priceHeader span');
+    const nameHeader = document.querySelector('#nameHeader span');
+    if (column === 'price') {
+        if (sortDirection.price === 'asc') {
+            priceHeader.innerHTML = '&#9660;'; // Down arrow
+        } else {
+            priceHeader.innerHTML = '&#9650;'; // Up arrow
+        }
+    } else if (column === 'name') {
+        if (sortDirection.name === 'asc') {
+            nameHeader.innerHTML = '&#9660;'; // Down arrow
+        } else {
+            nameHeader.innerHTML = '&#9650;'; // Up arrow
+        }
+    }
+}
+
+function sortTableByName() {
+    medicineData.sort((a, b) => {
+        if (sortDirection.name === 'asc') {
+            return a.name.localeCompare(b.name);
+        } else {
+            return b.name.localeCompare(a.name);
+        }
+    });
+    sortDirection.name = sortDirection.name === 'asc' ? 'desc' : 'asc';
+    updateSortArrow('name');
+    populateTable(medicineData);
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+    const priceHeader = document.querySelector('#priceHeader button');
+    const nameHeader = document.querySelector('#nameHeader button');
+    priceHeader.addEventListener('click', sortTableByPrice);
+    nameHeader.addEventListener('click', sortTableByName);
+});
 
 //Pop-up
 let nextId = medicineData.length + 1;
