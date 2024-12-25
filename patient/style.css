@@ -11,6 +11,10 @@ main {
   padding: 20px;
 }
 
+.selected-row {
+  background-color: #cce5ff;
+}
+
 .patient-section {
   background-color: white;
   border-radius: 5px;

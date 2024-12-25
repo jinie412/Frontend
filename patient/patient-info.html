@@ -118,7 +118,7 @@
                   <th>Ngày tái khám</th>
                 </tr>
               </thead>
-              <tbody>
+              <tbody id="history-tbody">
                 <tr>
                   <td colspan="6">Bệnh nhân chưa có lịch sử khám bệnh.</td>
                 </tr>
@@ -128,54 +128,7 @@
         </section>
     </main>
 
-    <script>
-        const uploadPhotoInput = document.getElementById("upload-photo");
-        const previewPhoto = document.getElementById("preview-photo");
-    
-        // Xử lý khi tải ảnh lên
-        uploadPhotoInput.addEventListener("change", (event) => {
-            const file = event.target.files[0];
-            if (file) {
-                const reader = new FileReader();
-                reader.onload = () => {
-                    previewPhoto.src = reader.result; // Hiển thị ảnh trong avatar
-                };
-                reader.readAsDataURL(file);
-            }
-        });
-        
-        // Hàm tính tuổi từ ngày sinh
-        function calculateAge(birthDate) {
-        const birthYear = new Date(birthDate).getFullYear();
-        const currentYear = new Date().getFullYear();
-        return currentYear - birthYear;
-        }
+    <script src="./script_patient_info.js"></script>    
 
-        // Lấy thông tin bệnh nhân từ sessionStorage và hiển thị
-        function displayPatientDetails() {
-        const selectedPatient = JSON.parse(sessionStorage.getItem("selectedPatient"));
-        
-        if (selectedPatient) {
-            document.getElementById("patient-id").textContent = selectedPatient.id;
-            document.getElementById("patient-name").textContent = selectedPatient.name;
-            document.getElementById("gender").textContent = selectedPatient.gender;
-            document.getElementById("ethnicity").textContent = selectedPatient.ethnicity;
-            document.getElementById("dob").textContent = selectedPatient.birthDate;
-            document.getElementById("address").textContent = selectedPatient.address;
-            document.getElementById("phone").textContent = selectedPatient.phone;
-            document.getElementById("job").textContent = selectedPatient.job;
-
-            // Tính và hiển thị tuổi của bệnh nhân
-            const age = calculateAge(selectedPatient.birthDate);
-            document.getElementById("age").textContent = age; // Hiển thị tuổi bệnh nhân
-        } else {
-            alert("No patient selected.");
-        }
-        }
-
-        // Khởi chạy Trang nhận bệnh 2
-        document.addEventListener('DOMContentLoaded', displayPatientDetails);
-
-    </script>    
 </body>
 </html>
