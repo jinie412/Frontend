@@ -125,6 +125,7 @@ function toggleInputFields(enabled) {
     });
   }
 
+
   // Cập nhật trạng thái
   isEditMode = enabled;
   if (!enabled) {
@@ -240,7 +241,7 @@ function addPrescriptionRow(medicine) {
       <td><input type="number" min="1" value="1"></td>
       <td>
           <select>
-              ${medicine.cachdungthuocs.map(cd => `<option>${cd.cachdung.motacachdung}</option>`).join('')}
+              ${medicine.cachdungthuocs.map(cd => `<option value=${cd.cachdung.macachdung}>${cd.cachdung.motacachdung}</option>`).join('')}
           </select>
       </td>
       <td><button class="delete-row-btn">Xóa</button></td>
@@ -456,6 +457,7 @@ document.addEventListener('DOMContentLoaded', async function() {
     fetchExaminationHistory(parseInt(patientId));
     await fetchDiagnosisData();
     await fetchMedicineData();
+
   } else {
     alert("Không tìm thấy thông tin bệnh nhân.");
   }
@@ -659,6 +661,7 @@ async function saveExamination() {
       .map(row => ({
         mathuoc: row.querySelector("td:nth-child(2)").textContent,
         soluong: row.querySelector("td:nth-child(5) input").value,
+        macachdung: row.querySelector("td:nth-child(6) select").value,
       }));
 
     // Validate all data
@@ -806,8 +809,8 @@ async function saveExamination() {
       return;
     }
 
-    alert("Lưu hồ sơ khám bệnh thành công!");
     toggleInputFields(false);
+    alert("Lưu hồ sơ khám bệnh thành công!");
     // window.location.href = "../admitted_patient/index.html";
   } catch (error) {
     console.error("Lỗi:", error);

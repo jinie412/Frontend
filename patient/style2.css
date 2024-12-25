@@ -16,6 +16,10 @@ main {
     border-radius: 8px;
 }
 
+.selected-row {
+    background-color: #cce5ff;
+  }
+
 section {
     background-color: white;
     border-radius: 5px;
