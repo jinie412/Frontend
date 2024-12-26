@@ -75,7 +75,7 @@
     display: flex;
     gap: 2rem;
 }
-.patient-list {
+.medical-list {
     width: 300px;
 }
 .patient-details {
@@ -107,12 +107,12 @@
     padding-top: 0.5rem;
     border-top: 1px solid #ccc;
 }
-table.patient-table {
+table.medical-table {
     width: 100%;
     border-collapse: collapse;
 }
-.patient-table th,
-.patient-table td {
+.medical-table th,
+.nedical-table td {
     border: 1px solid #ccc;
     padding: 0.5rem;
     text-align: left;
@@ -137,7 +137,7 @@ table.patient-table {
     background-color: rgba(255, 255, 255, 0.1);
 } */
 
-.patient-table {
+/* .patient-table {
     width: 100%;
     border-collapse: separate;
     border-spacing: 0;
@@ -157,10 +157,48 @@ table.patient-table {
     padding: 12px;
     border-bottom: 1px solid #e5e7eb;
 }
+
 .patient-table tr:hover {
     background-color: #f3f4f6;
     transition: background-color 0.3s ease;
+} */
+
+.medical-list {
+    width: 30%;
+    max-height: 500px; /* Chiều cao tối đa của bảng */
+    overflow-y: auto; /* Cho phép cuộn theo chiều dọc */
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    background-color: white;
 }
+
+.medical-table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+}
+
+.medical-table th {
+    background-color: #2563eb;
+    color: white;
+    font-weight: 600;
+    padding: 12px;
+    text-align: left;
+    position: sticky; /* Giữ tiêu đề bảng cố định */
+    top: 0; /* Đặt vị trí cho sticky */
+    z-index: 1; /* Đảm bảo tiêu đề luôn trên các hàng khác */
+}
+
+.medical-table td {
+    padding: 12px;
+    border-bottom: 1px solid #e5e7eb;
+}
+
+.medical-table tr:hover {
+    background-color: #f3f4f6;
+    transition: background-color 0.3s ease;
+}
+
 /* Cập nhật style cho bảng thuốc */
 .medicine-table {
     width: 100%;
@@ -186,6 +224,20 @@ table.patient-table {
 .medicine-table tr:hover {
     background-color: #f3f4f6;
     transition: background-color 0.3s ease;
+}
+
+/* nút thanh toán*/
+.pay-button {
+    padding: 0.5rem 1rem;
+    background-color: #2563eb;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    display: block;
+    margin: 0 auto;
+    text-align: center;
 }
 
 /* Style cho phần tổng tiền */
