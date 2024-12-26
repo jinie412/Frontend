@@ -643,12 +643,8 @@ async function saveExamination() {
       trangthai: "Đã khám"
     };
 
-    const response = await fetch(`http://localhost:3000/api/phieu-kham-benh/${medicalExaminationId}`);
-    const result = await response.json();
-    if(result.data.trangthai === 'Đã khám') {
-      status = true;
-    }
-
+    // Set edit mode
+    setIsEditMode();
 
     // Get subclinical and prescription data
     const subclinicalData = Array.from(document.querySelectorAll("#subclinicalTable tbody tr"))
