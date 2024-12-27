@@ -12,82 +12,66 @@
 
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Thuốc</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
-    <script src="../checkLogin.js"></script>
-    
-    <link href="../style/navigation_bar.css" rel="stylesheet" />
-    <link href="../style/setting_active.css" rel="stylesheet" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="styles.css">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Thuốc</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+  <script src="../checkLogin.js"></script>
+
+  <link href="../style/navigation_bar.css" rel="stylesheet" />
+  <link href="../style/setting_active.css" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="styles.css">
 </head>
 
 <body class="m-0 p-0 flex flex-col min-h-screen bg-gray-100">
-    <!-- Thanh điều hướng -->
-    <nav class="bg-blueTaskbar text-white p-3 w-full text-center">
-        <ul class="flex justify-between list-none p-0 m-0">
-          <li class="nav-item">
-            <a href="../homepage/index.html" class="font-normal"
-              ><i class="fas fa-home text-white text-lg"></i
-            ></a>
-          </li>
-          <li class="nav-item">
-            <a
-              href="../admitted_patient/index.html" class="font-normal"
-              >Nhận bệnh</a
-            >
-          </li>
-          <li class="nav-item">
-            <a href="../examination_health/index.html" class="font-normal"
-              >Khám bệnh</a
-            >
-          </li>
-          <li class="nav-item">
-            <a href="../payment/index.html" class="font-normal text-white px-[15px] py-2"
-            >Hoá đơn</a>
-          </li>
-          <li class="nav-item">
-            <a
-                href="#" class="font-normal text-white px-[15px] py-2"
-                >Báo cáo</a
-            >
-            <div class="dropdown">
-              <a href="../report/index1.html" class="dropdown-item">Doanh thu</a>
-              <a href="../report/index2.html" class="dropdown-item">Lượng thuốc</a>
-            </div>
-          </li>
-          <li class="nav-item">
-            <a href="../patient/index.html" class="font-normal text-white px-[15px] py-2"
-              >Bệnh nhân</a
-            >
-          </li>
-          <li class="nav-item">
-            <a href="#" class="active relative font-bold text-white px-1.5 py-3">Thuốc</a>
-          </li>
-          <li class="nav-item">
-            <a href="#" class="font-normal"
-              ><i class="fas fa-user text-white text-lg"></i
-            ></a>
-            <div class="dropdown">
-              <a href="../setting/index.html" class="dropdown-item">
-                Cài đặt
-                <i class="fas fa-cog text-white text-lg"></i
-              ></a>
-              <a href="../login/index.html" class="dropdown-item">
-                Đăng xuất
-                <i class="fas fa-sign-out-alt text-white text-lg"></i
-              ></a>
-            </div>
-          </li>
-        </ul>
-    </nav>
+  <!-- Thanh điều hướng -->
+  <nav class="bg-blueTaskbar text-white p-3 w-full text-center">
+    <ul class="flex justify-between list-none p-0 m-0">
+      <li class="nav-item">
+        <a href="../homepage/index.html" class="font-normal"><i class="fas fa-home text-white text-lg"></i></a>
+      </li>
+      <li class="nav-item">
+        <a href="../admitted_patient/index.html" class="font-normal">Nhận bệnh</a>
+      </li>
+      <li class="nav-item">
+        <a href="../examination_health/index.html" class="font-normal">Khám bệnh</a>
+      </li>
+      <li class="nav-item">
+        <a href="../payment/index.html" class="font-normal text-white px-[15px] py-2">Hoá đơn</a>
+      </li>
+      <li class="nav-item">
+        <a href="#" class="font-normal text-white px-[15px] py-2">Báo cáo</a>
+        <div class="dropdown">
+          <a href="../report/index1.html" class="dropdown-item">Doanh thu</a>
+          <a href="../report/index2.html" class="dropdown-item">Lượng thuốc</a>
+        </div>
+      </li>
+      <li class="nav-item">
+        <a href="../patient/index.html" class="font-normal text-white px-[15px] py-2">Bệnh nhân</a>
+      </li>
+      <li class="nav-item">
+        <a href="#" class="active relative font-bold text-white px-1.5 py-3">Thuốc</a>
+      </li>
+      <li class="nav-item">
+        <a href="#" class="font-normal"><i class="fas fa-user text-white text-lg"></i></a>
+        <div class="dropdown">
+          <a href="../setting/index.html" class="dropdown-item">
+            Cài đặt
+            <i class="fas fa-cog text-white text-lg"></i></a>
+          <a href="../login/index.html" class="dropdown-item">
+            Đăng xuất
+            <i class="fas fa-sign-out-alt text-white text-lg"></i></a>
+        </div>
+      </li>
+    </ul>
+  </nav>
 
-    <!-- <nav class="bg-blue-500 p-2">
+  <!-- <nav class="bg-blue-500 p-2">
         <div class="container mx-auto nav-container flex flex-wrap items-center justify-between text-white">
             <a href="/src/home.html" class="nav-item flex items-center justify-center">
                 <i class="fas fa-home text-xl mr-2"></i>
@@ -112,63 +96,219 @@
         </div>
     </nav> -->
 
-    <div class="table-container">
-        <div class="mb-4 flex justify-end gap-2">
-            <button class="btn btn-success" onclick="showAddModal()">Thêm</button>
-            <button class="btn btn-primary" onclick="toggleEditMode()">Sửa</button>
-            <button class="btn btn-danger" onclick="toggleDeleteMode()">Xóa</button>
-            <button class="btn btn-success" onclick="saveChanges()">Lưu</button>
-        </div>
-
-        <!-- Thêm modal form (Cửa sổ pop up) -->
-        <div id="addModal" class="modal hidden">
-          <div class="modal-content">
-              <span class="close" onclick="closeModal()">&times;</span>
-              <form id="addMedicineForm">
-                  <div class="form-group">
-                      <label>Tên thuốc:</label>
-                      <input type="text" id="medicineName" required>
-                  </div>
-                  <div class="form-group">
-                      <label>Đơn vị:</label>
-                      <input type="text" id="medicineUnit" required>
-                  </div>
-                  <div class="form-group">
-                      <label>Số lượng nhập:</label>
-                      <input type="number" id="medicineInputQuantity" required>
-                  </div>
-                  <div class="form-group">
-                      <label>Cách dùng:</label>
-                      <input type="text" id="medicineUsage" required>
-                  </div>
-                  <div class="form-group">
-                      <label>Đơn giá:</label>
-                      <input type="number" id="medicinePrice" required>
-                  </div>
-                  <button type="submit" class="btn btn-success">Thêm thuốc</button>
-              </form>
-          </div>
-      </div>
-
-
-        <table id="medicineTable">
-            <thead>
-                <tr>
-                    <th>STT</th>
-                    <th id="nameHeader"> <button>Tên thuốc </button> <span>&#9660;&#9650;</span></th>
-                    <th>Đơn vị</th>
-                    <th>Số lượng nhập</th>
-                    <th>Số lượng còn</th>
-                    <th>Cách dùng</th>
-                    <th id="priceHeader"> <button>Đơn giá </button> <span>&#9660;&#9650;</span></th>
-                </tr>
-            </thead>
-            <tbody>
-                <!-- Data will be inserted here -->
-            </tbody>
-        </table>
+  <div class="table-container">
+    <div class="mb-4 flex justify-end gap-10">
+      <button id="unitMedicine" class="btn btn-success">Đơn vị tính</button>
+      <button id="unitUsage" class="btn btn-success">Cách dùng</button>
+      <button class="btn btn-success" onclick="showAddModal()">Thêm thuốc</button>
     </div>
 
-    <script src="script.js"></script>
+    <div id="usageModal" class="modal hidden">
+      <div class="modal-content max-h-100 overflow-y-auto" style="max-width:70%;">
+        <table id="usageTable" class="mb-4">
+          <thead>
+            <tr>
+              <th>STT</th>
+              <th>Mô tả cách dùng</th>
+              <th class="text-center">Thao tác</th>
+            </tr>
+          </thead>
+          <tbody>
+            <!-- Data will be inserted here -->
+          </tbody>
+        </table>
+        <button type="submit" id="addUsage" class="btn btn-success">Thêm</button>
+        <button type="button" class="btn btn-danger" onclick="cancelUsage()">Hủy</button>
+      </div>
+    </div>
+
+    <!-- Add Usage Modal -->
+    <div id="addUsageModal" class="modal hidden">
+      <div class="modal-content">
+        <span class="close" onclick="closeAddUsageModal()">&times;</span>
+        <form id="addUsageForm">
+          <div class="form-group">
+            <label>Mô tả cách dùng:</label>
+            <input type="text" id="usageDescription" required>
+          </div>
+          <button type="submit" class="btn btn-success">Thêm</button>
+          <button type="button" class="btn btn-danger" onclick="closeAddUsageModal()">Hủy</button>
+        </form>
+      </div>
+    </div>
+
+    <!-- Edit Usage Modal -->
+    <div id="editUsageModal" class="modal hidden">
+      <div class="modal-content">
+        <span class="close" onclick="closeEditUsageModal()">&times;</span>
+        <form id="editUsageForm">
+          <div class="form-group">
+            <label>ID cách dùng:</label>
+            <input type="text" id="editUsageId" class="text-gray-400" readonly>
+          </div>
+          <div class="form-group">
+            <label>Mô tả cách dùng mới:</label>
+            <input type="text" id="editUsageDescription" required>
+          </div>
+          <button type="submit" class="btn btn-primary">Sửa</button>
+          <button type="button" class="btn btn-danger" onclick="closeEditUsageModal()">Hủy</button>
+        </form>
+      </div>
+    </div>
+
+    <div id="unitModal" class="modal hidden">
+      <div class="modal-content" style="max-width:60%;">
+        <table id="unitTable" class="mb-4">
+          <thead>
+            <tr>
+              <th>Mã đơn vị</th>
+              <th>Tên đơn vị</th>
+              <th class="text-center">Thao tác</th>
+            </tr>
+          </thead>
+          <tbody>
+            <!-- Data will be inserted here -->
+          </tbody>
+        </table>
+        <button type="submit" id="addUnit" class="btn btn-success">Thêm</button>
+        <button type="button" class="btn btn-danger" onclick="cancelUnit()">Hủy</button>
+      </div>
+    </div>
+
+    <!-- Add Unit Modal -->
+    <div id="addUnitModal" class="modal hidden">
+      <div class="modal-content">
+        <form id="addUnitForm">
+          <div class="form-group">
+            <label>Tên đơn vị:</label>
+            <input type="text" id="unitName" required>
+          </div>
+          <button type="submit" class="btn btn-success">Thêm</button>
+          <button type="button" class="btn btn-danger" onclick="closeAddUnitModal()">Hủy</button>
+        </form>
+      </div>
+    </div>
+
+    <!-- Edit Unit Modal -->
+    <div id="editUnitModal" class="modal hidden">
+      <div class="modal-content">
+        <span class="close" onclick="closeEditUnitModal()">&times;</span>
+        <form id="editUnitForm">
+          <div class="form-group">
+            <label>ID đơn vị:</label>
+            <input type="text" id="editUnitId" class="text-gray-400" readonly>
+          </div>
+          <div class="form-group">
+            <label>Tên đơn vị mới:</label>
+            <input type="text" id="editUnitName" required>
+          </div>
+          <button type="submit" class="btn btn-primary">Sửa</button>
+          <button type="button" class="btn btn-danger" onclick="closeEditUnitModal()">Hủy</button>
+        </form>
+      </div>
+    </div>
+
+
+    <!-- Thêm modal form (Cửa sổ pop up) -->
+    <div id="addModal" class="modal hidden">
+      <div class="modal-content">
+        <form id="addMedicineForm">
+          <div class="form-group">
+            <label for="newMedicineName">Tên thuốc:</label>
+            <input type="text" id="newMedicineName" required>
+          </div>
+          <div class="form-group flex gap-4 text-center">
+            <label class="mt-1" for="newMedicineUnit">Đơn vị:</label>
+            <select id="newMedicineUnit" required></select>
+          </div>
+          <div class="form-group">
+            <label for="newMedicineInputQuantity">Số lượng nhập:</label>
+            <input type="number" id="newMedicineInputQuantity" required>
+          </div>
+          <div class="form-group">
+            <label for="newMedicineRemainingQuantity">Số lượng còn:</label>
+            <input type="number" id="newMedicineRemainingQuantity" required>
+          </div>
+          <div class="form-group">
+            <label for="newMedicineUsage">Cách dùng:</label>
+            <div id="newSelectContainer" data-current-usages="[]" class="w-full">
+              <!-- Dropdowns sẽ được tạo động -->
+              <button type="button" class="removeSelect" style="display: none;">Loại bỏ</button>
+            </div>
+            <button type="button" class="btn btn-success !p-1 m-2 ml -4" id="addNewSelect">Add</button>
+          </div>
+          <div class="form-group">
+            <label for="newMedicinePrice">Đơn giá:</label>
+            <input type="number" id="newMedicinePrice" required>
+          </div>
+          <button type="submit" class="btn btn-success">Thêm</button>
+          <button id="cancel-add" type="button" class="btn btn-danger">Hủy bỏ</button>
+        </form>
+      </div>
+    </div>
+
+
+    <table id="medicineTable">
+      <thead>
+        <tr>
+          <th>STT</th>
+          <th id="nameHeader"> <button>Tên thuốc </button> <span>&#9660;&#9650;</span></th>
+          <th>Đơn vị</th>
+          <th>Số lượng nhập</th>
+          <th>Số lượng còn</th>
+          <th>Cách dùng</th>
+          <th id="priceHeader"> <button>Đơn giá </button> <span>&#9660;&#9650;</span></th>
+          <th class="text-center">Thao tác</th>
+        </tr>
+      </thead>
+      <tbody>
+        <!-- Data will be inserted here -->
+      </tbody>
+    </table>
+  </div>
+
+  <div id="editModal" class="modal hidden">
+    <div class="modal-content">
+      <form id="editMedicineForm">
+        <div class="form-group flex flex-row items-center">
+          <label class="w-1/2" for="medicineId">Mã thuốc:</label>
+          <input class="w-1/2 text-gray-400" type="text" id="editMedicineId" readonly>
+        </div>
+        <div class="form-group">
+          <label for="medicineName">Tên thuốc:</label>
+          <input type="text" id="editMedicineName" required>
+        </div>
+        <div class="form-group flex gap-4 text-center">
+          <label class="mt-1" for="medicineUnit">Đơn vị:</label>
+          <select id="editMedicineUnit" required></select>
+        </div>
+        <div class="form-group">
+          <label for="medicineInputQuantity">Số lượng nhập:</label>
+          <input type="number" id="editMedicineInputQuantity" required>
+        </div>
+        <div class="form-group">
+          <label for="medicineRemainingQuantity">Số lượng còn:</label>
+          <input type="number" id="editMedicineRemainingQuantity" required>
+        </div>
+        <div class="form-group">
+          <label for="medicineUsage">Cách dùng:</label>
+          <div id="selectContainer" data-current-usages="[]" class="w-full">
+            <!-- Dropdowns sẽ được tạo động -->
+            <button type="button" class="removeSelect" style="display: none;">Loại bỏ</button>
+          </div>
+          <button type="button" class="btn btn-success !p-1 m-2 ml -4" id="addSelect">Add</button>
+        </div>
+        <div class="form-group">
+          <label for="medicinePrice">Đơn giá:</label>
+          <input type="number" id="editMedicinePrice" required>
+        </div>
+        <button type="submit" class="btn btn-success">Lưu</button>
+        <button id="cancel-edit" type="button" class="btn btn-danger">Hủy bỏ</button>
+      </form>
+    </div>
+  </div>
+
+  <script src="./script.js"></script>
 </body>
+
 </html>
