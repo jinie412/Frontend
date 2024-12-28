@@ -37,7 +37,8 @@ async function fetchDiseases() {
                         <td class="py-2 px-4">${disease.tenloaibenh}</td>
                         <td class="py-2 px-4">${disease.mota}</td>
                         <td class="py-2 px-4">
-                            <button class="delete-btn" data-id="${disease.maloaibenh}">Xóa | </button>
+                            <button class="delete-btn" data-id="${disease.maloaibenh}">Xóa </button>
+                            <span class="mx-2">|</span>
                             <button class="edit-btn" data-id="${disease.maloaibenh}" 
                             data-name="${disease.tenloaibenh}" 
                             data-description="${disease.mota}">Sửa</button>
@@ -61,6 +62,11 @@ async function fetchDiseases() {
             document.querySelectorAll('.delete-btn').forEach(button => {
                 button.addEventListener('click', (event) => {
                     const diseaseId = event.target.getAttribute('data-id');
+
+                    //confirm delete
+                    if (!confirm('Bạn có chắc chắn muốn xóa loại bệnh này?')) {
+                        return;
+                    }
                     deleteDisease(diseaseId);
                 });
             });
