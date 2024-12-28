@@ -29,18 +29,18 @@ const markUnsavedChanges = () => {
   hasUnsavedChanges = true;
 };
 
-// Thêm nút sửa vào giao diện
-function addEditButton() {
-  const saveBtn = document.getElementById("save-btn");
-  if (saveBtn) {
-    const editBtn = document.createElement('button');
-    editBtn.id = 'edit-btn';
-    editBtn.className = 'btn btn-primary';
-    editBtn.style.marginRight = '10px';
-    editBtn.innerHTML = '<i class="fas fa-edit"></i>Sửa';
-    saveBtn.parentNode.insertBefore(editBtn, saveBtn);
-  }
-}
+// // Thêm nút sửa vào giao diện
+// function addEditButton() {
+//   const saveBtn = document.getElementById("save-btn");
+//   if (saveBtn) {
+//     const editBtn = document.createElement('button');
+//     editBtn.id = 'edit-btn';
+//     editBtn.className = 'btn btn-primary';
+//     editBtn.style.marginRight = '10px';
+//     editBtn.innerHTML = '<i class="fas fa-edit"></i>Sửa';
+//     saveBtn.parentNode.insertBefore(editBtn, saveBtn);
+//   }
+// }
 
 // Điều khiển trạng thái của các trường input
 function toggleInputFields(enabled) {
@@ -438,7 +438,7 @@ async function populatePatientData(patient) {
         <td><input type="number" min="1" value="${prescription.soluong || 1}"></td>
         <td>
             <select>
-                <option>${prescription.motacachdung || "Không có thông tin"}</option>
+                <option value=${prescription.macachdung}>${prescription.motacachdung || "Không có thông tin"}</option>
             </select>
         </td>
         <td><button class="delete-row-btn">Xóa</button></td>
@@ -453,6 +453,8 @@ async function populatePatientData(patient) {
 
     rowCounter++;
   });
+
+  toggleInputFields(isEditMode);
 }
 
 
@@ -465,7 +467,7 @@ function calculateAge(birthDate) {
 
 document.addEventListener('DOMContentLoaded', async function() {
   await initializeEventListeners();
-  addEditButton();
+  // addEditButton();
 
   const urlParams = new URLSearchParams(window.location.search);
   const patientId = urlParams.get('patient-id');
