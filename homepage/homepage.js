@@ -7,7 +7,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
             // fetch('http://localhost:3000/api/hoa-don').then(response => response.json()),
             //after deploy
-            fetch('https://clinic-management-theta.vercel.app/api/hoa-don').then(response => response.json()),
+            fetch('https://clinic-management-theta.vercel.app/api/hoa-don/doanhthu').then(response => response.json()),
 
             // fetch('http://localhost:3000/api/thuoc').then(response => response.json())
             //after deploy
@@ -20,11 +20,11 @@ document.addEventListener("DOMContentLoaded", function () {
 
             const patientCount = benhnhansData.data.length;
             const totalMedicine = thuocsData.data.length;
-            const totalRevenue = hoadonsData.data.reduce((total, hoadon) => total + hoadon.tongtien, 0);
+            const totalRevenue = hoadonsData.data.reduce((total, hoadon) => total + parseFloat(hoadon.tong_doanh_thu), 0);
 
             document.getElementById("patient-count").innerText = patientCount;
             document.getElementById("total-medicine").innerText = totalMedicine;
-            document.getElementById("total-revenue").innerText = totalRevenue;
+            document.getElementById("total-revenue").innerText = new Intl.NumberFormat('vi-VN', { style: 'currency', currency: 'VND' }).format(totalRevenue);
         })
         .catch(error => console.error('Error fetching data:', error));
     }
