@@ -162,7 +162,7 @@ document.getElementById("addRecordButton").addEventListener("click", async funct
                     ngaykham: date,
                 })
             })
-            const result = await response.json();
+            const result = response
             if(result.success){
                 alert("Thêm phiếu khám bệnh thành công.");
                 window.location.href = `../examination_health/index.html?patient-id=${patientId}&medical-examination-id=${result.data.maphieukham}`;
