@@ -782,3 +782,4 @@ document.addEventListener('DOMContentLoaded', () => {
     //show modal addUsage
     document.getElementById('addUsage').addEventListener('click', showAddUsageModal);
 });
+
