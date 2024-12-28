@@ -6,7 +6,6 @@
     <title>Báo cáo doanh thu - Phòng mạch tư</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <script src="report_data.js"></script>
     <link rel="stylesheet" href="./report_styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head> -->
@@ -19,7 +18,7 @@
     <title>Báo cáo doanh thu</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <script src="report_data.js"></script>
+    
     
     <script src="../checkLogin.js"></script>
 
@@ -122,12 +121,6 @@
                 <div class="relative">
                     <select id="monthSelector" class="w-full p-3 pl-4 pr-10 border rounded-lg focus:outline-none focus:border-blue-500">
                         <option value="">Chọn thời gian</option>
-                        <option value="10/2024">Tháng 10/2024</option>
-                        <option value="09/2024">Tháng 09/2024</option>
-                        <option value="08/2024">Tháng 08/2024</option>
-                        <option value="07/2024">Tháng 07/2024</option>
-                        <option value="06/2024">Tháng 06/2024</option>
-                        <option value="05/2024">Tháng 05/2024</option>
                     </select>
                     <div class="absolute inset-y-0 right-0 flex items-center pr-3 pointer-events-none">
                         <svg class="w-5 h-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -144,7 +137,7 @@
                     <div class="flex flex-col items-center justify-center">
                         <div class="text-center">
                             <div class="text-gray-600 mb-1">Tổng doanh thu</div>
-                            <div class="text-lg font-medium">1.000.000.000</div>
+                            <div class="text-lg font-medium" id="totalRevenue">1.000.000.000</div>
                         </div>
                     </div>
                 </div>
@@ -153,7 +146,7 @@
                     <div class="flex flex-col items-center justify-center">
                         <div class="text-center">
                             <div class="text-gray-600 mb-1">Tổng số bệnh nhân</div>
-                            <div class="text-lg font-medium">5000</div>
+                            <div class="text-lg font-medium" id="totalPatient">5000</div>
                         </div>
                     </div>
                 </div>
@@ -174,71 +167,6 @@
         </div>
     </div>
 
-    <script>
-        // Pie Chart
-        const pieCtx = document.getElementById('pieChart').getContext('2d');
-        new Chart(pieCtx, {
-            type: 'pie',
-            data: {
-                labels: ['Tiền thuốc', 'Tiền khám', 'Khác'],
-                datasets: [{
-                    data: [40, 35, 25],
-                    backgroundColor: ['#EF4444', '#10B981', '#6B7280']
-                }]
-            },
-            options: {
-                responsive: true,
-                maintainAspectRatio: true,
-                plugins: {
-                    legend: {
-                        position: 'bottom', // Đặt legend ở dưới
-                        labels: {
-                            boxWidth: 12, // Kích thước của ô màu trong legend
-                            padding: 15 // Khoảng cách giữa các item trong legend
-                        }
-                    }
-                }
-            }
-        });
-
-        // Bar Chart
-        const barCtx = document.getElementById('barChart').getContext('2d');
-        new Chart(barCtx, {
-            type: 'bar',
-            data: {
-                labels: ['T2/2024', 'T3/2024', 'T4/2024', 'T5/2024', 'T6/2024', 'T7/2024', 'T8/2024', 'T9/2024', 'T10/2024'],
-                datasets: [{
-                    data: [65, 75, 60, 75, 70, 65, 75, 60, 65],
-                    backgroundColor: '#3B82F6'
-                }]
-            },
-            options: {
-                responsive: true,
-                maintainAspectRatio: false,
-                plugins: {
-                    legend: {
-                        display: false
-                    }
-                },
-                scales: {
-                    y: {
-                        beginAtZero: true,
-                        ticks: {
-                            font: {
-                                size: 12 // Kích thước font cho trục y
-                            }
-                        }
-                    },
-                    x: {
-                        ticks: {
-                            font: {
-                                size: 12 // Kích thước font cho trục x
-                            }
-                        }
-                    }
-                    }
-                }
-        });
-    </script>
+    <script src="./index1.js"></script>
 </body>
 </html>
