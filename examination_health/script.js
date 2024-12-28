@@ -133,20 +133,40 @@ function toggleInputFields(enabled) {
   }
 }
 
-// Xử lý sự kiện click nút Sửa
-function handleEditClick() {
-  if (isEditMode && hasUnsavedChanges) {
-    if (confirm('Bạn có thay đổi chưa được lưu. Bạn có chắc muốn hủy các thay đổi này?')) {
-      toggleInputFields(false);
-      location.reload();
+// // Xử lý sự kiện click nút Sửa
+// function handleEditClick() {
+//   if (isEditMode && hasUnsavedChanges) {
+//     if (confirm('Bạn có thay đổi chưa được lưu. Bạn có chắc muốn hủy các thay đổi này?')) {
+//       toggleInputFields(false);
+//       location.reload();
+//     }
+//   } else {
+//     toggleInputFields(!isEditMode);
+//   }
+// }
+
+// Xử lý click nút sửa
+async function handleEditClick() {
+  const medicalExaminationId = new URLSearchParams(window.location.search).get('medical-examination-id');
+  const response = await fetch(`http://localhost:3000/api/phieu-kham-benh/${medicalExaminationId}`);
+  const result = await response.json();
+
+  if (result.success && result.data.trangthai === 'Đã khám') {
+    if (isEditMode && hasUnsavedChanges) {
+      if (confirm('Bạn có thay đổi chưa được lưu. Bạn có chắc muốn hủy các thay đổi này?')) {
+        toggleInputFields(false);
+        location.reload(); 
+      }
+    } else {
+      toggleInputFields(!isEditMode);
     }
   } else {
-    toggleInputFields(!isEditMode);
+    alert('Chỉ được phép sửa phiếu khám đã hoàn thành');
   }
 }
 
 // Khởi tạo các event listener
-function initializeEventListeners() {
+async function initializeEventListeners() {
   // Nút sửa
   const editBtn = document.getElementById('edit-btn');
   if (editBtn) {
@@ -444,7 +464,7 @@ function calculateAge(birthDate) {
 }
 
 document.addEventListener('DOMContentLoaded', async function() {
-  initializeEventListeners();
+  await initializeEventListeners();
   addEditButton();
 
   const urlParams = new URLSearchParams(window.location.search);

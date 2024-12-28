@@ -69,6 +69,8 @@ function populateTable(patients) {
     return date.split("T")[0];
   }
 
+  patients.sort((a, b) => { return a.mabenhnhan - b.mabenhnhan; });
+
   let countSTT = 1;
   patients.forEach((patient, index) => {
     const matchedDates = patient.phieukhambenhs.filter(phieu => {
@@ -78,10 +80,16 @@ function populateTable(patients) {
     if(matchedDates.length > 0) {
       const row = document.createElement('tr');
       row.setAttribute('data-id', patient.mabenhnhan);
+      let status = '';
+      patient.phieukhambenhs.forEach(phieu => {
+        if (normalizeDate(phieu.ngaykham) === date) {
+          status = phieu.trangthai;
+        }
+      });
       
       row.innerHTML = `
           <td>${countSTT}</td>
-          <td class="status">${patient.phieukhambenhs.length > 0 ? patient.phieukhambenhs[0].trangthai : ''}</td>
+          <td class="status">${patient.phieukhambenhs.length > 0 ? status : ''}</td>
           <td>${patient.mabenhnhan}</td>
           <td>${patient.hoten}</td>
           <td>${patient.gioitinh}</td>
@@ -98,6 +106,8 @@ function populateTable(patients) {
   });
   checkDefaultMessage();
 }
+
+
 
 // Add event listener to the date input field
 document.getElementById("exam-date").addEventListener("change", function () {
@@ -123,7 +133,6 @@ async function checkPatientLimit() {
     if (patientResult.success && quyDinhResult.success) {
       const patients = patientResult.data;
       const maxNumOfPatient = quyDinhResult.data[0].soluongbenhnhantoida;
-      // const maxNumOfPatient = 3;
 
       // Lấy ngày khám từ input
       const date = document.getElementById("exam-date").value.split('T')[0];
@@ -148,17 +157,31 @@ async function checkPatientLimit() {
   }
 }
 
+async function checkExistPatient(patientId) {
+  try {
+    const response = await fetch(`http://localhost:3000/api/benh-nhan`);
+    const result = await response.json();
+    if (result.success) {
+      const patients = result.data;
+      for (let i = 0; i < patients.length; i++) {
+        if (patients[i].mabenhnhan === parseInt(patientId)) {
+          return true;
+        }
+      }
+      return false;
+    } else {
+      console.error('Failed to fetch patient');
+      return false;
+    }
+  } catch (error) {
+    console.error('Error fetching patient:', error);
+    return false;
+  }
+}
+
 // Function to add a new patient to the table
 document.getElementById("btn-save").addEventListener("click", async function (event) {
   event.preventDefault(); // Prevent the form from submitting normally
-
-  // Kiểm tra số lượng bệnh nhân trong ngày có vượt quá quy định không
-  const isFull = await checkPatientLimit();
-  if (isFull) {
-    alert("Số lượng bệnh nhân trong ngày đã đạt tối đa.");
-    window.location.reload();
-    return;
-  }
 
   // Get values from the form
   const mabenhnhan = document.getElementById("patient-id").value;
@@ -170,6 +193,17 @@ document.getElementById("btn-save").addEventListener("click", async function (ev
   const sodienthoai = document.getElementById("phone").value.trim();
   const nghenghiep = document.getElementById("job").value.trim();
   const ghichu = document.getElementById("notes").value.trim();
+
+  // Kiểm tra số lượng bệnh nhân trong ngày có vượt quá quy định không
+  const isFull = await checkPatientLimit();
+  const isExistPatient = await checkExistPatient(mabenhnhan);
+  if (isFull) {
+    if (!isExistPatient) {
+      alert("Số lượng bệnh nhân trong ngày đã đạt tối đa.");
+      window.location.reload();
+      return;
+    }
+  }
 
   // Kiểm tra các thông tin không được để trống
   if (!hoten || !gioitinh || !dantoc || !ngaysinh || !diachi || !sodienthoai || !nghenghiep) {
@@ -213,6 +247,11 @@ document.getElementById("btn-save").addEventListener("click", async function (ev
       const result = await response.json();
       if (result.success) {
           fetchPatientData();
+          if(isExistPatient) {
+            alert('Cập nhật thông tin bệnh nhân thành công.');
+          } else {
+            alert('Thêm bệnh nhân thành công.');
+          }
       } else {
           console.error('Failed to add patient');
       }
@@ -238,6 +277,7 @@ document.getElementById("btn-edit").addEventListener("click", function () {
     document.getElementById("phone").value = selectedRow.cells[8].innerText;
     document.getElementById("job").value = selectedRow.cells[9].innerText;
     document.getElementById("notes").value = selectedRow.cells[10].innerText;
+    document.getElementById("age").value = calculateAge(document.getElementById("dob").value);
   } else {
     alert("Vui lòng chọn một bệnh nhân để sửa.");
   }
@@ -308,15 +348,6 @@ const getMedicalExaminationID = async (patientId) => {
     const result = await response.json();
 
     if (result.success) {
-      // let medicalExamination = undefined;
-
-      // for (let i = 0; i < result.data.length; i++) {
-      //   if (String(result.data[i].mabenhnhan) === patientId) {
-      //     medicalExamination = result.data[i];
-      //     break; 
-      //   }
-      // }
-      // return medicalExamination ? medicalExamination.maphieukham : undefined;
 
       return result.data.length > 0 ? result.data[0].maphieukham : undefined;
     } else {
@@ -350,17 +381,6 @@ document.getElementById("btn-exam").addEventListener("click", async function () 
   }
 });
 
-// // Hàm để cập nhật trạng thái bệnh nhân (trang khám sẽ gọi sau)
-// function updatePatientStatus(patientId, status) {
-//   const rows = document.querySelectorAll("#patient-table tr");
-//   rows.forEach((row) => {
-//     const currentPatientId = row.querySelector("td:nth-child(2)").textContent;
-//     if (currentPatientId === patientId) {
-//       row.querySelector(".status").textContent = status;
-//     }
-//   });
-// }
-
 // Chức năng lọc bảng theo trạng thái khám
 function filterPatients() {
   const showUnexamined = document.getElementById("filter-unexamined").checked;
@@ -393,60 +413,3 @@ document
 document
   .getElementById("filter-examined")
   .addEventListener("change", filterPatients);
-
-
-// // Lấy thông tin bệnh nhân từ localStorage
-// window.onload = function() {
-//   const patientData = JSON.parse(localStorage.getItem("patientData"));
-//   if (patientData) {
-//       // Điền thông tin bệnh nhân vào các trường trong form
-//       document.getElementById("patient-id").value = patientData.id;
-//       document.getElementById("name").value = patientData.name;
-//       document.getElementById("gender").value = patientData.gender;
-//       document.getElementById("ethnicity").value = patientData.ethnicity;
-//       document.getElementById("dob").value = patientData.dob;
-//       document.getElementById("address").value = patientData.address;
-//       document.getElementById("phone").value = patientData.phone;
-//       document.getElementById("job").value = patientData.job;
-//       document.getElementById("notes").value = patientData.note;
-
-//       // Tính và hiển thị tuổi của bệnh nhân
-//       const age = calculateAge(patientData.dob);
-//       document.getElementById("age").value = age; // Hiển thị tuổi bệnh nhân
-
-//       // Xóa thông tin khỏi localStorage để không hiển thị lại lần sau
-//       localStorage.removeItem("patientData");
-//   }
-// };
-
-// Hàm để hiển thị danh sách bệnh nhân từ sessionStorage
-// function renderPatientList() {
-//   let patients = JSON.parse(sessionStorage.getItem('patients')) || [];
-
-//   const tableBody = document.getElementById("patient-table-body");
-//   tableBody.innerHTML = ''; // Xóa nội dung cũ trước khi hiển thị lại
-
-//   patients.forEach(patient => {
-//     const row = document.createElement("tr");
-
-//     const idCell = document.createElement("td");
-//     idCell.innerText = patient.id;
-//     row.appendChild(idCell);
-
-//     const nameCell = document.createElement("td");
-//     nameCell.innerText = patient.name;
-//     row.appendChild(nameCell);
-
-//     const statusCell = document.createElement("td");
-//     statusCell.innerText = patient.status || "Chưa khám"; // Hiển thị trạng thái
-//     row.appendChild(statusCell);
-
-//     // Thêm dòng vào bảng
-//     tableBody.appendChild(row);
-//   });
-// }
-
-// // Gọi hàm để render danh sách bệnh nhân khi trang được tải
-// window.onload = function() {
-//   renderPatientList();
-// };
