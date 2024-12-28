@@ -2,7 +2,9 @@ const lineCTX = document.getElementById("LineChart").getContext("2d");
 
 async function fetchDataAndUpdateChart() {
   try {
-    const response = await fetch('http://localhost:3000/api/benh-nhan/getkhambenh');
+    // const response = await fetch('http://localhost:3000/api/benh-nhan/getkhambenh');
+    //after deploy
+    const response = await fetch('https://clinic-management-theta.vercel.app/api/benh-nhan/getkhambenh');
     const data = await response.json();
 
     const newPatientsData = new Array(12).fill(0);

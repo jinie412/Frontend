@@ -1,7 +1,9 @@
 let revenueChart; // Declare the variable only once at the top
 
 async function fetchData() {
-    const response = await fetch('http://localhost:3000/api/hoa-don/doanhthu-by-day');
+    // const response = await fetch('http://localhost:3000/api/hoa-don/doanhthu-by-day');
+    //after deploy
+    const response = await fetch('https://clinic-management-theta.vercel.app/api/hoa-don/doanhthu-by-day');
     const result = await response.json();
     const data = result.data;
     

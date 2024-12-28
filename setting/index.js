@@ -1,6 +1,8 @@
 async function fetchDoctorDetails() {
     try {
-        const response = await fetch('http://localhost:3000/api/bac-si/info');
+        // const response = await fetch('http://localhost:3000/api/bac-si/info');
+        //after deploy
+        const response = await fetch('https://clinic-management-theta.vercel.app/api/bac-si/info');
         const data = await response.json();
 
         if (data.success) {
@@ -41,7 +43,9 @@ async function updateConfig() {
     };
 
     try {
-        const response = await fetch('http://localhost:3000/api/bac-si/update', {
+        // const response = await fetch('http://localhost:3000/api/bac-si/update', 
+        //after deploy
+        const response = await fetch('https://clinic-management-theta.vercel.app/api/bac-si/update', {
             method: 'PUT',
             headers: {
                 'Content-Type': 'application/json'

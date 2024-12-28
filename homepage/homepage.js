@@ -1,9 +1,17 @@
 document.addEventListener("DOMContentLoaded", function () {
     function updateData() {
         Promise.all([
-            fetch('http://localhost:3000/api/benh-nhan').then(response => response.json()),
-            fetch('http://localhost:3000/api/hoa-don').then(response => response.json()),
-            fetch('http://localhost:3000/api/thuoc').then(response => response.json())
+            // fetch('http://localhost:3000/api/benh-nhan').then(response => response.json()),
+            //after deploy
+            fetch('https://clinic-management-theta.vercel.app/api/benh-nhan').then(response => response.json()),
+
+            // fetch('http://localhost:3000/api/hoa-don').then(response => response.json()),
+            //after deploy
+            fetch('https://clinic-management-theta.vercel.app/api/hoa-don').then(response => response.json()),
+
+            // fetch('http://localhost:3000/api/thuoc').then(response => response.json())
+            //after deploy
+            fetch('https://clinic-management-theta.vercel.app/api/thuoc').then(response => response.json())
         ])
         .then(([benhnhansData, hoadonsData, thuocsData]) => {
             console.log('Benhnhans Data:', benhnhansData);

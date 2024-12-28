@@ -5,7 +5,9 @@ let patients = [];
 const PatientAPI = {
     getPatients: async () => {
         try {
-            const response = await fetch('http://localhost:3000/api/benh-nhan');
+            // const response = await fetch('http://localhost:3000/api/benh-nhan');
+            //after deploy
+            const response = await fetch('https://clinic-management-theta.vercel.app/api/benh-nhan');
             if (!response.ok) throw new Error(`HTTP Error: ${response.status}`);
             const data = await response.json();
             patients = data['data']; // Lưu vào biến toàn cục
@@ -91,7 +93,9 @@ document.getElementById("searchButton").addEventListener("click", function () {
 // Lấy mã phiếu khám từ mã bệnh nhân
 const getMedicalExaminationID = async (patientId) => {
     try {
-      const response = await fetch(`http://localhost:3000/api/benh-nhan/getkhambenh/${patientId}`);
+    //   const response = await fetch(`http://localhost:3000/api/benh-nhan/getkhambenh/${patientId}`);
+        //after deploy
+        const response = await fetch(`https://clinic-management-theta.vercel.app/api/benh-nhan/getkhambenh/${patientId}`);
       const result = await response.json();
   
       if (result.success) {
@@ -145,7 +149,10 @@ document.getElementById("addRecordButton").addEventListener("click", async funct
         const patientId = selectedRow.cells[1].innerText;
         const date = new Date().toISOString().split('T')[0];
         try{
-            const response = await fetch(`http://localhost:3000/api/phieu-kham-benh/new`, {
+            // const response = await fetch(`http://localhost:3000/api/phieu-kham-benh/new`, 
+            // after deploy
+            const response = await fetch(`https://clinic-management-theta.vercel.app/api/phieu-kham-benh/new`,
+            {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'

@@ -1,5 +1,7 @@
 document.addEventListener('DOMContentLoaded', () => {
-    const apiUrl = 'http://localhost:3000/api/thuoc/getphieukhambenhs';
+    // const apiUrl = 'http://localhost:3000/api/thuoc/getphieukhambenhs';
+    //after deploy
+    const apiUrl = 'https://clinic-management-theta.vercel.app/api/thuoc/getphieukhambenhs';
 
     // Update title with month parameter
     const urlParams = new URLSearchParams(window.location.search);

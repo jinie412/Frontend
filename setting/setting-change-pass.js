@@ -16,7 +16,9 @@ async function changePassword() {
     };
 
     try {
-        const response = await fetch('http://localhost:3000/api/bac-si/change-password', {
+        // const response = await fetch('http://localhost:3000/api/bac-si/change-password', 
+        //after deploy
+        const response = await fetch('https://clinic-management-theta.vercel.app/api/bac-si/change-password', {
             method: 'PUT',
             headers: {
                 'Content-Type': 'application/json'
@@ -39,7 +41,9 @@ async function changePassword() {
 //fetch api to get username
 async function fetchUsername() {
     try {
-        const response = await fetch('http://localhost:3000/api/bac-si/info');
+        // const response = await fetch('http://localhost:3000/api/bac-si/info');
+        //after deploy
+        const response = await fetch('https://clinic-management-theta.vercel.app/api/bac-si/info');
         const data = await response.json();
 
         if (data.success) {

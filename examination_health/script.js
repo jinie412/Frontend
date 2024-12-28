@@ -7,7 +7,9 @@ async function setIsEditMode() {
   try {
     const urlParams = new URLSearchParams(window.location.search);
     const medicalExaminationId = urlParams.get('medical-examination-id');
-    const response = await fetch(`http://localhost:3000/api/phieu-kham-benh/${medicalExaminationId}`);
+    // const response = await fetch(`http://localhost:3000/api/phieu-kham-benh/${medicalExaminationId}`);
+    //after deploy
+    const response = await fetch(`https://clinic-management-theta.vercel.app/api/phieu-kham-benh/${medicalExaminationId}`);
     const result = await response.json();
     
     if (result.success) {
@@ -148,7 +150,9 @@ function toggleInputFields(enabled) {
 // Xử lý click nút sửa
 async function handleEditClick() {
   const medicalExaminationId = new URLSearchParams(window.location.search).get('medical-examination-id');
-  const response = await fetch(`http://localhost:3000/api/phieu-kham-benh/${medicalExaminationId}`);
+  // const response = await fetch(`http://localhost:3000/api/phieu-kham-benh/${medicalExaminationId}`);
+  //after deploy
+  const response = await fetch(`https://clinic-management-theta.vercel.app/api/phieu-kham-benh/${medicalExaminationId}`);
   const result = await response.json();
 
   if (result.success && result.data.trangthai === 'Đã khám') {
@@ -217,7 +221,9 @@ document.getElementById("back-btn").addEventListener("click", function () {
 // Hàm lấy thông tin thuốc từ API
 async function fetchMedicineData() {
   try {
-    const response = await fetch('http://localhost:3000/api/thuoc');
+    // const response = await fetch('http://localhost:3000/api/thuoc');
+    //after deploy
+    const response = await fetch('https://clinic-management-theta.vercel.app/api/thuoc');
     const result = await response.json();
     if (result.success) {
       populateMedicineDropdown(result.data);
@@ -286,7 +292,9 @@ function updateRowNumbers() {
 // Hàm lấy dữ liệu loại bệnh từ API
 async function fetchDiagnosisData() {
   try {
-    const response = await fetch('http://localhost:3000/api/loai-benh');
+    // const response = await fetch('http://localhost:3000/api/loai-benh');
+    //after deploy
+    const response = await fetch('https://clinic-management-theta.vercel.app/api/loai-benh');
     const result = await response.json();
     if (result.success) {
       populateDiagnosisDropdown(result.data);
@@ -313,7 +321,9 @@ function populateDiagnosisDropdown(diagnoses) {
 // Hàm lấy thông tin bệnh nhân từ API
 async function fetchPatientData(patientId, medicalExaminationId) {
   try {
-      const response = await fetch(`http://localhost:3000/api/benh-nhan/getkhambenh/${patientId}`);
+      // const response = await fetch(`http://localhost:3000/api/benh-nhan/getkhambenh/${patientId}`);
+      //after deploy
+      const response = await fetch(`https://clinic-management-theta.vercel.app/api/benh-nhan/getkhambenh/${patientId}`);
       const result = await response.json();
       console.log('API response:', result);
       if (result.success) {
@@ -333,7 +343,9 @@ async function fetchPatientData(patientId, medicalExaminationId) {
 // Hàm lấy thông tin toa thuốc từ API
 async function getPrescriptionData(medicalExaminationId){
   try {
-    const response = await fetch(`http://localhost:3000/api/phieu-kham-benh/chi-tiet-toa-thuoc/${medicalExaminationId}`);
+    // const response = await fetch(`http://localhost:3000/api/phieu-kham-benh/chi-tiet-toa-thuoc/${medicalExaminationId}`);
+    //after deploy
+    const response = await fetch(`https://clinic-management-theta.vercel.app/api/phieu-kham-benh/chi-tiet-toa-thuoc/${medicalExaminationId}`);
     const result = await response.json();
     if (result.success) {
       return result.data;
@@ -348,7 +360,9 @@ async function getPrescriptionData(medicalExaminationId){
 // Hàm lấy thông tin cận lâm sàng từ API
 async function getSubclinicalData(medicalExaminationId) {
   try {
-    const response = await fetch(`http://localhost:3000/api/can-lam-sang/${medicalExaminationId}`);
+    // const response = await fetch(`http://localhost:3000/api/can-lam-sang/${medicalExaminationId}`);
+    //after deploy
+    const response = await fetch(`https://clinic-management-theta.vercel.app/api/can-lam-sang/${medicalExaminationId}`);
     const result = await response.json();
     if (result.success) {
       return result.data;
@@ -594,7 +608,9 @@ async function updateMedicineInStock(medicineId, quantity, isAdd) {
       throw new Error('Invalid input parameters');
     }
 
-    const response = await fetch(`http://localhost:3000/api/thuoc/${medicineId}`);
+    // const response = await fetch(`http://localhost:3000/api/thuoc/${medicineId}`);
+    //after deploy
+    const response = await fetch(`https://clinic-management-theta.vercel.app/api/thuoc/${medicineId}`);
     if (!response.ok) {
       throw new Error('Failed to fetch medicine data');
     }
@@ -620,7 +636,9 @@ async function updateMedicineInStock(medicineId, quantity, isAdd) {
       throw new Error('Số lượng thuốc trong kho không đủ');
     }
 
-    const updateResponse = await fetch(`http://localhost:3000/api/thuoc/update/${medicineId}`, {
+    // const updateResponse = await fetch(`http://localhost:3000/api/thuoc/update/${medicineId}`,
+    //after deploy
+    const updateResponse = await fetch(`https://clinic-management-theta.vercel.app/api/thuoc/update/${medicineId}`, {
       method: "PUT",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ soluongnhap, soluongcon })
@@ -753,21 +771,31 @@ async function saveExamination() {
     }
 
     if(status) {
-      let response = await fetch(`http://localhost:3000/api/phieu-kham-benh/chi-tiet-toa-thuoc/${medicalExaminationId}`);
+      // let response = await fetch(`http://localhost:3000/api/phieu-kham-benh/chi-tiet-toa-thuoc/${medicalExaminationId}`);
+      //after deploy
+      let response = await fetch(`https://clinic-management-theta.vercel.app/api/phieu-kham-benh/chi-tiet-toa-thuoc/${medicalExaminationId}`);
       let result = await response.json();
       if(result.success) {
         for (const item of result.data) {
           await updateMedicineInStock(item.mathuoc, item.soluong, false);
-          await fetch(`http://localhost:3000/api/toa-thuoc/delete/${medicalExaminationId}/${item.mathuoc}`, {
+          // await fetch(`http://localhost:3000/api/toa-thuoc/delete/${medicalExaminationId}/${item.mathuoc}`, 
+          //after deploy
+          await fetch(`https://clinic-management-theta.vercel.app/api/toa-thuoc/delete/${medicalExaminationId}/${item.mathuoc}`,
+          {
               method: "DELETE"
           });
         }
       }
-      response = await fetch(`http://localhost:3000/api/can-lam-sang/${medicalExaminationId}`);
+      // response = await fetch(`http://localhost:3000/api/can-lam-sang/${medicalExaminationId}`);
+      //after deploy
+      response = await fetch(`https://clinic-management-theta.vercel.app/api/can-lam-sang/${medicalExaminationId}`);
       result = await response.json();
       if(result.success) {
         result.data.forEach(async item => {
-          await fetch(`http://localhost:3000/api/can-lam-sang/delete/${medicalExaminationId}`, {
+          // await fetch(`http://localhost:3000/api/can-lam-sang/delete/${medicalExaminationId}`,
+          //after deploy
+          await fetch(`https://clinic-management-theta.vercel.app/api/can-lam-sang/delete/${medicalExaminationId}`,
+          {
             method: "DELETE"
           });
         });
@@ -776,14 +804,20 @@ async function saveExamination() {
 
     const apiCalls = status
     ? [
-      fetch(`http://localhost:3000/api/loai-benh-trong-phieu-kham/update/${medicalExaminationId}`,{
+      // fetch(`http://localhost:3000/api/loai-benh-trong-phieu-kham/update/${medicalExaminationId}`,
+      //after deploy
+      fetch(`https://clinic-management-theta.vercel.app/api/loai-benh-trong-phieu-kham/update/${medicalExaminationId}`,
+      {
         method: "PUT",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(apiData.loaiBenh)
       })
     ]
     : [
-      fetch(`http://localhost:3000/api/loai-benh-trong-phieu-kham/add`, {
+      // fetch(`http://localhost:3000/api/loai-benh-trong-phieu-kham/add`, 
+      //after deploy
+      fetch(`https://clinic-management-theta.vercel.app/api/loai-benh-trong-phieu-kham/add`,
+      {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(apiData.loaiBenh)
@@ -791,22 +825,34 @@ async function saveExamination() {
     ]
 
     apiCalls.push(
-      fetch(`http://localhost:3000/api/can-lam-sang/add`, {
+      // fetch(`http://localhost:3000/api/can-lam-sang/add`, 
+      //after deploy
+      fetch(`https://clinic-management-theta.vercel.app/api/can-lam-sang/add`,
+      {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(apiData.canlamsang)
       }),
-      fetch(`http://localhost:3000/api/toa-thuoc/add`, {
+      // fetch(`http://localhost:3000/api/toa-thuoc/add`,
+      //after deploy
+      fetch(`https://clinic-management-theta.vercel.app/api/toa-thuoc/add`,
+      {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(apiData.toaThuoc)
       }),
-      fetch(`http://localhost:3000/api/benh-nhan/update/${patientId}`, {
+      // fetch(`http://localhost:3000/api/benh-nhan/update/${patientId}`,
+      //after deploy
+      fetch(`https://clinic-management-theta.vercel.app/api/benh-nhan/update/${patientId}`,
+      {
         method: "PUT",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(apiData.benhNhan)
       }),
-      fetch(`http://localhost:3000/api/phieu-kham-benh/update/${medicalExaminationId}`, {
+      // fetch(`http://localhost:3000/api/phieu-kham-benh/update/${medicalExaminationId}`,
+      //after deploy
+      fetch(`https://clinic-management-theta.vercel.app/api/phieu-kham-benh/update/${medicalExaminationId}`,
+      {
         method: "PUT",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(apiData.phieuKhamBenh)
@@ -841,7 +887,9 @@ document.getElementById("save-btn").addEventListener("click", saveExamination);
 
 // Hàm lấy lịch sử khám bệnh từ API
 function fetchExaminationHistory(patientId) {
-  fetch(`http://localhost:3000/api/benh-nhan/getkhambenh/${patientId}`)
+  // fetch(`http://localhost:3000/api/benh-nhan/getkhambenh/${patientId}`)
+  //after deploy
+  fetch(`https://clinic-management-theta.vercel.app/api/benh-nhan/getkhambenh/${patientId}`)
     .then(response => response.json())
     .then(result => {
       if (result.success) {

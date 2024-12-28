@@ -6,7 +6,9 @@ let medicineData = [];
 // Function to fetch medicine data from the backend
 async function fetchMedicineData() {
     try {
-        const response = await fetch('http://localhost:3000/api/thuoc');
+        // const response = await fetch('http://localhost:3000/api/thuoc');
+        //after deploy
+        const response = await fetch('https://clinic-management-theta.vercel.app/api/thuoc');
         const result = await response.json();
         if (result.success) {
             medicineData = result.data.map(medicine => ({
@@ -68,7 +70,9 @@ let unitData = [];
 // Function to fetch unit data from the backend
 async function fetchUnitData() {
     try {
-        const response = await fetch('http://localhost:3000/api/don-vi-tinh');
+        // const response = await fetch('http://localhost:3000/api/don-vi-tinh');
+        //after deploy
+        const response = await fetch('https://clinic-management-theta.vercel.app/api/don-vi-tinh');
         const result = await response.json();
         if (result.success) {
             unitData = result.data.map(unit => unit.tendonvi);
@@ -100,7 +104,9 @@ function populateUnitDropdown() {
 async function handleDeleteClick(id) {
     if (confirm('Bạn có chắc chắn muốn xóa thuốc này?')) {
         try {
-            const response = await fetch(`http://localhost:3000/api/thuoc/delete/${id}`, {
+            // const response = await fetch(`http://localhost:3000/api/thuoc/delete/${id}`, 
+            //after deploy
+            const response = await fetch(`https://clinic-management-theta.vercel.app/api/thuoc/delete/${id}`, {
                 method: 'DELETE'
             });
             const data = await response.json();
@@ -131,7 +137,9 @@ let currentUsages = [];
 // Fetch danh sách cách dùng từ API
 async function fetchUsageOptions() {
     try {
-        const response = await fetch('http://localhost:3000/api/cach-dung');
+        // const response = await fetch('http://localhost:3000/api/cach-dung');
+        //after deploy
+        const response = await fetch('https://clinic-management-theta.vercel.app/api/cach-dung');
         const data = await response.json();
         console.log('Usage data:', data);
 
@@ -258,7 +266,9 @@ document.getElementById('editMedicineForm').addEventListener('submit', async fun
     };
 
     try {
-        const response = await fetch(`http://localhost:3000/api/thuoc/update`, {
+        // const response = await fetch(`http://localhost:3000/api/thuoc/update`, 
+        //after deploy
+        const response = await fetch(`https://clinic-management-theta.vercel.app/api/thuoc/update`, {
             method: 'PUT',
             headers: {
                 'Content-Type': 'application/json'
@@ -334,7 +344,9 @@ function sortTableByName() {
 //--------------------Don vi thuoc---------------------//
 async function fetchUnits() {
     try {
-        const response = await fetch('http://localhost:3000/api/don-vi-tinh');
+        // const response = await fetch('http://localhost:3000/api/don-vi-tinh');
+        //after deploy
+        const response = await fetch('https://clinic-management-theta.vercel.app/api/don-vi-tinh');
         const data = await response.json();
 
         if (data.success) {
@@ -385,7 +397,9 @@ document.getElementById('addUnitForm').addEventListener('submit', async function
     const unitName = document.getElementById('unitName').value;
 
     try {
-        const response = await fetch('http://localhost:3000/api/don-vi-tinh/add', {
+        // const response = await fetch('http://localhost:3000/api/don-vi-tinh/add', 
+        //after deploy
+        const response = await fetch('https://clinic-management-theta.vercel.app/api/don-vi-tinh/add', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -424,7 +438,9 @@ document.getElementById('editUnitForm').addEventListener('submit', async functio
     const newUnitName = document.getElementById('editUnitName').value;
 
     try {
-        const response = await fetch(`http://localhost:3000/api/don-vi-tinh/${unitId}`, {
+        // const response = await fetch(`http://localhost:3000/api/don-vi-tinh/${unitId}`,
+        //after deploy
+        const response = await fetch(`https://clinic-management-theta.vercel.app/api/don-vi-tinh/${unitId}`, {
             method: 'PUT',
             headers: {
                 'Content-Type': 'application/json',
@@ -450,7 +466,9 @@ document.getElementById('editUnitForm').addEventListener('submit', async functio
 async function deleteUnit(unitId) {
     if (confirm('Are you sure you want to delete this unit?')) {
         try {
-            const response = await fetch(`http://localhost:3000/api/don-vi-tinh/${unitId}`, {
+            // const response = await fetch(`http://localhost:3000/api/don-vi-tinh/${unitId}`,
+            //after deploy
+            const response = await fetch(`https://clinic-management-theta.vercel.app/api/don-vi-tinh/${unitId}`, {
                 method: 'DELETE',
             });
 
@@ -476,7 +494,9 @@ async function deleteUnit(unitId) {
 //--------------------Cach dung thuoc---------------------//
 async function fetchUsages() {
     try {
-        const response = await fetch('http://localhost:3000/api/cach-dung');
+        // const response = await fetch('http://localhost:3000/api/cach-dung');
+        //after deploy
+        const response = await fetch('https://clinic-management-theta.vercel.app/api/cach-dung');
         const data = await response.json();
 
         if (data.success) {
@@ -533,7 +553,9 @@ function closeEditUsageModal() {
 async function deleteUsage(usageId) {
     if (confirm('Are you sure you want to delete this usage?')) {
         try {
-            const response = await fetch(`http://localhost:3000/api/cach-dung/delete/${usageId}`, {
+            // const response = await fetch(`
+            //after deploy
+            const response = await fetch(`https://clinic-management-theta.vercel.app/api/cach-dung/${usageId}`, {
                 method: 'DELETE',
             });
 
@@ -555,7 +577,9 @@ document.getElementById('addUsageForm').addEventListener('submit', async functio
     const usageDescription = document.getElementById('usageDescription').value;
 
     try {
-        const response = await fetch('http://localhost:3000/api/cach-dung/add', {
+        // const response = await fetch('http://localhost:3000/api/cach-dung/add',
+        //after deploy
+        const response = await fetch('https://clinic-management-theta.vercel.app/api/cach-dung/add', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -583,7 +607,9 @@ document.getElementById('editUsageForm').addEventListener('submit', async functi
     const newUsageDescription = document.getElementById('editUsageDescription').value;
 
     try {
-        const response = await fetch(`http://localhost:3000/api/cach-dung/update/${usageId}`, {
+        // const response = await fetch(`http://localhost:3000/api/cach-dung/update/${usageId}`, 
+        //after deploy
+        const response = await fetch(`https://clinic-management-theta.vercel.app/api/cach-dung/update/${usageId}`, {
             method: 'PUT',
             headers: {
                 'Content-Type': 'application/json',
@@ -726,7 +752,9 @@ document.getElementById('addMedicineForm').addEventListener('submit', async func
     };
 
     try {
-        const response = await fetch('http://localhost:3000/api/thuoc/increaseMedicine', {
+        // const response = await fetch('http://localhost:3000/api/thuoc/increaseMedicine', 
+        //after deploy
+        const response = await fetch('https://clinic-management-theta.vercel.app/api/thuoc/increaseMedicine', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'

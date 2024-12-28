@@ -13,7 +13,9 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     function fetchDataAndUpdateChart() {
-        fetch('http://localhost:3000/api/benh-nhan')
+        // fetch('http://localhost:3000/api/benh-nhan')
+        //after deploy
+        fetch('https://clinic-management-theta.vercel.app/api/benh-nhan')
             .then(response => response.json())
             .then(data => {
                 const ageGroups = ["0-16", "16-20", "20-40", "40-60", ">60"];

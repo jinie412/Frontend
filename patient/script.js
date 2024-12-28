@@ -30,7 +30,9 @@ class ApiService {
 // Dịch vụ bệnh nhân
 class PatientService extends ApiService {
     constructor() {
-        super('http://localhost:3000/api');
+        // super('
+        //after deploy
+        super('https://clinic-management-theta.vercel.app/api/benh-nhan');
     }
 
     async getPatients() {

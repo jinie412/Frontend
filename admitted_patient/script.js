@@ -34,7 +34,9 @@ let selectedRow = null;
 // Function to fetch patient data from the backend
 async function fetchPatientData() {
   try {
-      const response = await fetch('http://localhost:3000/api/benh-nhan/getkhambenh');
+      // const response = await fetch('http://localhost:3000/api/benh-nhan/getkhambenh');
+      //after deploy
+      const response = await fetch('https://clinic-management-theta.vercel.app/api/benh-nhan/getkhambenh');
       const result = await response.json();
       if (result.success) {
           const patients = result.data;
@@ -123,11 +125,15 @@ document.addEventListener("DOMContentLoaded", function () {
 async function checkPatientLimit() {
   try {
     // Lấy dữ liệu bệnh nhân
-    const patientResponse = await fetch('http://localhost:3000/api/benh-nhan/getkhambenh');
+    // const patientResponse = await fetch('http://localhost:3000/api/benh-nhan/getkhambenh');
+    //after deploy
+    const patientResponse = await fetch('https://clinic-management-theta.vercel.app/api/benh-nhan/getkhambenh');
     const patientResult = await patientResponse.json();
 
     // Lấy quy định số lượng bệnh nhân tối đa
-    const quyDinhResponse = await fetch('http://localhost:3000/api/quy-dinh');
+    // const quyDinhResponse = await fetch('http://localhost:3000/api/quy-dinh');
+    //after deploy
+    const quyDinhResponse = await fetch('https://clinic-management-theta.vercel.app/api/quy-dinh');
     const quyDinhResult = await quyDinhResponse.json();
 
     if (patientResult.success && quyDinhResult.success) {
@@ -159,7 +165,9 @@ async function checkPatientLimit() {
 
 async function checkExistPatient(patientId) {
   try {
-    const response = await fetch(`http://localhost:3000/api/benh-nhan`);
+    // const response = await fetch(`http://localhost:3000/api/benh-nhan`);
+    //after deploy
+    const response = await fetch(`https://clinic-management-theta.vercel.app/api/benh-nhan`);
     const result = await response.json();
     if (result.success) {
       const patients = result.data;
@@ -237,7 +245,10 @@ document.getElementById("btn-save").addEventListener("click", async function (ev
 
   // Thêm bệnh nhân vào DB
   try {
-      const response = await fetch('http://localhost:3000/api/benh-nhan/add', {
+      // const response = await fetch('http://localhost:3000/api/benh-nhan/add',
+      // after deploy
+      const response = await fetch('https://clinic-management-theta.vercel.app/api/benh-nhan/add',
+      {
           method: 'POST',
           headers: {
               'Content-Type': 'application/json'
@@ -303,7 +314,9 @@ function checkDefaultMessage() {
 // Function to delete a patient from the backend
 async function deletePatient(patientId) {
   try {
-      const response = await fetch(`http://localhost:3000/api/benh-nhan/delete/${patientId}`, {
+      // const response = await fetch(`http://localhost:3000/api/benh-nhan/delete/${patientId}`, 
+      // after deploy
+      const response = await fetch(`https://clinic-management-theta.vercel.app/api/benh-nhan/delete/${patientId}`,{
           method: 'DELETE'
       });
       const result = await response.json();
@@ -344,7 +357,9 @@ document.getElementById("patient-table").addEventListener("click", function (eve
 // Lấy mã phiếu khám từ mã bệnh nhân
 const getMedicalExaminationID = async (patientId) => {
   try {
-    const response = await fetch(`http://localhost:3000/api/benh-nhan/getkhambenh/${patientId}`);
+    // const response = await fetch(`http://localhost:3000/api/benh-nhan/getkhambenh/${patientId}`);
+    //after deploy
+    const response = await fetch(`https://clinic-management-theta.vercel.app/api/benh-nhan/getkhambenh/${patientId}`);
     const result = await response.json();
 
     if (result.success) {

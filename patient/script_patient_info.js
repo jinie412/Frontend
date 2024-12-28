@@ -29,7 +29,9 @@ class ApiService {
 
 class PatientService extends ApiService {
     constructor(){
-        super('http://localhost:3000/api/benh-nhan');
+        // super('http://localhost:3000/api/benh-nhan');
+        //after deploy
+        super('https://clinic-management-theta.vercel.app/api/benh-nhan');
     }
 
     async getPatitentById(patientId){

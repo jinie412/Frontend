@@ -1,5 +1,7 @@
 // Fetch dữ liệu từ API và xử lý hiển thị
-const apiUrl = "http://localhost:3000/api/thuoc/getphieukhambenhs"; // Thay đổi endpoint phù hợp
+// const apiUrl = "http://localhost:3000/api/thuoc/getphieukhambenhs"; 
+//after deploy
+const apiUrl = "https://clinic-management-theta.vercel.app/api/thuoc/getphieukhambenhs";
 
 
 async function fetchMedicineData() {

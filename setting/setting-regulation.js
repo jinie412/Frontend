@@ -1,6 +1,8 @@
 async function fetchRegulations() {
     try {
-        const response = await fetch('http://localhost:3000/api/quy-dinh');
+        // const response = await fetch('http://localhost:3000/api/quy-dinh');
+        //after deploy
+        const response = await fetch('https://clinic-management-theta.vercel.app/api/quy-dinh');
         const data = await response.json();
 
         if (data.success) {
@@ -23,7 +25,9 @@ async function fetchRegulations() {
 
 async function fetchDiseases() {
     try {
-        const response = await fetch('http://localhost:3000/api/loai-benh');
+        // const response = await fetch('http://localhost:3000/api/loai-benh');
+        //after deploy
+        const response = await fetch('https://clinic-management-theta.vercel.app/api/loai-benh');
         const data = await response.json();
 
         if (data.success) {
@@ -80,7 +84,9 @@ async function fetchDiseases() {
 
 async function updateDisease(diseaseId, disease) {
     try {
-        const response = await fetch(`http://localhost:3000/api/loai-benh/update/${diseaseId}`, {
+        // const response = await fetch(`http://localhost:3000/api/loai-benh/update/${diseaseId}`,
+        //after deploy
+        const response = await fetch(`https://clinic-management-theta.vercel.app/api/loai-benh/update/${diseaseId}`, {
             method: 'PUT',
             headers: {
                 'Content-Type': 'application/json'
@@ -108,7 +114,9 @@ function openEditModal(diseaseId, diseaseName, diseaseDescription) {
 
 async function addDisease(disease) {
     try {
-        const response = await fetch('http://localhost:3000/api/loai-benh/add', {
+        // const response = await fetch('http://localhost:3000/api/loai-benh/add', 
+        //after deploy
+        const response = await fetch('https://clinic-management-theta.vercel.app/api/loai-benh/add', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -130,7 +138,9 @@ async function addDisease(disease) {
 
 async function deleteDisease(diseaseId) {
     try {
-        const response = await fetch(`http://localhost:3000/api/loai-benh/delete/${diseaseId}`, {
+        // const response = await fetch(`http://localhost:3000/api/loai-benh/delete/${diseaseId}`, 
+        //after deploy
+        const response = await fetch(`https://clinic-management-theta.vercel.app/api/loai-benh/delete/${diseaseId}`, {
             method: 'DELETE'
         });
         const data = await response.json();
@@ -161,7 +171,9 @@ async function submitConfig() {
     };
 
     try {
-        const response = await fetch('http://localhost:3000/api/quy-dinh/update', {
+        // const response = await fetch('http://localhost:3000/api/quy-dinh/update', 
+        //after deploy
+        const response = await fetch('https://clinic-management-theta.vercel.app/api/quy-dinh/update', {
             method: 'PUT',
             headers: {
                 'Content-Type': 'application/json'

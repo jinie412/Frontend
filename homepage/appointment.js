@@ -1,6 +1,8 @@
 async function fetchAndRenderAppointments() {
   try {
-    const response = await fetch('http://localhost:3000/api/benh-nhan/getkhambenh');
+    // const response = await fetch('http://localhost:3000/api/benh-nhan/getkhambenh');
+    //after deploy
+    const response = await fetch('https://clinic-management-theta.vercel.app/api/benh-nhan/getkhambenh');
     const data = await response.json();
 
     const appointments = data.data.map((patient, index) => {

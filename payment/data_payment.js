@@ -29,7 +29,9 @@ class ApiService {
 
 class PatientService extends ApiService {
     constructor() {
-        super('http://localhost:3000/api/benh-nhan');
+        // super('http://localhost:3000/api/benh-nhan');
+        //after deploy
+        super('https://clinic-management-theta.vercel.app/api/benh-nhan');
     }
 
     async getPatients() {
@@ -43,7 +45,9 @@ class PatientService extends ApiService {
 
 class MedicalExaminationService extends ApiService {
     constructor() {
-        super('http://localhost:3000/api/phieu-kham-benh');
+        // super('http://localhost:3000/api/phieu-kham-benh');
+        //after deploy
+        super('https://clinic-management-theta.vercel.app/api/phieu-kham-benh');
     }
 
     async getMedicalExaminations() {
@@ -61,7 +65,9 @@ class MedicalExaminationService extends ApiService {
 
 class RegulatedService extends ApiService {
     constructor() {
-        super('http://localhost:3000/api/quy-dinh');
+        // super('http://localhost:3000/api/quy-dinh');
+        //after deploy
+        super('https://clinic-management-theta.vercel.app/api/quy-dinh');
     }
 
     async getRegulatedInfo() {
@@ -71,7 +77,9 @@ class RegulatedService extends ApiService {
 
 class InvoiceService extends ApiService {
     constructor() {
-        super('http://localhost:3000/api/hoa-don');
+        // super('http://localhost:3000/api/hoa-don');
+        //after deploy
+        super('https://clinic-management-theta.vercel.app/api/hoa-don');
     }
 
     async saveInvoice(data) {

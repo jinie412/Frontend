@@ -1,5 +1,7 @@
 async function fetchData() {
-    const response = await fetch('http://localhost:3000/api/hoa-don/doanhthu');
+    // const response = await fetch('http://localhost:3000/api/hoa-don/doanhthu');
+    //after deploy
+    const response = await fetch('https://clinic-management-theta.vercel.app/api/hoa-don/doanhthu');
     const data = await response.json();
 
     //get total revenue by summing all the revenue in the data
@@ -99,7 +101,9 @@ async function createCharts() {
 
 //get amount of patients
 async function fetchPatientCount() {
-    const response = await fetch('http://localhost:3000/api/benh-nhan');
+    // const response = await fetch('http://localhost:3000/api/benh-nhan');
+    //after deploy
+    const response = await fetch('https://clinic-management-theta.vercel.app/api/benh-nhan');
     const data = await response.json();
 
     document.getElementById('totalPatient').textContent = data.data.length;
