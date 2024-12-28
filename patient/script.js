@@ -36,7 +36,7 @@ class PatientService extends ApiService {
     }
 
     async getPatients() {
-        return this.fetchData('/benh-nhan');
+        return this.fetchData('/');
     }
 }
 
@@ -119,6 +119,8 @@ class PatientManager {
     renderPatients(patients) {
         const patientList = document.getElementById('patient-list');
         if (!patientList) return;
+
+        patients.sort((a, b) => a.mabenhnhan - b.mabenhnhan);
         
         patientList.innerHTML = patients
             .map((patient, index) => patient.toTableRow(index))

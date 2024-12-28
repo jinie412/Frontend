@@ -153,7 +153,7 @@ class PatientDetailsManager {
             }
 
             const result = await this.patientService.getMedicalExaminationInfo(patientId);
-            if (!result.success || !result.data || !result.data[0]) {
+            if (!result.success || !result.data || !result.data.length) {
                 throw new Error('Không tìm thấy thông tin bệnh nhân');
             }
 
