@@ -162,10 +162,11 @@ document.getElementById("addRecordButton").addEventListener("click", async funct
                     ngaykham: date,
                 })
             })
-            const result = response
+
+            const result = await response.json();
             if(result.success){
                 alert("Thêm phiếu khám bệnh thành công.");
-                window.location.href = `../examination_health/index.html?patient-id=${patientId}&medical-examination-id=${result.data.maphieukham}`;
+                window.location.href = `../examination_health/index.html?patient-id=${patientId}&medical-examination-id=${result.data[0].maphieukham}`;
             }else{
                 alert("Thêm phiếu khám bệnh thất bại.");
             }
