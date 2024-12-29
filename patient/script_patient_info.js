@@ -49,6 +49,7 @@ class PatientService extends ApiService {
 
 class Utils{
     static formatDate(date){
+        if (!date) return null;
         return new Date(date).toLocaleDateString('vi-VN');
     }
 
