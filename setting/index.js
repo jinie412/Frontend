@@ -65,8 +65,62 @@ async function updateConfig() {
     }
 }
 
+document.getElementById('fileInput').addEventListener('change', async function (event) {
+    const file = event.target.files[0];
+    if (file) {
+        const formData = new FormData();
+        formData.append('avatar', file);
+        formData.append('id', '1');
+
+        document.getElementById('loadingSpinner').classList.remove('hidden');
+        document.getElementById('loadingSpinner').innerText = 'Đang tải ảnh lên, đợi xíu nha...';
+        try {
+            // const response = await fetch('http://localhost:3000/api/bac-si/upload-avatar', 
+            //after deploy
+            const response = await fetch('https://clinic-management-theta.vercel.app/api/bac-si/upload-avatar', {
+                method: 'POST',
+                body: formData,
+            });
+
+            const result = await response.json();
+            if (response.ok) {
+                console.log('Avatar uploaded successfully:', result.data.anhdaidien);
+                document.getElementById('avatar').src = result.data.anhdaidien;
+                document.getElementById('loadingSpinner').classList.add('hidden');
+            } else {
+                document.getElementById('loadingSpinner').innerText = result.error || 'Đã xảy ra lỗi khi tải ảnh lên';
+                console.error('Error uploading avatar:', result.message);
+            }
+        } catch (error) {
+            console.error('Error uploading avatar:', error);
+        }
+    } else {
+        console.log('No file selected');
+    }
+});
+
+//add method to get avatar link and set it to img tag
+async function fetchAvatar() {
+    try {
+        // const response = await fetch('http://localhost:3000/api/bac-si/avatar');
+        //after deploy
+        const response = await fetch('https://clinic-management-theta.vercel.app/api/bac-si/avatar');
+        const data = await response.json();
+
+        if (data.success) {
+            console.log('Avatar fetched successfully', data.data);
+            document.getElementById('avatar').src = data.data;
+        } else {
+            console.error('Failed to fetch avatar');
+        }
+    } catch (error) {
+        console.error('Error fetching avatar:', error);
+    }
+}
+
 document.addEventListener('DOMContentLoaded', () => {
     fetchDoctorDetails();
+    fetchAvatar();
 
     document.querySelector('button[type="submit"]').addEventListener('click', (event) => {
         event.preventDefault();

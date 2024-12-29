@@ -1,4 +1,24 @@
+async function fetchDoctorDetails() {
+    try {
+        // const response = await fetch('http://localhost:3000/api/bac-si');
+        //after deploy
+        const response = await fetch('https://clinic-management-theta.vercel.app/api/bac-si');
+        const data = await response.json();
+
+        if (data.success) {
+            const doctor = data.data[0];
+            document.getElementById('admin-avatar').src = doctor.anhdaidien;
+            document.getElementById('doctor-name').innerText = doctor.hoten;
+        } else {
+            console.error('Failed to fetch doctor details');
+        }
+    } catch (error) {
+        console.error('Error fetching doctor details:', error);
+    }
+}
+
 document.addEventListener("DOMContentLoaded", function () {
+    fetchDoctorDetails();
     function updateData() {
         Promise.all([
             // fetch('http://localhost:3000/api/benh-nhan').then(response => response.json()),
