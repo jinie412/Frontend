@@ -11,6 +11,7 @@ async function fetchDoctorDetails() {
             document.getElementById('doctor-name').innerText = doctor.hoten;
         } else {
             console.error('Failed to fetch doctor details');
+            
         }
     } catch (error) {
         console.error('Error fetching doctor details:', error);
