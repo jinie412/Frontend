@@ -10,8 +10,7 @@ async function fetchDoctorDetails() {
             document.getElementById('admin-avatar').src = doctor.anhdaidien;
             document.getElementById('doctor-name').innerText = doctor.hoten;
         } else {
-            console.error('Failed to fetch doctor details');
-            
+            console.error('Failed to fetch doctor details');   
         }
     } catch (error) {
         console.error('Error fetching doctor details:', error);
@@ -52,7 +51,4 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // Call updateData function to fetch and update the data
     updateData();
-
-    // Optionally, you can set an interval to update the data periodically
-    setInterval(updateData, 60000); // Update every 60 seconds
 });
