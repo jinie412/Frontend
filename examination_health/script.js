@@ -410,6 +410,10 @@ async function populatePatientData(patient) {
   document.getElementById("allergy").value = patient.diung || "";
   document.getElementById("reexam-date").value = patient.ngaytaikham?.split('T')[0]
   document.getElementById("diagnosis").value = patient.maloaibenh || "";
+  if (patient.ngaysinh) {
+    const age = calculateAge(patient.ngaysinh);
+    document.getElementById("age").value = age;
+  }
   updateDiagnosisSelect(patient.maloaibenh, patient.tenloaibenh);
 
   // Điền thông tin phiếu khám bệnh (giả sử lấy phiếu đầu tiên)
