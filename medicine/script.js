@@ -555,7 +555,7 @@ async function deleteUsage(usageId) {
         try {
             // const response = await fetch(`
             //after deploy
-            const response = await fetch(`https://clinic-management-theta.vercel.app/api/cach-dung/${usageId}`, {
+            const response = await fetch(`https://clinic-management-theta.vercel.app/api/cach-dung/delete/${usageId}`, {
                 method: 'DELETE',
             });
 
