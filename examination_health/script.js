@@ -374,6 +374,23 @@ async function getSubclinicalData(medicalExaminationId) {
   }
 }
 
+
+// Cập nhật chẩn đoán bệnh
+function updateDiagnosisSelect(diagnosisId, diagnosisName) {
+  const selectElement = document.getElementById("diagnosis");
+  const existingOption = Array.from(selectElement.options).find(
+      option => option.value === diagnosisId
+  );
+  if (!existingOption && diagnosisId) {
+      const newOption = document.createElement("option");
+      newOption.value = diagnosisId;
+      newOption.textContent = diagnosisName || "Chẩn đoán không xác định";
+      selectElement.appendChild(newOption);
+  }
+
+  selectElement.value = diagnosisId;
+}
+
 // Hàm điền dữ liệu bệnh nhân vào form
 async function populatePatientData(patient) {
   if (!patient) {
@@ -392,12 +409,8 @@ async function populatePatientData(patient) {
   document.getElementById("medical-history").value = patient.tiensu || "";
   document.getElementById("allergy").value = patient.diung || "";
   document.getElementById("reexam-date").value = patient.ngaytaikham?.split('T')[0]
-
-  // Tính và hiển thị tuổi bệnh nhân
-  if (patient.ngaysinh) {
-      const age = calculateAge(patient.ngaysinh);
-      document.getElementById("age").value = age;
-  }
+  document.getElementById("diagnosis").value = patient.maloaibenh || "";
+  updateDiagnosisSelect(patient.maloaibenh, patient.tenloaibenh);
 
   // Điền thông tin phiếu khám bệnh (giả sử lấy phiếu đầu tiên)
   if (patient.maphieukham) {
@@ -413,6 +426,9 @@ async function populatePatientData(patient) {
       document.getElementById("weight").value = patient.cannang || "";
       document.getElementById("symptoms").value = patient.trieuchung || "";
       document.getElementById("reexam-date").value = patient.ngaytaikham.split('T')[0]
+      document.getElementById("diagnosis").value = patient.maloaibenh || "";
+      document.getElementById("diagnosis").textContent = patient.tenloaibenh || "";
+      updateDiagnosisSelect(patient.maloaibenh, patient.tenloaibenh);
   }
 
   const subclinicalData = await getSubclinicalData(patient.maphieukham);
@@ -489,11 +505,10 @@ document.addEventListener('DOMContentLoaded', async function() {
   
   if (patientId && medicalExaminationId) {
     await setIsEditMode(); // Xác định mode trước
-    await fetchPatientData(parseInt(patientId), parseInt(medicalExaminationId));
-    fetchExaminationHistory(parseInt(patientId));
     await fetchDiagnosisData();
     await fetchMedicineData();
-
+    await fetchPatientData(parseInt(patientId), parseInt(medicalExaminationId));
+    fetchExaminationHistory(parseInt(patientId));
   } else {
     alert("Không tìm thấy thông tin bệnh nhân.");
   }
