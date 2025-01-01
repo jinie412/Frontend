@@ -1,306 +1,380 @@
-<!-- <html lang="en">
+<html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Cấu hình</title>
     <link href="../style/output.css" rel="stylesheet" />
+    <link href="../style/navigation_bar.css" rel="stylesheet" />
+
     <link href="../style/setting_active.css" rel="stylesheet" />
+
+    <script src="../checkLogin.js"></script>
+
     <link
       rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
     />
+  </head>
 
-    <title>Thay đổi quy định</title>
-  </head> -->
-
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Cấu hình</title>
-  <link href="../style/navigation_bar.css" rel="stylesheet" />
-  <link href="../style/output.css" rel="stylesheet" />
-  <link href="../style/setting_active.css" rel="stylesheet" />
-
-  <script src="../checkLogin.js"></script>
-
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-</head>
-
-<body class="m-0 p-0 flex flex-col min-h-screen bg-grayBg">
-  <!-- Thanh điều hướng -->
-  <nav class="bg-blueTaskbar text-white p-3 w-full text-center">
-    <ul class="flex justify-between list-none p-0 m-0">
-      <li class="nav-item">
-        <a href="../homepage/index.html" class="font-normal"><i class="fas fa-home text-white text-lg"></i></a>
-      </li>
-      <li class="nav-item">
-        <a href="../admitted_patient/index.html" class="font-normal text-white px-[15px] py-2">Nhận bệnh</a>
-      </li>
-      <li class="nav-item">
-        <a href="../examination_health/index.html" class="font-normal text-white px-[15px] py-2">Khám bệnh</a>
-      </li>
-      <li class="nav-item">
-        <a href="../payment/index.html" class="font-normal text-white px-[15px] py-2">Hoá đơn</a>
-      </li>
-      <li class="nav-item">
-        <a href="#" class="font-normal text-white px-[15px] py-2">Báo cáo</a>
-        <div class="dropdown">
-          <a href="../report/index1.html" class="dropdown-item">Doanh thu</a>
-          <a href="../report/index2.html" class="dropdown-item">Lượng thuốc</a>
-        </div>
-      </li>
-      <li class="nav-item">
-        <a href="../patient/index.html" class="font-normal text-white px-[15px] py-2">Bệnh nhân</a>
-      </li>
-      <li class="nav-item">
-        <a href="../medicine/index.html" class="font-normal text-white px-[15px] py-2">Thuốc</a>
-      </li>
-      <li class="nav-item">
-        <a href="#" class="active relative font-bold px-1.5 py-2"><i class="fas fa-user text-white text-lg"></i></a>
-        <div class="dropdown">
-          <a href="../setting/index.html" class="dropdown-item">
-            Cài đặt
-            <i class="fas fa-cog text-white text-lg"></i></a>
-          <a href="../login/index.html" class="dropdown-item">
-            Đăng xuất
-            <i class="fas fa-sign-out-alt text-white text-lg"></i></a>
-        </div>
-      </li>
-    </ul>
-  </nav>
-
-  <!-- <nav class="bg-blueTaskbar text-white p-3 w-full text-center">
+  <body class="m-0 p-0 flex flex-col min-h-screen bg-grayBg">
+    <!-- Thanh điều hướng -->
+    <nav class="bg-blueTaskbar text-white p-3 w-full text-center">
       <ul class="flex justify-between list-none p-0 m-0">
-        <li class="mx-[15px] my-0">
+        <li class="nav-item">
           <a href="../homepage/index.html" class="font-normal"
             ><i class="fas fa-home text-white text-lg"></i
           ></a>
         </li>
-        <li class="mx-[15px] my-0">
+        <li class="nav-item">
           <a
-            href="../nhan_benh/index.html"
+            href="../admitted_patient/index.html"
             class="font-normal text-white px-[15px] py-2"
             >Nhận bệnh</a
           >
         </li>
-        <li class="mx-[15px] my-0">
-          <a href="#" class="font-normal text-white px-[15px] py-2"
+        <li class="nav-item">
+          <a
+            href="../examination_health/index.html"
+            class="font-normal text-white px-[15px] py-2"
             >Khám bệnh</a
           >
         </li>
-        <li class="mx-[15px] my-0">
-          <a href="#" class="font-normal text-white px-[15px] py-2">Hoá đơn</a>
+        <li class="nav-item">
+          <a
+            href="../payment/index.html"
+            class="font-normal text-white px-[15px] py-2"
+            >Hoá đơn</a
+          >
         </li>
-        <li class="mx-[15px] my-0">
+        <li class="nav-item">
           <a href="#" class="font-normal text-white px-[15px] py-2">Báo cáo</a>
+          <div class="dropdown">
+            <a href="../report/index1.html" class="dropdown-item">Doanh thu</a>
+            <a href="../report/index2.html" class="dropdown-item"
+              >Lượng thuốc</a
+            >
+          </div>
         </li>
-        <li class="mx-[15px] my-0">
-          <a href="#" class="font-normal text-white px-[15px] py-2"
+        <li class="nav-item">
+          <a
+            href="../patient/index.html"
+            class="font-normal text-white px-[15px] py-2"
             >Bệnh nhân</a
           >
         </li>
-        <li class="mx-[15px] my-0">
-          <a href="#" class="font-normal text-white px-[15px] py-2">Thuốc</a>
+        <li class="nav-item">
+          <a
+            href="../medicine/index.html"
+            class="font-normal text-white px-[15px] py-2"
+            >Thuốc</a
+          >
         </li>
-        <li class="mx-[15px] my-0">
-          <a href="../setting/index.html" class="active relative font-normal"
-            ><i class="fas fa-cog text-white text-lg"></i
+        <li class="nav-item">
+          <a href="#" class="active relative font-bold px-1.5 py-2"
+            ><i class="fas fa-user text-white text-lg"></i
           ></a>
+          <div class="dropdown">
+            <a href="../setting/index.html" class="dropdown-item">
+              Cài đặt
+              <i class="fas fa-cog text-white text-lg"></i
+            ></a>
+            <a href="../login/index.html" class="dropdown-item">
+              Đăng xuất
+              <i class="fas fa-sign-out-alt text-white text-lg"></i
+            ></a>
+          </div>
         </li>
       </ul>
-    </nav> -->
+    </nav>
 
-  <div class="flex h-full justify-center">
-    <!-- Thanh điều hướng dọc bên trái -->
-    <aside class="bg-white w-[200px] h-full border-r-[1px]">
-      <ul class="list-none">
-        <li class="text-center">
-          <a href="index.html" class="block py-2 px-4 text-black hover:bg-gray-300">Thông tin chung</a>
-        </li>
-        <li class="text-center">
-          <a href="setting-change-pass.html" class="block py-2 px-4 text-black hover:bg-gray-300">Mật khẩu</a>
-        </li>
-        <li class="text-center">
-          <a href="setting-regulation.html" class="block py-2 px-4 text-black hover:bg-gray-300">Quy định</a>
-        </li>
-      </ul>
-    </aside>
+    <div class="flex min-h-full justify-center">
+      <!-- Thanh điều hướng dọc bên trái -->
+      <aside class="bg-white w-[200px] min-h-full border-r-[1px]">
+        <ul class="list-none">
+          <li class="text-center">
+            <a
+              href="index.html"
+              class="block py-2 px-4 text-black hover:bg-gray-300"
+              >Thông tin chung</a
+            >
+          </li>
+          <li class="text-center">
+            <a
+              href="setting-change-pass.html"
+              class="block py-2 px-4 text-black hover:bg-gray-300"
+              >Mật khẩu</a
+            >
+          </li>
+          <li class="text-center">
+            <a
+              href="setting-regulation.html"
+              class="block py-2 px-4 text-black hover:bg-gray-300 font-bold bg-gray-300"
+              >Quy định</a
+            >
+          </li>
+        </ul>
+      </aside>
 
-    <!-- Nội dung chính -->
+      <!-- Nội dung chính -->
 
-    <main class="w-3/4 h-4/5 mx-auto mt-12 px-7 py-2.5 border bg-white rounded-[5px] shadow-lg overflow-hidden">
-      <!-- Phần tiêu đề -->
-      <div class="w-full">
-        <h1 class="mb-1 text-xl font-bold">Thay đổi quy định phòng khám</h1>
-        <div class="border-b-[1px]"></div>
-      </div>
+      <main
+        class="w-3/4 mx-auto mt-12 px-7 py-2.5 border bg-white rounded-[5px] shadow-lg"
+      >
+        <!-- Phần tiêu đề -->
+        <div class="w-full">
+          <h1 class="mb-1 text-xl font-bold">Thay đổi quy định phòng khám</h1>
+          <div class="border-b-[1px]"></div>
+        </div>
 
-      <!-- Phần form -->
-      <form id="changeForm" class="form w-full pt-1 flex flex-col">
-        <div class="flex items-center w-full border-b-[1px] pb-1">
-          <div class="mr-28 w-2/3 mb-1">
-            <h1 class="text-lg font-medium">Số lượng bệnh nhân tối đa</h1>
-            <h6 class="font-thin italic text-xs">
-              Thay đổi số lượng bệnh nhân tối đa trong ngày
-            </h6>
+        <!-- Phần form -->
+        <form id="changeForm" class="form w-full pt-1 flex flex-col">
+          <div class="flex items-center w-full border-b-[1px] pb-1">
+            <div class="mr-28 w-2/3 mb-1">
+              <h1 class="text-lg font-medium">Số lượng bệnh nhân tối đa</h1>
+              <h6 class="font-thin italic text-xs">
+                Thay đổi số lượng bệnh nhân tối đa trong ngày
+              </h6>
+            </div>
+            <input
+              type="text"
+              id="soLuongBenhNhan"
+              name="soLuongBenhNhan"
+              class="border border-gray-500 px-1.5 py-1.5 mr-2 w-1/3 rounded-[5px]"
+            />
           </div>
-          <input type="text" id="soLuongBenhNhan" name="soLuongBenhNhan"
-            class="border border-gray-500 px-1.5 py-1.5 mr-2 w-1/3 rounded-[5px]" />
-        </div>
 
-        <div class="flex items-center w-full border-b-[1px]">
-          <div class="mr-28 w-2/3 my-1.5">
-            <h1 class="text-lg font-medium">Tiền khám</h1>
-            <h6 class="font-thin italic text-xs">Thay đổi tiền khám</h6>
+          <div class="flex items-center w-full border-b-[1px]">
+            <div class="mr-28 w-2/3 my-1.5">
+              <h1 class="text-lg font-medium">Tiền khám</h1>
+              <h6 class="font-thin italic text-xs">Thay đổi tiền khám</h6>
+            </div>
+            <input
+              type="text"
+              id="tienKham"
+              name="tienKham"
+              class="border border-gray-500 px-1.5 py-1 mr-2 w-1/3 rounded-[5px]"
+            />
           </div>
-          <input type="text" id="tienKham" name="tienKham"
-            class="border border-gray-500 px-1.5 py-1 mr-2 w-1/3 rounded-[5px]" />
-        </div>
 
-        <div class="flex justify-center items-center mt-5 ml-6 mr-7 mb-4">
-          <button id="submitConfigBtn"
-            class="mr-20 w-40 max-w-xs px-2 py-1.5 text-white font-medium bg-greenNote rounded-[5px] hover:bg-green-700 transition-colors">
-            Cập nhật
-          </button>
-        </div>
-
-        <div class="flex items-center w-full border-b-[1px]">
-          <div class="mr-28 w-2/3 my-1.5">
-            <h1 class="text-lg font-medium">Số lượng loại bệnh</h1>
-            <h6 class="font-thin italic text-xs">
-              Số lượng loại bệnh mà phòng bệnh có thể chữa
-            </h6>
+          <div class="flex justify-center items-center mt-5 ml-6 mr-7 mb-4">
+            <button
+              id="submitConfigBtn"
+              class="mr-20 w-40 max-w-xs px-2 py-1.5 text-white font-medium bg-greenNote rounded-[5px] hover:bg-green-700 transition-colors"
+            >
+              Cập nhật
+            </button>
           </div>
-          <input type="text" id="soLuongLoaiBenh" name="soLuongLoaiBenh" disabled
-            class="border border-gray-400 px-1.5 py-1 mr-2 w-1/3 rounded-[5px]" />
-        </div>
 
-        <div class="mt-6">
-          <h2 class="text-xl mb-4">Danh sách loại bệnh</h2>
-          <table class="min-w-full bg-white">
-            <thead>
-              <tr class="bg-blue-500 text-white">
-                <th class="py-2 px-4">Mã bệnh</th>
-                <th class="py-2 px-4">Tên loại bệnh</th>
-                <th class="py-2 px-4">Mô tả</th>
-                <th class="py-2 px-4">Thao tác</th>
-              </tr>
-            </thead>
-            <tbody id="diseaseTableBody">
-              <!-- Data sẽ được render động tại đây -->
-            </tbody>
-          </table>
-          
-          <!-- Modal for adding new disease -->
-          <div id="addDiseaseModal"
-            class="modal hidden fixed inset-0 bg-gray-600 bg-opacity-50 items-center justify-center">
-            <div class="bg-white p-6 rounded-lg shadow-lg w-full">
-              <!-- Input Fields -->
-              <div class="flex flex-row justify-between mb-2">
-                <form id="addDiseaseForm">
-                  <div class="  w-1/2 mr-2">
-                    <label for="newDiseaseName" class="block text-sm font-medium text-gray-700">Tên loại bệnh</label>
-                    <input type="text" id="newDiseaseName" name="newDiseaseName"
-                      class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
-                      required>
-                  </div>
-                  <div class="w-1/2">
-                    <label for="newDiseaseDescription" class="block text-sm font-medium text-gray-700">Mô tả</label>
-                    <textarea id="newDiseaseDescription" name="newDiseaseDescription"
-                      class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
-                      required></textarea>
-                  </div>
-                </form>
+          <div class="flex items-center w-full border-b-[1px]">
+            <div class="mr-28 w-2/3 my-1.5">
+              <h1 class="text-lg font-medium">Số lượng loại bệnh</h1>
+              <h6 class="font-thin italic text-xs">
+                Số lượng loại bệnh mà phòng bệnh có thể chữa
+              </h6>
+            </div>
+            <input
+              type="text"
+              id="soLuongLoaiBenh"
+              name="soLuongLoaiBenh"
+              disabled
+              class="border border-gray-400 px-1.5 py-1 mr-2 w-1/3 rounded-[5px]"
+            />
+          </div>
+
+          <div class="mt-6">
+            <h2 class="text-xl mb-4">Danh sách loại bệnh</h2>
+            <table class="min-w-full bg-white">
+              <thead>
+                <tr class="bg-blue-500 text-white">
+                  <th class="py-2 px-4">Mã bệnh</th>
+                  <th class="py-2 px-4">Tên loại bệnh</th>
+                  <th class="py-2 px-4">Mô tả</th>
+                  <th class="py-2 px-4">Thao tác</th>
+                </tr>
+              </thead>
+              <tbody id="diseaseTableBody">
+                <!-- Data sẽ được render động tại đây -->
+              </tbody>
+            </table>
+
+            <!-- Modal for adding new disease -->
+            <div
+              id="addDiseaseModal"
+              class="modal hidden fixed inset-0 bg-gray-600 bg-opacity-50 items-center justify-center"
+            >
+              <div class="bg-white p-6 rounded-lg shadow-lg w-full">
+                <!-- Input Fields -->
+                <div class="flex flex-row justify-between mb-2">
+                  <form id="addDiseaseForm">
+                    <div class="w-1/2 mr-2">
+                      <label
+                        for="newDiseaseName"
+                        class="block text-sm font-medium text-gray-700"
+                        >Tên loại bệnh</label
+                      >
+                      <input
+                        type="text"
+                        id="newDiseaseName"
+                        name="newDiseaseName"
+                        class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                        required
+                      />
+                    </div>
+                    <div class="w-1/2">
+                      <label
+                        for="newDiseaseDescription"
+                        class="block text-sm font-medium text-gray-700"
+                        >Mô tả</label
+                      >
+                      <textarea
+                        id="newDiseaseDescription"
+                        name="newDiseaseDescription"
+                        class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                        required
+                      ></textarea>
+                    </div>
+                  </form>
+                </div>
+                <!-- Buttons -->
+                <div class="flex flex-row justify-between ml-6">
+                  <button
+                    id="addDiseaseSubmitBtn"
+                    class="bg-blue-500 text-white px-4 py-2 rounded w-1/3"
+                  >
+                    Thêm
+                  </button>
+                  <button
+                    id="cancelAddDiseaseBtn"
+                    class="bg-blue-500 text-white px-4 py-2 rounded w-1/3"
+                  >
+                    Hủy
+                  </button>
+                </div>
               </div>
-              <!-- Buttons -->
-              <div class="flex flex-row justify-between ml-6">
-                <button id ="addDiseaseSubmitBtn"
-                  class="bg-blue-500 text-white px-4 py-2 rounded  w-1/3">Thêm</button>
-                <button id="cancelAddDiseaseBtn"
-                  class="bg-blue-500 text-white px-4 py-2 rounded w-1/3">Hủy</button>
+            </div>
 
-              </div>
+            <button
+              id="addDiseaseBtn"
+              class="mt-4 mb-4 bg-blue-500 text-white px-4 py-2 rounded"
+            >
+              Thêm loại bệnh mới
+            </button>
+          </div>
+
+          <!-- Chỉnh sửa modal form (Cửa sổ pop up) -->
+          <div id="editDiseaseModal" class="modal hidden mb-4">
+            <div class="modal-content">
+              <h1 class="text-xl text-center">Chỉnh sửa bệnh</h1>
+              <form id="editDiseaseForm">
+                <input type="hidden" id="editDiseaseId" />
+                <div class="form-group">
+                  <label
+                    for="editDiseaseName"
+                    class="block text-sm font-medium text-gray-700"
+                    >Tên loại bệnh</label
+                  >
+                  <input
+                    type="text"
+                    id="editDiseaseName"
+                    name="editDiseaseName"
+                    class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                    required
+                  />
+                </div>
+                <div class="form-group">
+                  <label
+                    for="editDiseaseDescription"
+                    class="block text-sm font-medium text-gray-700"
+                    >Mô tả</label
+                  >
+                  <textarea
+                    id="editDiseaseDescription"
+                    name="editDiseaseDescription"
+                    class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                    required
+                  ></textarea>
+                </div>
+                <div class="flex flex-row justify-between ml-6 mt-4">
+                  <button
+                    type="button"
+                    id="editDiseaseSubmitBtn"
+                    class="bg-blue-500 text-white px-4 py-2 rounded w-1/3"
+                  >
+                    Lưu
+                  </button>
+                  <button
+                    type="button"
+                    id="cancelEditDiseaseBtn"
+                    class="bg-blue-500 text-white px-4 py-2 rounded w-1/3"
+                  >
+                    Hủy
+                  </button>
+                </div>
+              </form>
             </div>
           </div>
 
-          <button id="addDiseaseBtn" class="mt-4 mb-4 bg-blue-500 text-white px-4 py-2 rounded">Thêm loại bệnh mới</button>
-        </div>
-
-        <!-- Chỉnh sửa modal form (Cửa sổ pop up) -->
-        <div id="editDiseaseModal" class="modal hidden mb-4">
-          <div class="modal-content">
-              <h1 class="text-xl text-center">Chỉnh sửa bệnh</h1>
-              <form id="editDiseaseForm">
-                  <input type="hidden" id="editDiseaseId">
-                  <div class="form-group">
-                      <label for="editDiseaseName" class="block text-sm font-medium text-gray-700">Tên loại bệnh</label>
-                      <input type="text" id="editDiseaseName" name="editDiseaseName"
-                          class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
-                          required>
-                  </div>
-                  <div class="form-group">
-                      <label for="editDiseaseDescription" class="block text-sm font-medium text-gray-700">Mô tả</label>
-                      <textarea id="editDiseaseDescription" name="editDiseaseDescription"
-                          class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
-                          required></textarea>
-                  </div>
-                  <div class="flex flex-row justify-between ml-6 mt-4">
-                      <button type="button" id="editDiseaseSubmitBtn" class="bg-blue-500 text-white px-4 py-2 rounded w-1/3">Lưu</button>
-                      <button type="button" id="cancelEditDiseaseBtn" class="bg-blue-500 text-white px-4 py-2 rounded w-1/3">Hủy</button>
-                  </div>
-              </form>
+          <div class="flex items-center w-full border-b-[1px]">
+            <div class="mr-28 w-2/3 my-1.5">
+              <h1 class="text-lg font-medium">Số lượng thuốc</h1>
+              <h6 class="font-thin italic text-xs">
+                Số lượng thuốc hiện có tại phòng bệnh
+              </h6>
+            </div>
+            <input
+              type="text"
+              id="soLuongThuoc"
+              name="soLuongThuoc"
+              disabled
+              class="border border-gray-400 px-1.5 py-1 mr-2 w-1/3 rounded-[5px]"
+            />
           </div>
-      </div>
 
-
-
-        <div class="flex items-center w-full border-b-[1px]">
-          <div class="mr-28 w-2/3 my-1.5">
-            <h1 class="text-lg font-medium">Số lượng thuốc</h1>
-            <h6 class="font-thin italic text-xs">Số lượng thuốc hiện có tại phòng bệnh</h6>
+          <div class="flex items-center w-full border-b-[1px]">
+            <div class="mr-28 w-2/3 my-1.5">
+              <h1 class="text-lg font-medium">
+                Số lượng đơn vị tính của thuốc hiện có tại phòng bệnh
+              </h1>
+              <h6 class="font-thin italic text-xs">
+                Thay đổi số lượng đơn vị tính
+              </h6>
+            </div>
+            <input
+              type="text"
+              id="soLuongDonViTinh"
+              name="soLuongDonViTinh"
+              disabled
+              class="border border-gray-400 px-1.5 py-1 mr-2 w-1/3 rounded-[5px]"
+            />
           </div>
-          <input type="text" id="soLuongThuoc" name="soLuongThuoc" disabled
-            class="border border-gray-400 px-1.5 py-1 mr-2 w-1/3 rounded-[5px]" />
-        </div>
 
-        <div class="flex items-center w-full border-b-[1px]">
-          <div class="mr-28 w-2/3 my-1.5">
-            <h1 class="text-lg font-medium">Số lượng đơn vị tính của thuốc hiện có tại phòng bệnh</h1>
-            <h6 class="font-thin italic text-xs">
-              Thay đổi số lượng đơn vị tính
-            </h6>
+          <div class="flex items-center w-full border-b-[1px]">
+            <div class="mr-28 w-2/3 my-1.5">
+              <h1 class="text-lg font-medium">Số lượng cách dùng</h1>
+              <h6 class="font-thin italic text-xs">
+                Số lượng cách dùng của thuốc tại phòng bệnh
+              </h6>
+            </div>
+            <input
+              type="text"
+              id="soLuongCachDung"
+              name="soLuongCachDung"
+              disabled
+              class="border border-gray-400 px-1.5 py-1 mr-2 w-1/3 rounded-[5px]"
+            />
           </div>
-          <input type="text" id="soLuongDonViTinh" name="soLuongDonViTinh" disabled
-            class="border border-gray-400 px-1.5 py-1 mr-2 w-1/3 rounded-[5px]" />
-        </div>
-
-        <div class="flex items-center w-full border-b-[1px]">
-          <div class="mr-28 w-2/3 my-1.5">
-            <h1 class="text-lg font-medium">Số lượng cách dùng</h1>
-            <h6 class="font-thin italic text-xs">
-              Số lượng cách dùng của thuốc tại phòng bệnh
-            </h6>
+          <div class="flex justify-center items-center mt-5 ml-6 mr-7 mb-4">
+            <button
+              onclick="window.location.href='../medicine/index.html';"
+              class="mr-20 w-40 max-w-xs px-2 py-1.5 text-white font-medium bg-greenNote rounded-[5px] hover:bg-green-700 transition-colors"
+            >
+              Tùy chỉnh thuốc
+            </button>
           </div>
-          <input type="text" id="soLuongCachDung" name="soLuongCachDung" disabled
-            class="border border-gray-400 px-1.5 py-1 mr-2 w-1/3 rounded-[5px]" />
-        </div>
-      <div class="flex justify-center items-center mt-5 ml-6 mr-7 mb-4">
-        <button onclick="window.location.href='../medicine/index.html';"
-          class="mr-20 w-40 max-w-xs px-2 py-1.5 text-white font-medium bg-greenNote rounded-[5px] hover:bg-green-700 transition-colors">
-          Tùy chỉnh thuốc
-        </button>
-      </div>
-       
-      </form>   
-      <div style="height: 100px;">
-
-      </div>   
-    </main>
-    
-  </div>
-  <script src="setting-regulation.js"></script>
-</body>
-
+        </form>
+        <div style="height: 100px"></div>
+      </main>
+    </div>
+    <script src="setting-regulation.js"></script>
+  </body>
 </html>

@@ -1,30 +1,16 @@
-<!-- <html lang="en">
+<html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Thay đổi thông tin</title>
     <link href="../style/output.css" rel="stylesheet" />
+    <link href="../style/navigation_bar.css" rel="stylesheet" />
     <link href="../style/setting_active.css" rel="stylesheet" />
+    <script src="../checkLogin.js"></script>
     <link
       rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
     />
-
-    <title>Thay đổi thông tin</title>
-  </head> -->
-
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-      <meta charset="UTF-8" />
-      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-      <title>Thay đổi thông tin</title>
-      <link href="../style/navigation_bar.css" rel="stylesheet" />
-      <link href="../style/output.css" rel="stylesheet" />
-      <link href="../style/setting_active.css" rel="stylesheet" />
-
-    <script src="../checkLogin.js"></script>
-
-      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   </head>
 
   <body class="m-0 p-0 flex flex-col min-h-screen bg-grayBg">
@@ -32,109 +18,80 @@
     <nav class="bg-blueTaskbar text-white p-3 w-full text-center">
       <ul class="flex justify-between list-none p-0 m-0">
         <li class="nav-item">
-          <a href="../homepage/index.html" class="font-normal"
-            ><i class="fas fa-home text-white text-lg"></i
-          ></a>
+          <a href="../homepage/index.html" class="font-normal">
+            <i class="fas fa-home text-white text-lg"></i>
+          </a>
         </li>
         <li class="nav-item">
           <a
-            href="../admitted_patient/index.html" class="font-normal text-white px-[15px] py-2"
+            href="../admitted_patient/index.html"
+            class="font-normal text-white px-[15px] py-2"
             >Nhận bệnh</a
           >
         </li>
         <li class="nav-item">
-          <a href="../examination_health/index.html" class="font-normal text-white px-[15px] py-2"
+          <a
+            href="../examination_health/index.html"
+            class="font-normal text-white px-[15px] py-2"
             >Khám bệnh</a
           >
         </li>
         <li class="nav-item">
-          <a href="../payment/index.html" class="font-normal text-white px-[15px] py-2">Hoá đơn</a>
+          <a
+            href="../payment/index.html"
+            class="font-normal text-white px-[15px] py-2"
+            >Hoá đơn</a
+          >
         </li>
         <li class="nav-item">
-          <a
-              href="#" class="font-normal text-white px-[15px] py-2"
-              >Báo cáo</a
-          >
+          <a href="#" class="font-normal text-white px-[15px] py-2">Báo cáo</a>
           <div class="dropdown">
             <a href="../report/index1.html" class="dropdown-item">Doanh thu</a>
-            <a href="../report/index2.html" class="dropdown-item">Lượng thuốc</a>
+            <a href="../report/index2.html" class="dropdown-item"
+              >Lượng thuốc</a
+            >
           </div>
         </li>
         <li class="nav-item">
-          <a href="../patient/index.html" class="font-normal text-white px-[15px] py-2"
+          <a
+            href="../patient/index.html"
+            class="font-normal text-white px-[15px] py-2"
             >Bệnh nhân</a
           >
         </li>
         <li class="nav-item">
-          <a href="../medicine/index.html" class="font-normal text-white px-[15px] py-2">Thuốc</a>
+          <a
+            href="../medicine/index.html"
+            class="font-normal text-white px-[15px] py-2"
+            >Thuốc</a
+          >
         </li>
         <li class="nav-item">
-          <a href="#" class="active relative font-bold px-1.5 py-2"
-            ><i class="fas fa-user text-white text-lg"></i
-          ></a>
+          <a href="#" class="active relative font-bold px-1.5 py-2">
+            <i class="fas fa-user text-white text-lg"></i>
+          </a>
           <div class="dropdown">
             <a href="../setting/index.html" class="dropdown-item">
               Cài đặt
-              <i class="fas fa-cog text-white text-lg"></i
-            ></a>
+              <i class="fas fa-cog text-white text-lg"></i>
+            </a>
             <a href="../login/index.html" class="dropdown-item">
               Đăng xuất
-              <i class="fas fa-sign-out-alt text-white text-lg"></i
-            ></a>
+              <i class="fas fa-sign-out-alt text-white text-lg"></i>
+            </a>
           </div>
         </li>
       </ul>
     </nav>
 
-    <!-- <nav class="bg-blueTaskbar text-white p-3 w-full text-center">
-      <ul class="flex justify-between list-none p-0 m-0">
-        <li class="mx-[15px] my-0">
-          <a href="../homepage/index.html" class="font-normal"
-            ><i class="fas fa-home text-white text-lg"></i
-          ></a>
-        </li>
-        <li class="mx-[15px] my-0">
-          <a
-            href="../nhan_benh/index.html"
-            class="font-normal text-white px-[15px] py-2"
-            >Nhận bệnh</a
-          >
-        </li>
-        <li class="mx-[15px] my-0">
-          <a href="#" class="font-normal text-white px-[15px] py-2"
-            >Khám bệnh</a
-          >
-        </li>
-        <li class="mx-[15px] my-0">
-          <a href="#" class="font-normal text-white px-[15px] py-2">Hoá đơn</a>
-        </li>
-        <li class="mx-[15px] my-0">
-          <a href="#" class="font-normal text-white px-[15px] py-2">Báo cáo</a>
-        </li>
-        <li class="mx-[15px] my-0">
-          <a href="#" class="font-normal text-white px-[15px] py-2"
-            >Bệnh nhân</a
-          >
-        </li>
-        <li class="mx-[15px] my-0">
-          <a href="#" class="font-normal text-white px-[15px] py-2">Thuốc</a>
-        </li>
-        <li class="mx-[15px] my-0">
-          <a href="../setting/index.html" class="active relative font-normal"
-            ><i class="fas fa-cog text-white text-lg"></i
-          ></a>
-        </li>
-      </ul>
-    </nav> -->
-
     <div class="flex h-full justify-center">
       <!-- Thanh điều hướng dọc bên trái -->
-      <aside class="bg-white w-[200px] h-full border-r-[1px]">
+      <aside class="bg-white w-[200px] min-h-full border-r-[1px]">
         <ul class="list-none">
           <li class="text-center">
             <a
               href="index.html"
-              class="block py-2 px-4 text-black hover:bg-gray-300"
+              class="block py-2 px-4 text-black hover:bg-gray-300 font-bold bg-gray-300"
               >Thông tin chung</a
             >
           </li>
@@ -156,7 +113,6 @@
       </aside>
 
       <!-- Nội dung chính -->
-
       <main
         class="flex-grow mx-12 mt-9 p-2 h-4/5 border bg-white rounded-[5px] shadow-lg overflow-hidden"
       >
@@ -233,7 +189,7 @@
                 id="username"
                 name="username"
                 readonly
-                class="border border-gray-400 bg-gray-400 text-gray-500 px-1.5 py-[1.5px] mr-2 w-2/3 rounded-[5px]"
+                class="border border-gray-400 text-gray-500 px-1.5 py-[1.5px] mr-2 w-2/3 rounded-[5px]"
               />
             </div>
           </form>
@@ -242,23 +198,29 @@
           <div
             class="flex flex-col justify-center items-center w-1/3 h-[280px] mr-5"
           >
-          <div class="frame-picture flex flex-col items-center">
-            <div
-              class="w-44 h-44 mt-2 mb-6 rounded-full border border-gray-300 bg-grayBut flex items-center justify-center overflow-hidden"
-            >
-              <img id="avatar" class="w-full h-full object-cover text-center" src="#" alt="Ảnh" />
-            </div>
-          
-            <div id="loadingSpinner" class="hidden">Đang tải ảnh lên, đợi xíu nha...</div> <!-- Add this line -->
+            <div class="frame-picture flex flex-col items-center">
+              <div
+                class="w-44 h-44 mt-2 mb-6 rounded-full border border-gray-300 bg-grayBut flex items-center justify-center overflow-hidden"
+              >
+                <img
+                  id="avatar"
+                  class="w-full h-full object-cover text-center"
+                  src="#"
+                  alt="Ảnh"
+                />
+              </div>
 
-            <input type="file" id="fileInput" class="hidden" />
-            <label
-              for="fileInput"
-              class="bg-grayBut text-center text-black w-2/3 px-5 py-1 rounded cursor-pointer hover:bg-gray-500"
-            >
-              Chọn tệp
-            </label>
-          </div>
+              <div id="loadingSpinner" class="hidden">
+                Đang tải ảnh lên, đợi xíu nha...
+              </div>
+              <input type="file" id="fileInput" class="hidden" />
+              <label
+                for="fileInput"
+                class="bg-grayBut text-center text-black w-2/3 px-5 py-1 rounded cursor-pointer hover:bg-gray-500"
+              >
+                Chọn tệp
+              </label>
+            </div>
           </div>
         </div>
 

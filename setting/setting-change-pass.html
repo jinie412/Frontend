@@ -1,30 +1,19 @@
-<!-- <html lang="en">
+<html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Thay đổi thông tin</title>
     <link href="../style/output.css" rel="stylesheet" />
+    <link href="../style/navigation_bar.css" rel="stylesheet" />
+
     <link href="../style/setting_active.css" rel="stylesheet" />
+
+    <script src="../checkLogin.js"></script>
+
     <link
       rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
     />
-
-    <title>Đổi mật khẩu</title>
-  </head> -->
-
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-      <meta charset="UTF-8" />
-      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-      <title>Đổi mật khẩu</title>
-      <link href="../style/navigation_bar.css" rel="stylesheet" />
-      <link href="../style/output.css" rel="stylesheet" />
-
-      <script src="../checkLogin.js"></script>
-
-      <link href="../style/setting_active.css" rel="stylesheet" />
-      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   </head>
 
   <body class="m-0 p-0 flex flex-col min-h-screen bg-grayBg">
@@ -38,35 +27,47 @@
         </li>
         <li class="nav-item">
           <a
-            href="../admitted_patient/index.html" class="font-normal text-white px-[15px] py-2"
+            href="../admitted_patient/index.html"
+            class="font-normal text-white px-[15px] py-2"
             >Nhận bệnh</a
           >
         </li>
         <li class="nav-item">
-          <a href="../examination_health/index.html" class="font-normal text-white px-[15px] py-2"
+          <a
+            href="../examination_health/index.html"
+            class="font-normal text-white px-[15px] py-2"
             >Khám bệnh</a
           >
         </li>
         <li class="nav-item">
-          <a href="../payment/index.html" class="font-normal text-white px-[15px] py-2">Hoá đơn</a>
+          <a
+            href="../payment/index.html"
+            class="font-normal text-white px-[15px] py-2"
+            >Hoá đơn</a
+          >
         </li>
         <li class="nav-item">
-          <a
-              href="#" class="font-normal text-white px-[15px] py-2"
-              >Báo cáo</a
-          >
+          <a href="#" class="font-normal text-white px-[15px] py-2">Báo cáo</a>
           <div class="dropdown">
             <a href="../report/index1.html" class="dropdown-item">Doanh thu</a>
-            <a href="../report/index2.html" class="dropdown-item">Lượng thuốc</a>
+            <a href="../report/index2.html" class="dropdown-item"
+              >Lượng thuốc</a
+            >
           </div>
         </li>
         <li class="nav-item">
-          <a href="../patient/index.html" class="font-normal text-white px-[15px] py-2"
+          <a
+            href="../patient/index.html"
+            class="font-normal text-white px-[15px] py-2"
             >Bệnh nhân</a
           >
         </li>
         <li class="nav-item">
-          <a href="../medicine/index.html" class="font-normal text-white px-[15px] py-2">Thuốc</a>
+          <a
+            href="../medicine/index.html"
+            class="font-normal text-white px-[15px] py-2"
+            >Thuốc</a
+          >
         </li>
         <li class="nav-item">
           <a href="#" class="active relative font-bold px-1.5 py-2"
@@ -86,50 +87,9 @@
       </ul>
     </nav>
 
-    <!-- <nav class="bg-blueTaskbar text-white p-3 w-full text-center">
-      <ul class="flex justify-between list-none p-0 m-0">
-        <li class="mx-[15px] my-0">
-          <a href="../homepage/index.html" class="font-normal"
-            ><i class="fas fa-home text-white text-lg"></i
-          ></a>
-        </li>
-        <li class="mx-[15px] my-0">
-          <a
-            href="../nhan_benh/index.html"
-            class="font-normal text-white px-[15px] py-2"
-            >Nhận bệnh</a
-          >
-        </li>
-        <li class="mx-[15px] my-0">
-          <a href="#" class="font-normal text-white px-[15px] py-2"
-            >Khám bệnh</a
-          >
-        </li>
-        <li class="mx-[15px] my-0">
-          <a href="#" class="font-normal text-white px-[15px] py-2">Hoá đơn</a>
-        </li>
-        <li class="mx-[15px] my-0">
-          <a href="#" class="font-normal text-white px-[15px] py-2">Báo cáo</a>
-        </li>
-        <li class="mx-[15px] my-0">
-          <a href="#" class="font-normal text-white px-[15px] py-2"
-            >Bệnh nhân</a
-          >
-        </li>
-        <li class="mx-[15px] my-0">
-          <a href="#" class="font-normal text-white px-[15px] py-2">Thuốc</a>
-        </li>
-        <li class="mx-[15px] my-0">
-          <a href="../setting/index.html" class="active relative font-normal"
-            ><i class="fas fa-cog text-white text-lg"></i
-          ></a>
-        </li>
-      </ul>
-    </nav> -->
-
     <div class="flex h-full justify-center">
       <!-- Thanh điều hướng dọc bên trái -->
-      <aside class="bg-white w-[200px] h-full border-r-[1px]">
+      <aside class="bg-white w-[200px] min-h-full border-r-[1px]">
         <ul class="list-none">
           <li class="text-center">
             <a
@@ -141,7 +101,7 @@
           <li class="text-center">
             <a
               href="setting-change-pass.html"
-              class="block py-2 px-4 text-black hover:bg-gray-300"
+              class="block py-2 px-4 text-black hover:bg-gray-300 font-bold bg-gray-300"
               >Mật khẩu</a
             >
           </li>
@@ -163,23 +123,17 @@
         <!-- Phần tiêu đề -->
         <div class="w-full pr-5 pt-2 mb-1">
           <h1 class="ml-6 mr-2 mb-2 text-2xl font-bold">Đổi mật khẩu</h1>
-          <!-- <h1 class="ml-6 mr-2 mb-2 text-sm font-extralight">
-            Mật khẩu của bạn phải có tối thiểu 6 ký tự, đồng thời bao gồm cả chữ
-            số, chữ cái và ký tự đặc biệt (!$@%).
-          </h1> -->
         </div>
 
         <!-- Phần form -->
         <form id="changeForm" class="form w-full pr-5 pt-2 mb-1">
-          <span class=" font-light ml-6 mr-2 mb-2">
-            Tên tài khoản</span
-          >
+          <span class="font-light ml-6 mr-2 mb-2"> Tên tài khoản</span>
           <div class="mt-1 mb-3 ml-6 mr-2">
             <input
               type="text"
               id="username"
               readonly
-              class="bg-gray-400 text-gray-400 w-full px-2 py-1 border rounded-[5px] focus:outline-none focus:ring-2 focus:ring-blue-400"
+              class="text-gray-400 w-full px-2 py-1 border rounded-[5px]"
             />
           </div>
 
@@ -190,7 +144,7 @@
             <input
               type="text"
               id="currentPass"
-              class="w-full px-2 py-1 border rounded-[5px] focus:outline-none focus:ring-2 focus:ring-blue-400"
+              class="w-full px-2 py-1 border rounded-[5px]"
             />
           </div>
           <span class="text-black font-light ml-6 mr-2 mb-2">
@@ -200,7 +154,7 @@
             <input
               type="text"
               id="newPass"
-              class="w-full px-2 py-1 border rounded-[5px] focus:outline-none focus:ring-2 focus:ring-blue-400"
+              class="w-full px-2 py-1 border rounded-[5px]"
             />
           </div>
           <span class="text-black font-light ml-6 mr-2 mb-2">
@@ -210,7 +164,7 @@
             <input
               type="text"
               id="veriedPass"
-              class="w-full px-2 py-1 border rounded-[5px] focus:outline-none focus:ring-2 focus:ring-blue-400"
+              class="w-full px-2 py-1 border rounded-[5px]"
             />
           </div>
           <div class="flex justify-center items-center">
@@ -222,8 +176,6 @@
             </button>
           </div>
         </form>
-
-        
       </main>
     </div>
     <script src="./setting-change-pass.js"></script>
